@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/08684b80-fbc1-49b4-89e0-69738b945e94/deploy-status)](https://app.netlify.com/sites/sleepy-poincare-53f6e1/deploys)
+
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.org">
@@ -18,7 +20,7 @@ _Have another more specific idea? You may want to check out our vibrant collecti
 
     Use the Gatsby CLI to create a new site, specifying the blog starter.
 
-    ```shell
+    ```sh
     # create a new Gatsby site using the blog starter
     gatsby new my-blog-starter https://github.com/gatsbyjs/gatsby-starter-blog
     ```
@@ -27,7 +29,7 @@ _Have another more specific idea? You may want to check out our vibrant collecti
 
     Navigate into your new site’s directory and start it up.
 
-    ```shell
+    ```sh
     cd my-blog-starter/
     gatsby develop
     ```
@@ -94,6 +96,6 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-blog)
 
-[![Deploy with ZEIT Now](https://zeit.co/button)](https://zeit.co/import/project?template=https://github.com/gatsbyjs/gatsby-starter-blog)
-
 <!-- AUTO-GENERATED-CONTENT:END -->
+
+

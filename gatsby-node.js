@@ -1,64 +1,73 @@
-const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const path = require('path');
 
-exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
-
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
-  const result = await graphql(
-    `
-      {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
-        ) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-              }
-            }
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  const { createPage } = actions;
+  const PostTemplate = path.resolve('./src/templates/post.js');
+  const PageTemplate = path.resolve('./src/templates/page.js');
+  const TagTemplate = path.resolve('./src/templates/tag.js');
+  const result = await graphql(`
+    {
+      allWordpressPost {
+        edges {
+          node {
+            slug
+            wordpress_id
           }
         }
       }
-    `
-  )
-
+      allWordpressPage {
+        edges {
+          node {
+            slug
+            wordpress_id
+          }
+        }
+      }
+      allWordpressTag {
+        edges {
+          node {
+            wordpress_id
+            slug
+          }
+        }
+      }
+    }
+  `);
   if (result.errors) {
-    throw result.errors
+    reporter.panicOnBuild('Error while running GraphQL query.');
+    return;
   }
+  const BlogPosts = result.data.allWordpressPost.edges;
 
-  // Create blog posts pages.
-  const posts = result.data.allMarkdownRemark.edges
-
-  posts.forEach((post, index) => {
-    const previous = index === posts.length - 1 ? null : posts[index + 1].node
-    const next = index === 0 ? null : posts[index - 1].node
-
+  BlogPosts.forEach(post => {
     createPage({
-      path: post.node.fields.slug,
-      component: blogPost,
+      path: `/${post.node.slug}`,
+      component: PostTemplate,
       context: {
-        slug: post.node.fields.slug,
-        previous,
-        next,
+        id: post.node.wordpress_id,
       },
-    })
-  })
-}
+    });
+  });
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+  const Pages = result.data.allWordpressPage.edges;
+  Pages.forEach(post => {
+    createPage({
+      path: `/${post.node.slug}`,
+      component: PageTemplate,
+      context: {
+        id: post.node.wordpress_id,
+      },
+    });
+  });
 
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    })
-  }
-}
+  const Tags = result.data.allWordpressTag.edges;
+  Tags.forEach(tag => {
+    createPage({
+      path: `/tag/${tag.node.slug}`,
+      component: TagTemplate,
+      context: {
+        id: tag.node.wordpress_id,
+      },
+    });
+  });
+};

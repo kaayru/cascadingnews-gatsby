@@ -1,35 +1,39 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+
 import Layout from '../components/layout';
 import Post from '../components/post';
 import SEO from '../components/seo';
 
-const IndexPage = ({ data }) => {
+const Tag = ({ data }) => {
+  const tagData = data.wordpressTag;
+  const postsData = data.allWordpressPost.edges;
+
   return (
     <Layout>
-      <SEO title="Home" keywords={['gatsby', 'application', 'react']} />
+      <SEO title={tagData.name} />
       <ul style={{ listStyle: 'none' }}>
-        {data.allWordpressPost.edges.map(({ node }) => (
+        {postsData.map(({ node }) => (
           <Post key={node.wordpressId} node={node} />
         ))}
       </ul>
     </Layout>
   );
 };
-export default IndexPage;
+
 export const query = graphql`
-  query {
-    allWordpressPost {
+  query($id: Int!) {
+    wordpressTag(wordpress_id: { eq: $id }) {
+      name
+      slug
+    }
+
+    allWordpressPost(filter: { tags: { elemMatch: { wordpress_id: { eq: $id } } } }) {
       edges {
         node {
-          title
-          content
           link
-          excerpt
+          title
           wordpressId: wordpress_id
-          author {
-            name
-          }
           date(formatString: "MMMM DD, YYYY")
           tags {
             name
@@ -40,3 +44,5 @@ export const query = graphql`
     }
   }
 `;
+
+export default Tag;
