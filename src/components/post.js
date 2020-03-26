@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
 
 const Li = styled.li`
@@ -48,3 +48,17 @@ const Post = ({ node: { date, link, tags, title, wordpressId } }) => (
 );
 
 export default Post;
+
+export const postFragment = graphql`
+  fragment Post on wordpress__POST {
+    link
+    source
+    title
+    wordpressId: wordpress_id
+    date(formatString: "MMMM DD, YYYY")
+    tags {
+      name
+      slug
+    }
+  }
+`;
