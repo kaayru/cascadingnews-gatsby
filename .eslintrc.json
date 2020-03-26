@@ -5,7 +5,10 @@
     "plugin:prettier/recommended",
     "plugin:jsx-a11y/recommended"
   ],
-  "plugins": ["import", "prettier", "react", "react-hooks", "jsx-a11y"],
+  "env": {
+    "jest": true
+  },
+  "plugins": ["import", "prettier", "react", "react-hooks", "jsx-a11y", "jest"],
   "rules": {
     "strict": ["off", "global"],
 
