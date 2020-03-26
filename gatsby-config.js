@@ -1,6 +1,7 @@
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
+const { normalizer } = require('./normalizer/normalizer.js');
 
 module.exports = {
   siteMetadata: {
@@ -65,6 +66,7 @@ module.exports = {
           '**/taxonomies',
           '**/users',
         ],
+        normalizer,
       },
     },
     {
