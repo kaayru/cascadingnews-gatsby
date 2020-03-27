@@ -1,6 +1,10 @@
+const path = require('path');
+
 module.exports = {
+  setupFilesAfterEnv: [path.resolve(__dirname, './jest-config/setup-test-env.js')],
   transform: {
-    '^.+\\.jsx?$': '<rootDir>/jest-preprocess.js',
+    // '^.+\\.tsx?$': 'ts-jest',
+    '^.+\\.(tsx?|jsx?)$': '<rootDir>/jest-config/jest-preprocess.js',
   },
   moduleNameMapper: {
     '.+\\.(css|styl|less|sass|scss)$': 'identity-obj-proxy',
@@ -12,6 +16,8 @@ module.exports = {
   globals: {
     __PATH_PREFIX__: '',
   },
+  testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js|jsx)$',
+  moduleFileExtensions: ['ts', 'tsx', 'js'],
   testURL: 'http://localhost',
-  setupFiles: ['<rootDir>/loadershim.js'],
+  setupFiles: ['<rootDir>/jest-config/loadershim.js'],
 };
