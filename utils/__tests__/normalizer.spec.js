@@ -1,4 +1,4 @@
-import { normalizer } from './normalizer';
+import { normalizer } from '../normalizer';
 
 describe('Normalizer', () => {
   it('Should add source field to posts', () => {

@@ -1,7 +1,7 @@
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
-const { normalizer } = require('./normalizer/normalizer.js');
+const { normalizer } = require('./utils/normalizer.js');
 
 module.exports = {
   siteMetadata: {

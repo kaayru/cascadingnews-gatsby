@@ -1,12 +1,8 @@
-/**
- * @jest-environment jsdom
- */
-
-import React from 'react';
+import * as React from 'react';
 import { render } from '@testing-library/react';
 
-import Post from './post';
-import postFixture from './post.fixture';
+import { postFixture } from '../../../__fixtures__';
+import Post from '../post';
 
 describe('Post', () => {
   it('Should contain source and date', () => {
