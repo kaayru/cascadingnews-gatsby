@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'gatsby';
+import React, { Fragment } from 'react';
+import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
 
 const Li = styled.li`
@@ -8,7 +8,7 @@ const Li = styled.li`
   margin-bottom: 45px;
 `;
 
-const Post = ({ node: { date, link, tags, title, wordpressId } }) => (
+const Post = ({ node: { date, link, source, tags, title, wordpressId } }) => (
   <Li key={wordpressId}>
     <div>
       {tags && tags.length > 0 && (
@@ -40,11 +40,39 @@ const Post = ({ node: { date, link, tags, title, wordpressId } }) => (
           marginTop: 8,
           marginBottom: 10,
         }}
+        data-testid="post__byon"
       >
-        {date}
+        {source && (
+          <Fragment>
+            By{' '}
+            <a
+              href={source}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={`To ${source} homepage`}
+            >
+              {source}
+            </a>{' '}
+          </Fragment>
+        )}
+        {date && `on ${date}`}
       </p>
     </div>
   </Li>
 );
 
 export default Post;
+
+export const postFragment = graphql`
+  fragment Post on wordpress__POST {
+    link
+    source
+    title
+    wordpressId: wordpress_id
+    date(formatString: "MMMM DD, YYYY")
+    tags {
+      name
+      slug
+    }
+  }
+`;

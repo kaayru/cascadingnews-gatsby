@@ -31,14 +31,7 @@ export const query = graphql`
     allWordpressPost(filter: { tags: { elemMatch: { wordpress_id: { eq: $id } } } }) {
       edges {
         node {
-          link
-          title
-          wordpressId: wordpress_id
-          date(formatString: "MMMM DD, YYYY")
-          tags {
-            name
-            slug
-          }
+          ...Post
         }
       }
     }

@@ -22,19 +22,7 @@ export const query = graphql`
     allWordpressPost {
       edges {
         node {
-          title
-          content
-          link
-          excerpt
-          wordpressId: wordpress_id
-          author {
-            name
-          }
-          date(formatString: "MMMM DD, YYYY")
-          tags {
-            name
-            slug
-          }
+          ...Post
         }
       }
     }
