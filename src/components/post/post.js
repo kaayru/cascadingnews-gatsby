@@ -40,6 +40,7 @@ const Post = ({ node: { date, link, source, tags, title, wordpressId } }) => (
           marginTop: 8,
           marginBottom: 10,
         }}
+        data-testid="post__byon"
       >
         {source && (
           <Fragment>
