@@ -3,8 +3,8 @@ const path = require('path');
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
   const PostTemplate = path.resolve('./src/templates/post.js');
-  const PageTemplate = path.resolve('./src/templates/page.tsx');
-  const TagTemplate = path.resolve('./src/templates/tag.tsx');
+  const PageTemplate = path.resolve('./src/templates/page.js');
+  const TagTemplate = path.resolve('./src/templates/tag.js');
   const result = await graphql(`
     {
       allWordpressPost {

@@ -16,7 +16,6 @@
     "gatsby-plugin-manifest": "^2.2.5",
     "gatsby-plugin-offline": "^2.2.6",
     "gatsby-plugin-react-helmet": "^3.1.3",
-    "gatsby-plugin-typescript": "^2.3.1",
     "gatsby-plugin-typography": "^2.3.2",
     "gatsby-remark-copy-linked-files": "^2.1.6",
     "gatsby-remark-images": "^3.1.11",
@@ -36,39 +35,18 @@
     "typography-theme-wordpress-2016": "^0.16.19"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "^7.9.0",
-    "@graphql-codegen/cli": "^1.13.1",
-    "@graphql-codegen/introspection": "^1.13.1",
-    "@graphql-codegen/typescript": "1.13.1",
-    "@graphql-codegen/typescript-operations": "1.13.1",
-    "@testing-library/jest-dom": "^5.3.0",
-    "@testing-library/react": "^10.0.1",
-    "@types/jest": "^25.1.4",
-    "@types/react-helmet": "^5.0.15",
-    "@types/styled-components": "^5.0.1",
-    "@types/typography": "^0.16.3",
-    "@typescript-eslint/eslint-plugin": "^2.25.0",
-    "@typescript-eslint/parser": "^2.25.0",
-    "babel-jest": "^25.2.1",
-    "babel-preset-gatsby": "^0.3.1",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-config-prettier": "^6.10.1",
     "eslint-loader": "^3.0.3",
     "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-jest": "^23.8.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.1",
     "gatsby-plugin-eslint": "^2.0.8",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^25.2.1",
-    "prettier": "^1.18.2",
-    "react-test-renderer": "^16.13.1",
-    "ts-jest": "^25.2.1",
-    "typescript": "^3.8.3"
+    "prettier": "^1.18.2"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
@@ -84,10 +62,8 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "graphql-codegen": "graphql-codegen --config codegen.yml",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "jest",
-    "type-check": "tsc --noEmit --skipLibCheck"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   }
 }

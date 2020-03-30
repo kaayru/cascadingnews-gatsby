@@ -5,19 +5,15 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React, { Fragment, ReactNode } from 'react';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import { rhythm } from '../utils/typography';
-import { SiteTitleQueryQuery } from '../generated/graphql';
 import Header from './header';
 
-type Props = {
-  children: ReactNode;
-};
-
-const Layout = ({ children }: Props) => {
-  const data = useStaticQuery<SiteTitleQueryQuery>(graphql`
+const Layout = ({ children }) => {
+  const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
         siteMetadata {
@@ -33,7 +29,10 @@ const Layout = ({ children }: Props) => {
 
   return (
     <Fragment>
-      <Header siteMetadata={data?.site?.siteMetadata} />
+      <Header
+        menuLinks={data.site.siteMetadata.menuLinks}
+        siteTitle={data.site.siteMetadata.title}
+      />
 
       <div>
         <div
@@ -61,6 +60,10 @@ const Layout = ({ children }: Props) => {
       </div>
     </Fragment>
   );
+};
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default Layout;

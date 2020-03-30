@@ -6,18 +6,12 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
-import { Site } from '../generated/graphql';
 
-type Props = {
-  description?: string;
-  lang?: string;
-  meta?: [JSX.IntrinsicElements['meta']];
-  title: string;
-};
-const SEO = ({ description, lang = 'en', meta, title }: Props) => {
-  const { site } = useStaticQuery<{ site: Site }>(
+const SEO = ({ description, lang, meta, title }) => {
+  const { site } = useStaticQuery(
     graphql`
       query {
         site {
@@ -31,15 +25,12 @@ const SEO = ({ description, lang = 'en', meta, title }: Props) => {
     `,
   );
 
-  if (!site?.siteMetadata) return null;
-
-  const metaDescription = description || site.siteMetadata.description || '';
-  const metaAuthor = site.siteMetadata.author || '';
+  const metaDescription = description || site.siteMetadata.description;
 
   return (
     <Helmet
       htmlAttributes={{
-        lang: lang,
+        lang,
       }}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
@@ -66,7 +57,7 @@ const SEO = ({ description, lang = 'en', meta, title }: Props) => {
         },
         {
           name: 'twitter:creator',
-          content: metaAuthor,
+          content: site.siteMetadata.author,
         },
         {
           name: 'twitter:title',
@@ -76,10 +67,22 @@ const SEO = ({ description, lang = 'en', meta, title }: Props) => {
           name: 'twitter:description',
           content: metaDescription,
         },
-        ...(meta || []),
-      ]}
+      ].concat(meta)}
     />
   );
+};
+
+SEO.defaultProps = {
+  lang: 'en',
+  meta: [],
+  description: '',
+};
+
+SEO.propTypes = {
+  description: PropTypes.string,
+  lang: PropTypes.string,
+  meta: PropTypes.arrayOf(PropTypes.object),
+  title: PropTypes.string.isRequired,
 };
 
 export default SEO;
