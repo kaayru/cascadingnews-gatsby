@@ -18,6 +18,4 @@ const normalizer = ({ entities }) =>
     return entity;
   });
 
-module.exports = {
-  normalizer,
-};
+module.exports = { normalizer };
