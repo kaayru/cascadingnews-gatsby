@@ -1,6 +1,7 @@
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
+const { normalizer } = require('./utils/normalizer.js');
 
 module.exports = {
   siteMetadata: {
@@ -65,6 +66,7 @@ module.exports = {
           '**/taxonomies',
           '**/users',
         ],
+        normalizer,
       },
     },
     {
@@ -75,6 +77,7 @@ module.exports = {
     },
     'gatsby-plugin-offline',
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-typescript',
     {
       resolve: 'gatsby-plugin-typography',
       options: {

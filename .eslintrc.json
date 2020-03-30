@@ -1,11 +1,49 @@
 {
+  "parser": "@typescript-eslint/parser",
   "extends": [
     "airbnb",
     "airbnb-base",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
     "plugin:prettier/recommended",
     "plugin:jsx-a11y/recommended"
   ],
-  "plugins": ["import", "prettier", "react", "react-hooks", "jsx-a11y"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018, // Allows for the parsing of modern ECMAScript features
+    "sourceType": "module" // Allows for the use of imports
+  },
+  "overrides": [
+    // Override some TypeScript rules just for .js files
+    {
+      "files": ["*.js"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    }
+  ],
+  "plugins": [
+    "@typescript-eslint",
+    "import",
+    "prettier",
+    "react",
+    "react-hooks",
+    "jsx-a11y",
+    "jest"
+  ],
   "rules": {
     "strict": ["off", "global"],
 
@@ -26,9 +64,11 @@
     "prefer-object-spread": "warn",
     "prefer-promise-reject-errors": "warn",
     "spaced-comment": "warn",
-    "camelcase": ["warn", { "properties": "never" }],
+    "camelcase": "off",
 
     // OFF
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/camelcase": "off",
     "import/no-default-export": "off",
     "array-callback-return": "off",
     "arrow-body-style": "off",
@@ -64,6 +104,10 @@
     "comma-dangle": ["error", "always-multiline"],
     "new-cap": ["error", { "capIsNewExceptionPattern": "^Immutable.\\w" }],
     "no-unused-vars": ["error", { "varsIgnorePattern": "^React$", "ignoreRestSiblings": true }],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "varsIgnorePattern": "^React$", "ignoreRestSiblings": true }
+    ],
     "quotes": ["error", "single", { "avoidEscape": true }],
 
     "import/newline-after-import": "off",
