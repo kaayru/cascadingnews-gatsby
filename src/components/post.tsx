@@ -1,72 +1,112 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
 
 import { Wordpress__Post } from '../generated/graphql';
 import { notEmpty } from '../utils/typeUtils';
+import {
+  PRIMARY_TEXT_COLOR,
+  SECONDARY_TEXT_COLOR,
+  MIN_DEFAULT_MEDIA_QUERY,
+  rhythm,
+  scale,
+  LINK_COLOR,
+} from '../utils/typography';
+import { FlatList } from './base';
 
 const Li = styled.li`
-  border-bottom: 1px solid black;
-  padding-bottom: 10px;
-  margin-bottom: 45px;
+  padding: ${rhythm(1)};
+  background: #ffffff;
+  position: relative;
+`;
+
+const PostMeta = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-size: ${scale(-4 / 16).fontSize};
+  color: ${SECONDARY_TEXT_COLOR};
+  margin-bottom: ${rhythm(4 / 16)};
+
+  ${MIN_DEFAULT_MEDIA_QUERY} {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`;
+
+const PostLink = styled.a`
+  color: ${PRIMARY_TEXT_COLOR};
+  background-image: none;
+
+  &:visited {
+    color: ${SECONDARY_TEXT_COLOR};
+  }
+`;
+
+const Date = styled.li`
+  color: ${SECONDARY_TEXT_COLOR};
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+`;
+
+const Source = styled.p`
+  color: ${SECONDARY_TEXT_COLOR};
+  font-weight: bold;
+`;
+
+const TagLink = styled(Link)`
+  color: inherit;
+`;
+
+const Hint = styled.a`
+  width: 2px;
+  height: 100%;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: ${LINK_COLOR};
+
+  &:visited {
+    background: #ffffff;
+  }
 `;
 
 type Props = {
   node: Wordpress__Post;
 };
-const Post = ({ node: { date, link, source, tags, title, wordpress_id } }: Props) => {
+const Post = ({ node: { date, link, source, tags = [], title, wordpress_id } }: Props) => {
   if (!link || !wordpress_id) return null;
 
   return (
     <Li key={wordpress_id}>
-      <div>
-        {tags && tags.length > 0 && (
-          <div>
-            {tags.filter(notEmpty).map(tag => (
-              <Link key={tag.id} to={`/tag/${tag.slug}`} style={{ marginRight: 4 }}>
-                #{tag.name}
-              </Link>
+      <Hint
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-hidden="true"
+        tabIndex={-1}
+      />
+      {source && <Source>{source}</Source>}
+
+      <h2 style={{ marginTop: 0 }}>
+        <PostLink href={link} target="_blank" rel="noopener noreferrer">
+          {title}
+        </PostLink>
+      </h2>
+      <PostMeta>
+        <FlatList>
+          {date && <Date>{date}</Date>}
+          {tags &&
+            tags.length > 0 &&
+            tags.filter(notEmpty).map(tag => (
+              <li key={tag.id}>
+                <TagLink to={`/tag/${tag.slug}`}>#{tag.name}</TagLink>
+              </li>
             ))}
-          </div>
-        )}
-        <h3 style={{ fontSize: 33, marginTop: 0 }}>
-          <a
-            href={link}
-            style={{
-              color: 'black',
-              textDecoration: 'none',
-              boxShadow: 'none',
-            }}
-          >
-            {title}
-          </a>
-        </h3>
-        <p
-          style={{
-            margin: 0,
-            color: 'grey',
-            fontSize: 16,
-            marginTop: 8,
-            marginBottom: 10,
-          }}
-          data-testid="post__byon"
-        >
-          {source && (
-            <Fragment>
-              By{' '}
-              <a
-                href={source}
-                target="_blank"
-                rel="noopener noreferrer"
-                title={`To ${source} homepage`}
-              >
-                {source}
-              </a>{' '}
-            </Fragment>
-          )}
-          {date && `on ${date}`}
-        </p>
-      </div>
+        </FlatList>
+      </PostMeta>
     </Li>
   );
 };
@@ -79,7 +119,7 @@ export const postFragment = graphql`
     source
     title
     wordpress_id
-    date(formatString: "MMMM DD, YYYY")
+    date(formatString: "MMM DD, YYYY")
     tags {
       id
       name

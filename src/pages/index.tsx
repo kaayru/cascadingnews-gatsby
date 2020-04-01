@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { graphql } from 'gatsby';
+import { PostList } from '../components/base';
 import Layout from '../components/layout';
 import Post from '../components/post';
 import SEO from '../components/seo';
@@ -15,11 +16,11 @@ const IndexPage = ({ data }: Props) => {
     <Layout>
       <SEO title="Home" />
       {postsData.length > 0 && (
-        <ul style={{ listStyle: 'none' }}>
+        <PostList>
           {postsData.map(({ node }, index) => (
             <Post key={node.wordpress_id || index} node={node} />
           ))}
-        </ul>
+        </PostList>
       )}
       {postsData.length === 0 && (
         <Fragment>
