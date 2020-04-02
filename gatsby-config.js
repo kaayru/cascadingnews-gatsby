@@ -49,7 +49,7 @@ module.exports = {
         useACF: false,
         verboseOutput: false,
         // Set how many pages are retrieved per API request.
-        perPage: 100,
+        perPage: 20,
         // Search and Replace Urls across WordPress content.
         searchAndReplaceContentUrls: {
           sourceUrl: `${process.env.GATSBY_WP_PROTOCOL}://${process.env.GATSBY_WP_URL}`,
