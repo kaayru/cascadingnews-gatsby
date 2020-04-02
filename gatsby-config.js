@@ -58,13 +58,13 @@ module.exports = {
         // Set how many simultaneous requests are sent at once.
         concurrentRequests: 10,
         includedRoutes: [
-          '**/categories',
+          // '**/categories',
           '**/posts',
           '**/pages',
           // "**/media",
           '**/tags',
           '**/taxonomies',
-          '**/users',
+          // '**/users',
         ],
         normalizer,
       },
