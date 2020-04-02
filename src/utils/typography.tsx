@@ -1,3 +1,4 @@
+import color from 'color';
 import Typography, { TypographyOptions } from 'typography';
 import * as breakpoints from 'typography-breakpoint-constants';
 
@@ -5,6 +6,9 @@ export const BODY_COLOR = '#F7F7F7';
 export const PRIMARY_TEXT_COLOR = '#22181C';
 export const SECONDARY_TEXT_COLOR = '#a5a4a4';
 export const LINK_COLOR = '#FF483B';
+export const LINK_COLOR_ACTIVE = color(LINK_COLOR)
+  .darken(0.2)
+  .hex();
 
 const theme: TypographyOptions = {
   baseFontSize: '17px',

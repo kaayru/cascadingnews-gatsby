@@ -74,9 +74,9 @@ const Hint = styled.a`
 `;
 
 type Props = {
-  node: Wordpress__Post;
+  post: Wordpress__Post;
 };
-const Post = ({ node: { date, link, source, tags = [], title, wordpress_id } }: Props) => {
+const Post = ({ post: { date, link, source, tags = [], title, wordpress_id } }: Props) => {
   if (!link || !wordpress_id) return null;
 
   return (

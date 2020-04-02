@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { rhythm } from '../utils/typography';
+import { rhythm, LINK_COLOR, LINK_COLOR_ACTIVE } from '../utils/typography';
 
 export const FlatList = styled.ul`
   display: flex;
@@ -17,4 +17,16 @@ export const FlatList = styled.ul`
 export const PostList = styled.ul`
   list-style: none;
   margin-left: 0;
+`;
+
+export const LoadMoreButton = styled.button`
+  background: ${LINK_COLOR};
+  color: #ffffff;
+  border: 2px solid ${LINK_COLOR};
+  cursor: pointer;
+
+  &:hover {
+    background: ${LINK_COLOR_ACTIVE};
+    border-color: ${LINK_COLOR_ACTIVE};
+  }
 `;
