@@ -1,19 +1,19 @@
 import path from 'path';
 import { useState } from 'react';
 
-import { Wordpress__Post, PageInfo } from 'src/generated/graphql';
+import { PostFragment, PageInfo } from 'src/generated/graphql';
 import { PAGINATED_DATA_DIR } from 'utils/constants';
 
 export type Props = {
-  initialPageInfo: PageInfo;
-  initialPostsData: Array<Wordpress__Post>;
+  initialPageInfo: Partial<PageInfo>;
+  initialPostsData: Array<PostFragment>;
   paths: Array<string>;
 };
 export type UseLoadMoreHookData = {
   currentPage: number;
   loadNextPage: () => void;
-  pageInfo: PageInfo;
-  postsData: Array<Wordpress__Post>;
+  pageInfo: Partial<PageInfo>;
+  postsData: Array<PostFragment>;
 };
 export const useLoadMore = ({
   initialPageInfo,

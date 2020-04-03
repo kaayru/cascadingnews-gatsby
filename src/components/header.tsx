@@ -2,8 +2,8 @@ import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 
-import { Maybe, SiteSiteMetadata } from 'src/generated/graphql';
-import { rhythm, MIN_DEFAULT_MEDIA_QUERY, PRIMARY_TEXT_COLOR } from 'src/utils/typography';
+import { Maybe, SiteSiteMetadataMenuLinks } from 'src/generated/graphql';
+import { rhythm, scale, MIN_DEFAULT_MEDIA_QUERY, PRIMARY_TEXT_COLOR } from 'src/utils/typography';
 import { notEmpty } from 'src/utils/typeUtils';
 import { FlatList } from 'src/components/base';
 
@@ -21,8 +21,11 @@ const Container = styled.header`
   }
 `;
 
-const SiteTitle = styled.h1`
+const SiteTitle = styled.p`
   margin: 0;
+  font-family: Arvo, sans-serif;
+  font-size: ${scale(1).fontSize};
+  line-height: ${scale(1).lineHeight};
 
   a {
     color: ${PRIMARY_TEXT_COLOR};
@@ -37,20 +40,21 @@ const NavLinks = styled.nav`
 `;
 
 type Props = {
-  siteMetadata?: Maybe<SiteSiteMetadata>;
+  menuLinks?: Maybe<Array<Maybe<SiteSiteMetadataMenuLinks>>>;
+  title?: Maybe<string>;
 };
-const Header = ({ siteMetadata }: Props) => (
+const Header = ({ menuLinks, title }: Props) => (
   <Container>
-    {siteMetadata && (
+    {title && (
       <SiteTitle>
-        <Link to="/">{siteMetadata.title}</Link>
+        <Link to="/">{title}</Link>
       </SiteTitle>
     )}
 
-    {siteMetadata?.menuLinks && (
+    {menuLinks && (
       <NavLinks>
         <FlatList>
-          {siteMetadata.menuLinks.filter(notEmpty).map((link, index) => {
+          {menuLinks.filter(notEmpty).map((link, index) => {
             if (!link.link) return null;
 
             return (
