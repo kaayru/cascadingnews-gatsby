@@ -56,7 +56,23 @@ const Layout = ({ children }: Props) => {
       />
       <Main>{children}</Main>
       <Footer>
-        © {new Date().getFullYear()}, Built with <a href="https://www.gatsbyjs.org">Gatsby</a>
+        © {new Date('2013').getFullYear()} - {new Date().getFullYear()}. Built with{' '}
+        <a
+          href="https://www.wordpress.org"
+          title="Wordpress"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Wordpress
+        </a>{' '}
+        +{' '}
+        <a href="https://www.gatsbyjs.org" title="Gatsby" target="_blank" rel="noopener noreferrer">
+          Gatsby
+        </a>{' '}
+        +{' '}
+        <a href="https://www.netlify.com" title="Netlify" target="_blank" rel="noopener noreferrer">
+          Netlify
+        </a>
       </Footer>
     </Fragment>
   );
