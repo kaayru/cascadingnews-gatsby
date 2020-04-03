@@ -1,17 +1,17 @@
 import React, { Fragment } from 'react';
 import { graphql } from 'gatsby';
 
-import { LoadMoreButton, PostList } from 'src/components/base';
+import { Count, LoadMoreButton, PageTitle, PostList } from 'src/components/base';
 import Layout from 'src/components/layout';
 import Post from 'src/components/post';
 import SEO from 'src/components/seo';
-import { Wordpress__Tag, Wordpress__PostConnection } from 'src/generated/graphql';
+import { TagPageQuery } from 'src/generated/graphql';
 import NotFoundPage from 'src/pages/404';
 import { notEmpty } from 'src/utils/typeUtils';
 import { useLoadMore } from 'src/hooks/useLoadMore';
 
 type Props = {
-  data: { allWordpressPost: Wordpress__PostConnection; wordpressTag: Wordpress__Tag };
+  data: TagPageQuery;
 };
 const Tag = ({ data }: Props) => {
   const tagData = data.wordpressTag;
@@ -19,16 +19,19 @@ const Tag = ({ data }: Props) => {
   const { loadNextPage, postsData, pageInfo } = useLoadMore({
     initialPageInfo: data.allWordpressPost.pageInfo,
     initialPostsData: data.allWordpressPost.nodes.filter(notEmpty),
-    paths: ['tag', tagData.slug || ''],
+    paths: ['tag', tagData?.slug || ''],
   });
 
-  if (!tagData.name) {
+  if (!tagData || !tagData.name) {
     return <NotFoundPage />;
   }
 
   return (
     <Layout>
       <SEO title={tagData.name} />
+      <PageTitle>
+        {tagData.name} <Count>({tagData.count} articles)</Count>
+      </PageTitle>
       {postsData.length > 0 && (
         <Fragment>
           <PostList>
@@ -45,7 +48,7 @@ const Tag = ({ data }: Props) => {
       )}
       {postsData.length === 0 && (
         <Fragment>
-          <h1>No article in this tag, yet.</h1>
+          <p>No article in this tag, yet.</p>
         </Fragment>
       )}
     </Layout>
@@ -53,8 +56,9 @@ const Tag = ({ data }: Props) => {
 };
 
 export const query = graphql`
-  query($id: Int!) {
+  query TagPage($id: Int!) {
     wordpressTag(wordpress_id: { eq: $id }) {
+      count
       name
       slug
     }

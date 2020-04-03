@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react';
 import { graphql } from 'gatsby';
-import { LoadMoreButton, PostList } from 'src/components/base';
+import { LoadMoreButton, PageTitle, PostList } from 'src/components/base';
 import Layout from 'src/components/layout';
 import Post from 'src/components/post';
 import SEO from 'src/components/seo';
-import { Wordpress__PostConnection } from 'src/generated/graphql';
+import { IndexPageQuery } from 'src/generated/graphql';
 import { useLoadMore } from 'src/hooks/useLoadMore';
 import { notEmpty } from 'src/utils/typeUtils';
 
 type Props = {
-  data: { allWordpressPost: Wordpress__PostConnection };
+  data: IndexPageQuery;
 };
 const IndexPage = ({ data }: Props) => {
   const { loadNextPage, postsData, pageInfo } = useLoadMore({
@@ -21,6 +21,7 @@ const IndexPage = ({ data }: Props) => {
   return (
     <Layout>
       <SEO title="Home" />
+      <PageTitle>{data.wordpressSiteMetadata?.description}</PageTitle>
       {postsData.length > 0 && (
         <Fragment>
           <PostList>
@@ -45,7 +46,7 @@ const IndexPage = ({ data }: Props) => {
 };
 export default IndexPage;
 export const query = graphql`
-  query {
+  query IndexPage {
     allWordpressPost(limit: 20) {
       nodes {
         ...Post
@@ -53,6 +54,9 @@ export const query = graphql`
       pageInfo {
         hasNextPage
       }
+    }
+    wordpressSiteMetadata {
+      description
     }
   }
 `;

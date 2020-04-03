@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 
-import { rhythm, LINK_COLOR, LINK_COLOR_ACTIVE } from 'src/utils/typography';
+import {
+  rhythm,
+  scale,
+  LINK_COLOR,
+  LINK_COLOR_ACTIVE,
+  SECONDARY_TEXT_COLOR,
+} from 'src/utils/typography';
 
 export const FlatList = styled.ul`
   display: flex;
@@ -29,4 +35,15 @@ export const LoadMoreButton = styled.button`
     background: ${LINK_COLOR_ACTIVE};
     border-color: ${LINK_COLOR_ACTIVE};
   }
+`;
+
+export const PageTitle = styled.h1`
+  margin-top: ${rhythm(0.5)};
+  font-size: ${scale(8 / 16).fontSize};
+  line-height: ${scale(8 / 16).lineHeight};
+`;
+
+export const Count = styled.span`
+  color: ${SECONDARY_TEXT_COLOR};
+  font-size: ${scale(4 / 16).fontSize};
 `;

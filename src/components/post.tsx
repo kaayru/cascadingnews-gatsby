@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
 
-import { Wordpress__Post } from 'src/generated/graphql';
+import { PostFragment } from 'src/generated/graphql';
 import { notEmpty } from 'src/utils/typeUtils';
 import {
   PRIMARY_TEXT_COLOR,
@@ -74,7 +74,7 @@ const Hint = styled.a`
 `;
 
 type Props = {
-  post: Wordpress__Post;
+  post: PostFragment;
 };
 const Post = ({ post: { date, link, source, tags = [], title, wordpress_id } }: Props) => {
   if (!link || !wordpress_id) return null;

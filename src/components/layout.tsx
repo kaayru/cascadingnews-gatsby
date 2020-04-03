@@ -10,7 +10,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import { rhythm } from 'src/utils/typography';
-import { SiteTitleQueryQuery } from 'src/generated/graphql';
+import { SiteLayoutQuery } from 'src/generated/graphql';
 import Header from 'src/components/header';
 
 const Main = styled.main`
@@ -32,23 +32,28 @@ type Props = {
 };
 
 const Layout = ({ children }: Props) => {
-  const data = useStaticQuery<SiteTitleQueryQuery>(graphql`
-    query SiteTitleQuery {
+  const data = useStaticQuery<SiteLayoutQuery>(graphql`
+    query SiteLayout {
       site {
         siteMetadata {
-          title
           menuLinks {
             name
             link
           }
         }
       }
+      wordpressSiteMetadata {
+        name
+      }
     }
   `);
 
   return (
     <Fragment>
-      <Header siteMetadata={data?.site?.siteMetadata} />
+      <Header
+        menuLinks={data.site?.siteMetadata?.menuLinks}
+        title={data.wordpressSiteMetadata?.name}
+      />
       <Main>{children}</Main>
       <Footer>
         © {new Date().getFullYear()}, Built with <a href="https://www.gatsbyjs.org">Gatsby</a>
