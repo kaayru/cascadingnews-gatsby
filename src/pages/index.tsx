@@ -1,21 +1,21 @@
 import React, { Fragment } from 'react';
 import { graphql } from 'gatsby';
-import { LoadMoreButton, PostList } from '../components/base';
-import Layout from '../components/layout';
-import Post from '../components/post';
-import SEO from '../components/seo';
-import { Wordpress__PostConnection } from '../generated/graphql';
-import { useLoadMore } from '../hooks/useLoadMore';
-import { notEmpty } from '../utils/typeUtils';
+import { LoadMoreButton, PostList } from 'src/components/base';
+import Layout from 'src/components/layout';
+import Post from 'src/components/post';
+import SEO from 'src/components/seo';
+import { Wordpress__PostConnection } from 'src/generated/graphql';
+import { useLoadMore } from 'src/hooks/useLoadMore';
+import { notEmpty } from 'src/utils/typeUtils';
 
 type Props = {
   data: { allWordpressPost: Wordpress__PostConnection };
 };
 const IndexPage = ({ data }: Props) => {
   const { loadNextPage, postsData, pageInfo } = useLoadMore({
-    paths: ['index'],
-    initialPostsData: data.allWordpressPost.nodes.filter(notEmpty),
     initialPageInfo: data.allWordpressPost.pageInfo,
+    initialPostsData: data.allWordpressPost.nodes.filter(notEmpty),
+    paths: ['index'],
   });
 
   return (

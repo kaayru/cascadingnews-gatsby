@@ -1,7 +1,7 @@
-const path = require('path');
-const { writeJsonData } = require('./utils/writeJsonData.js');
+import path from 'path';
+import { writeJsonData } from './utils/writeJsonData';
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
+export const createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
   const PageTemplate = path.resolve('./src/templates/page.tsx');
   const TagTemplate = path.resolve('./src/templates/tag.tsx');

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { rhythm, LINK_COLOR, LINK_COLOR_ACTIVE } from '../utils/typography';
+import { rhythm, LINK_COLOR, LINK_COLOR_ACTIVE } from 'src/utils/typography';
 
 export const FlatList = styled.ul`
   display: flex;

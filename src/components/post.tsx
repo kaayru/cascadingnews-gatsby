@@ -2,8 +2,8 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
 
-import { Wordpress__Post } from '../generated/graphql';
-import { notEmpty } from '../utils/typeUtils';
+import { Wordpress__Post } from 'src/generated/graphql';
+import { notEmpty } from 'src/utils/typeUtils';
 import {
   PRIMARY_TEXT_COLOR,
   SECONDARY_TEXT_COLOR,
@@ -11,8 +11,8 @@ import {
   rhythm,
   scale,
   LINK_COLOR,
-} from '../utils/typography';
-import { FlatList } from './base';
+} from 'src/utils/typography';
+import { FlatList } from 'src/components/base';
 
 const Li = styled.li`
   padding: ${rhythm(1)};

@@ -8,7 +8,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
-import { Site } from '../generated/graphql';
+import { Site } from 'src/generated/graphql';
 
 type Props = {
   description?: string;

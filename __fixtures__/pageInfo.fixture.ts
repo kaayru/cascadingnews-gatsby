@@ -1,4 +1,4 @@
-import { PageInfo } from '../src/generated/graphql';
+import { PageInfo } from 'src/generated/graphql';
 
 const fixture: PageInfo = {
   currentPage: 1,

@@ -1,9 +1,11 @@
-const path = require('path');
-const fs = require('fs');
+import fs from 'fs';
+import path from 'path';
 
-const writeJsonData = ({ data, paths, perPage = 20, rootDir }) => {
+import { PAGINATED_DATA_DIR, PUBLIC_DIR } from './constants';
+
+export const writeJsonData = ({ data, paths, perPage = 20, rootDir }) => {
   const { nodes: posts, totalCount } = data;
-  const dir = path.join(rootDir, 'public', 'paginated-data', ...paths);
+  const dir = path.join(rootDir, PUBLIC_DIR, PAGINATED_DATA_DIR, ...paths);
   fs.mkdirSync(dir, { recursive: true });
 
   const pagesCount = Math.ceil(totalCount / perPage);
@@ -21,5 +23,3 @@ const writeJsonData = ({ data, paths, perPage = 20, rootDir }) => {
     );
   });
 };
-
-module.exports = { writeJsonData };

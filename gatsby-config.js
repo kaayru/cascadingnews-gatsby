@@ -1,6 +1,8 @@
+const path = require('path');
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
+
 const { normalizer } = require('./utils/normalizer.js');
 
 module.exports = {
@@ -85,5 +87,14 @@ module.exports = {
       },
     },
     'gatsby-plugin-eslint',
+    {
+      resolve: 'gatsby-plugin-root-import',
+      options: {
+        src: path.join(__dirname, 'src'),
+        fixtures: path.join(__dirname, '__fixtures__'),
+        mocks: path.join(__dirname, '__mocks__'),
+        utils: path.join(__dirname, 'utils'),
+      },
+    },
   ],
 };

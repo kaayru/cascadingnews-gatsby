@@ -2,10 +2,10 @@ import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 
-import { Maybe, SiteSiteMetadata } from '../generated/graphql';
-import { rhythm, MIN_DEFAULT_MEDIA_QUERY, PRIMARY_TEXT_COLOR } from '../utils/typography';
-import { notEmpty } from '../utils/typeUtils';
-import { FlatList } from './base';
+import { Maybe, SiteSiteMetadata } from 'src/generated/graphql';
+import { rhythm, MIN_DEFAULT_MEDIA_QUERY, PRIMARY_TEXT_COLOR } from 'src/utils/typography';
+import { notEmpty } from 'src/utils/typeUtils';
+import { FlatList } from 'src/components/base';
 
 const Container = styled.header`
   margin-top: 0;

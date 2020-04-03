@@ -9,6 +9,14 @@
     "plugin:jsx-a11y/recommended"
   ],
   "settings": {
+    "import/resolver": {
+      "alias": [
+        ["fixtures", "./__fixtures__"],
+        ["mocks", "./__mocks__"],
+        ["src", "./src"],
+        ["utils", "./utils"]
+      ]
+    },
     "react": {
       "version": "detect"
     }

@@ -1,7 +1,8 @@
 import React from 'react';
 import { render, act, waitFor } from '@testing-library/react';
+
+import { pageInfoFixture, postFixture } from 'fixtures';
 import { Props, useLoadMore, UseLoadMoreHookData } from '../useLoadMore';
-import { pageInfoFixture, postFixture } from '../../../__fixtures__';
 
 interface GlobalWithFetch extends NodeJS.Global {
   fetch: jest.Mock;

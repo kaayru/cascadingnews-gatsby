@@ -2,9 +2,9 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-import { Wordpress__Page } from '../generated/graphql';
+import Layout from 'src/components/layout';
+import SEO from 'src/components/seo';
+import { Wordpress__Page } from 'src/generated/graphql';
 
 type Props = {
   data: { wordpressPage: Wordpress__Page };

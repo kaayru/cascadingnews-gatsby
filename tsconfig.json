@@ -1,6 +1,13 @@
 // tsconfig.json
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "fixtures": ["__fixtures__"],
+      "mocks": ["__mocks__"],
+      "src": ["src"],
+      "utils": ["utils"]
+    },
     "module": "commonjs",
     "target": "esnext",
     "jsx": "preserve",

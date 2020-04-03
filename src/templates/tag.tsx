@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react';
 import { graphql } from 'gatsby';
 
-import { LoadMoreButton, PostList } from '../components/base';
-import Layout from '../components/layout';
-import Post from '../components/post';
-import SEO from '../components/seo';
-import { Wordpress__Tag, Wordpress__PostConnection } from '../generated/graphql';
-import NotFoundPage from '../pages/404';
-import { notEmpty } from '../utils/typeUtils';
-import { useLoadMore } from '../hooks/useLoadMore';
+import { LoadMoreButton, PostList } from 'src/components/base';
+import Layout from 'src/components/layout';
+import Post from 'src/components/post';
+import SEO from 'src/components/seo';
+import { Wordpress__Tag, Wordpress__PostConnection } from 'src/generated/graphql';
+import NotFoundPage from 'src/pages/404';
+import { notEmpty } from 'src/utils/typeUtils';
+import { useLoadMore } from 'src/hooks/useLoadMore';
 
 type Props = {
   data: { allWordpressPost: Wordpress__PostConnection; wordpressTag: Wordpress__Tag };
@@ -17,9 +17,9 @@ const Tag = ({ data }: Props) => {
   const tagData = data.wordpressTag;
 
   const { loadNextPage, postsData, pageInfo } = useLoadMore({
-    paths: ['tag', tagData.slug || ''],
-    initialPostsData: data.allWordpressPost.nodes.filter(notEmpty),
     initialPageInfo: data.allWordpressPost.pageInfo,
+    initialPostsData: data.allWordpressPost.nodes.filter(notEmpty),
+    paths: ['tag', tagData.slug || ''],
   });
 
   if (!tagData.name) {

@@ -1,22 +1,24 @@
 import path from 'path';
-import React, { useState } from 'react';
-import { Wordpress__Post, PageInfo } from '../generated/graphql';
+import { useState } from 'react';
+
+import { Wordpress__Post, PageInfo } from 'src/generated/graphql';
+import { PAGINATED_DATA_DIR } from 'utils/constants';
 
 export type Props = {
-  paths: Array<string>;
-  initialPostsData: Array<Wordpress__Post>;
   initialPageInfo: PageInfo;
+  initialPostsData: Array<Wordpress__Post>;
+  paths: Array<string>;
 };
 export type UseLoadMoreHookData = {
   currentPage: number;
   loadNextPage: () => void;
-  postsData: Array<Wordpress__Post>;
   pageInfo: PageInfo;
+  postsData: Array<Wordpress__Post>;
 };
 export const useLoadMore = ({
-  paths,
-  initialPostsData,
   initialPageInfo,
+  initialPostsData,
+  paths,
 }: Props): UseLoadMoreHookData => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsData, setPostsData] = useState(initialPostsData);
@@ -26,7 +28,7 @@ export const useLoadMore = ({
     const nextPage = currentPage + 1;
     setCurrentPage(nextPage);
 
-    const filePath = path.join('/paginated-data', ...paths, `${nextPage}.json`);
+    const filePath = path.join('/', PAGINATED_DATA_DIR, ...paths, `${nextPage}.json`);
     const res = await fetch(filePath);
     const json = await res.json();
 
@@ -36,7 +38,7 @@ export const useLoadMore = ({
   return {
     currentPage,
     loadNextPage,
-    postsData,
     pageInfo,
+    postsData,
   };
 };
