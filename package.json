@@ -92,7 +92,7 @@
     "clean": "gatsby clean",
     "develop": "npx --node-arg '-r esm' gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "graphql-codegen": "graphql-codegen --config codegen.yml",
+    "codegen": "graphql-codegen --config codegen.yml",
     "serve": "npx --node-arg '-r esm' gatsby serve",
     "start": "npm run develop",
     "test": "jest",
