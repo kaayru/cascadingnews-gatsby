@@ -47,3 +47,8 @@ export const Count = styled.span`
   color: ${SECONDARY_TEXT_COLOR};
   font-size: ${scale(4 / 16).fontSize};
 `;
+
+export const PageContent = styled.div`
+  background: #ffffff;
+  padding: ${rhythm(1)};
+`;
