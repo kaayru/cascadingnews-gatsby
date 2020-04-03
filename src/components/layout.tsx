@@ -9,9 +9,9 @@ import React, { Fragment, ReactNode } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
-import { rhythm } from '../utils/typography';
-import { SiteTitleQueryQuery } from '../generated/graphql';
-import Header from './header';
+import { rhythm } from 'src/utils/typography';
+import { SiteTitleQueryQuery } from 'src/generated/graphql';
+import Header from 'src/components/header';
 
 const Main = styled.main`
   margin-left: auto;

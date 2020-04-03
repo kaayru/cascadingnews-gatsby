@@ -1,20 +1,26 @@
 import React, { Fragment } from 'react';
 import { graphql } from 'gatsby';
 
-import { PostList } from '../components/base';
-import Layout from '../components/layout';
-import Post from '../components/post';
-import SEO from '../components/seo';
-import { Wordpress__Tag, Wordpress__PostConnection } from '../generated/graphql';
-import NotFoundPage from '../pages/404';
-import { notEmpty } from '../utils/typeUtils';
+import { LoadMoreButton, PostList } from 'src/components/base';
+import Layout from 'src/components/layout';
+import Post from 'src/components/post';
+import SEO from 'src/components/seo';
+import { Wordpress__Tag, Wordpress__PostConnection } from 'src/generated/graphql';
+import NotFoundPage from 'src/pages/404';
+import { notEmpty } from 'src/utils/typeUtils';
+import { useLoadMore } from 'src/hooks/useLoadMore';
 
 type Props = {
   data: { allWordpressPost: Wordpress__PostConnection; wordpressTag: Wordpress__Tag };
 };
 const Tag = ({ data }: Props) => {
   const tagData = data.wordpressTag;
-  const postsData = data.allWordpressPost.edges.filter(notEmpty);
+
+  const { loadNextPage, postsData, pageInfo } = useLoadMore({
+    initialPageInfo: data.allWordpressPost.pageInfo,
+    initialPostsData: data.allWordpressPost.nodes.filter(notEmpty),
+    paths: ['tag', tagData.slug || ''],
+  });
 
   if (!tagData.name) {
     return <NotFoundPage />;
@@ -24,11 +30,18 @@ const Tag = ({ data }: Props) => {
     <Layout>
       <SEO title={tagData.name} />
       {postsData.length > 0 && (
-        <PostList>
-          {postsData.map(({ node }, index) => (
-            <Post key={node.wordpress_id || index} node={node} />
-          ))}
-        </PostList>
+        <Fragment>
+          <PostList>
+            {postsData.map((post, index) => (
+              <Post key={post.wordpress_id || index} post={post} />
+            ))}
+          </PostList>
+          {pageInfo.hasNextPage && (
+            <LoadMoreButton type="button" onClick={loadNextPage}>
+              Load more
+            </LoadMoreButton>
+          )}
+        </Fragment>
       )}
       {postsData.length === 0 && (
         <Fragment>
@@ -46,11 +59,12 @@ export const query = graphql`
       slug
     }
 
-    allWordpressPost(filter: { tags: { elemMatch: { wordpress_id: { eq: $id } } } }) {
-      edges {
-        node {
-          ...Post
-        }
+    allWordpressPost(limit: 20, filter: { tags: { elemMatch: { wordpress_id: { eq: $id } } } }) {
+      nodes {
+        ...Post
+      }
+      pageInfo {
+        hasNextPage
       }
     }
   }

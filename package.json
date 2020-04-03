@@ -8,7 +8,9 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
+    "color": "^3.1.2",
     "dotenv": "^8.0.0",
+    "esm": "^3.2.25",
     "gatsby": "^2.13.64",
     "gatsby-image": "^2.2.8",
     "gatsby-plugin-feed": "^2.3.6",
@@ -43,6 +45,7 @@
     "@graphql-codegen/typescript-operations": "1.13.1",
     "@testing-library/jest-dom": "^5.3.0",
     "@testing-library/react": "^10.0.1",
+    "@types/color": "^3.0.1",
     "@types/gray-percentage": "^2.0.0",
     "@types/jest": "^25.1.4",
     "@types/react-helmet": "^5.0.15",
@@ -57,6 +60,7 @@
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-config-prettier": "^6.10.1",
+    "eslint-import-resolver-alias": "^1.1.2",
     "eslint-loader": "^3.0.3",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jest": "^23.8.2",
@@ -65,6 +69,7 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.1",
     "gatsby-plugin-eslint": "^2.0.8",
+    "gatsby-plugin-root-import": "^2.0.5",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^25.2.1",
     "prettier": "^1.18.2",
@@ -83,12 +88,13 @@
     "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
   },
   "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
+    "build": "npx --node-arg '-r esm' gatsby build",
+    "clean": "gatsby clean",
+    "develop": "npx --node-arg '-r esm' gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "graphql-codegen": "graphql-codegen --config codegen.yml",
+    "serve": "npx --node-arg '-r esm' gatsby serve",
     "start": "npm run develop",
-    "serve": "gatsby serve",
     "test": "jest",
     "type-check": "tsc --noEmit --skipLibCheck"
   }

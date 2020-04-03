@@ -1,4 +1,4 @@
-import { Wordpress__Tag } from '../src/generated/graphql';
+import { Wordpress__Tag } from 'src/generated/graphql';
 import { Internal } from './utils.fixture';
 
 const fixture: Wordpress__Tag = {

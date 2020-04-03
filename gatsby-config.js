@@ -1,6 +1,8 @@
+const path = require('path');
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
+
 const { normalizer } = require('./utils/normalizer.js');
 
 module.exports = {
@@ -49,7 +51,7 @@ module.exports = {
         useACF: false,
         verboseOutput: false,
         // Set how many pages are retrieved per API request.
-        perPage: 100,
+        perPage: 20,
         // Search and Replace Urls across WordPress content.
         searchAndReplaceContentUrls: {
           sourceUrl: `${process.env.GATSBY_WP_PROTOCOL}://${process.env.GATSBY_WP_URL}`,
@@ -58,13 +60,13 @@ module.exports = {
         // Set how many simultaneous requests are sent at once.
         concurrentRequests: 10,
         includedRoutes: [
-          '**/categories',
+          // '**/categories',
           '**/posts',
           '**/pages',
           // "**/media",
           '**/tags',
           '**/taxonomies',
-          '**/users',
+          // '**/users',
         ],
         normalizer,
       },
@@ -85,5 +87,14 @@ module.exports = {
       },
     },
     'gatsby-plugin-eslint',
+    {
+      resolve: 'gatsby-plugin-root-import',
+      options: {
+        src: path.join(__dirname, 'src'),
+        fixtures: path.join(__dirname, '__fixtures__'),
+        mocks: path.join(__dirname, '__mocks__'),
+        utils: path.join(__dirname, 'utils'),
+      },
+    },
   ],
 };

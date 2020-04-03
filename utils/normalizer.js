@@ -9,7 +9,7 @@ const getDomainFromLink = link => {
 
 const forceSecureLink = link => link.replace('http://', 'https://');
 
-const normalizer = ({ entities }) =>
+export const normalizer = ({ entities }) =>
   entities.map(entity => {
     if (entity && entity.__type === 'wordpress__POST') {
       return {
@@ -20,5 +20,3 @@ const normalizer = ({ entities }) =>
     }
     return entity;
   });
-
-module.exports = { normalizer };
