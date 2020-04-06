@@ -1,0 +1,27 @@
+// tsconfig.json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "fixtures": ["__fixtures__"],
+      "mocks": ["__mocks__"],
+      "src": ["src"],
+      "utils": ["utils"]
+    },
+    "module": "commonjs",
+    "target": "esnext",
+    "jsx": "preserve",
+    "lib": ["dom", "esnext"],
+    "strict": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "noUnusedLocals": false,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "allowJs": true
+  },
+  "exclude": ["node_modules", "public", ".cache"]
+}

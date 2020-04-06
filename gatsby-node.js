@@ -1,34 +1,38 @@
-const path = require('path');
+import path from 'path';
+import { writeJsonData } from './utils/writeJsonData';
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
+export const createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
-  const PostTemplate = path.resolve('./src/templates/post.js');
-  const PageTemplate = path.resolve('./src/templates/page.js');
-  const TagTemplate = path.resolve('./src/templates/tag.js');
+  const PageTemplate = path.resolve('./src/templates/page.tsx');
+  const TagTemplate = path.resolve('./src/templates/tag.tsx');
   const result = await graphql(`
     {
       allWordpressPost {
-        edges {
-          node {
+        nodes {
+          link
+          source
+          title
+          wordpress_id
+          date(formatString: "MMM DD, YYYY")
+          tags {
+            id
+            name
             slug
-            wordpress_id
           }
         }
+        totalCount
       }
       allWordpressPage {
-        edges {
-          node {
-            slug
-            wordpress_id
-          }
+        nodes {
+          slug
+          wordpress_id
         }
       }
-      allWordpressTag {
-        edges {
-          node {
-            wordpress_id
-            slug
-          }
+      allWordpressTag(filter: { count: { gt: 0 } }) {
+        nodes {
+          count
+          wordpress_id
+          slug
         }
       }
     }
@@ -37,37 +41,61 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     reporter.panicOnBuild('Error while running GraphQL query.');
     return;
   }
-  const BlogPosts = result.data.allWordpressPost.edges;
 
-  BlogPosts.forEach(post => {
-    createPage({
-      path: `/${post.node.slug}`,
-      component: PostTemplate,
-      context: {
-        id: post.node.wordpress_id,
-      },
-    });
-  });
-
-  const Pages = result.data.allWordpressPage.edges;
+  // Create static pages for pages
+  const Pages = result.data.allWordpressPage.nodes;
   Pages.forEach(post => {
     createPage({
-      path: `/${post.node.slug}`,
+      path: `/${post.slug}`,
       component: PageTemplate,
       context: {
-        id: post.node.wordpress_id,
+        id: post.wordpress_id,
       },
     });
   });
 
-  const Tags = result.data.allWordpressTag.edges;
-  Tags.forEach(tag => {
+  // Create static pages for tags
+  const Tags = result.data.allWordpressTag.nodes;
+  Tags.forEach(async tag => {
     createPage({
-      path: `/tag/${tag.node.slug}`,
+      path: `/tag/${tag.slug}`,
       component: TagTemplate,
       context: {
-        id: tag.node.wordpress_id,
+        id: tag.wordpress_id,
       },
     });
+
+    const postsByTag = await graphql(`
+      {
+        allWordpressPost(filter: { tags: { elemMatch: { wordpress_id: { eq: ${tag.wordpress_id} } } } }) {
+          nodes {
+            link
+            source
+            title
+            wordpress_id
+            date(formatString: "MMM DD, YYYY")
+            tags {
+              id
+              name
+              slug
+            }
+          }
+          totalCount
+        }
+      }
+    `);
+
+    if (result.errors) {
+      reporter.panicOnBuild(`Error while running GraphQL query for tag ${tag.name}.`);
+      return;
+    }
+
+    writeJsonData({
+      data: postsByTag.data.allWordpressPost,
+      rootDir: __dirname,
+      paths: ['tag', tag.slug],
+    });
   });
+
+  writeJsonData({ data: result.data.allWordpressPost, rootDir: __dirname, paths: ['index'] });
 };
