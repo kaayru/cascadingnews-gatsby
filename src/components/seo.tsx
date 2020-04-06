@@ -34,13 +34,28 @@ const SEO = ({ description, lang = 'en', meta, title }: Props) => {
   if (!site?.siteMetadata) return null;
 
   const metaDescription = description || site.siteMetadata.description || '';
-  const metaAuthor = site.siteMetadata.author || '';
+  const twitterUsername = site.siteMetadata.social?.twitter || '';
 
   return (
     <Helmet
       htmlAttributes={{
         lang: lang,
       }}
+      link={[
+        {
+          rel: 'shortcut icon',
+          href: '/favicon.png',
+        },
+        {
+          rel: 'apple-touch-icon-precomposed',
+          href: '/favicon57.png',
+        },
+        {
+          rel: 'apple-touch-icon-precomposed',
+          href: '/favicon72.png',
+          sizes: '72x72',
+        },
+      ]}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
@@ -66,7 +81,7 @@ const SEO = ({ description, lang = 'en', meta, title }: Props) => {
         },
         {
           name: 'twitter:creator',
-          content: metaAuthor,
+          content: twitterUsername,
         },
         {
           name: 'twitter:title',

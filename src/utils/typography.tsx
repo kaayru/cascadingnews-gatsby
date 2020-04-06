@@ -21,7 +21,7 @@ const theme: TypographyOptions = {
     },
     {
       name: 'Lato',
-      styles: ['400', '400i', '700'],
+      styles: ['400', '700'],
     },
   ],
   headerFontFamily: ['Lato', 'sans-serif'],

@@ -21,7 +21,12 @@ const IndexPage = ({ data }: Props) => {
   return (
     <Layout>
       <SEO title="Home" />
-      <PageTitle>{data.wordpressSiteMetadata?.description}</PageTitle>
+      <PageTitle>
+        <span role="img" aria-label="rocket emoji">
+          🚀
+        </span>{' '}
+        {data.wordpressSiteMetadata?.description}
+      </PageTitle>
       {postsData.length > 0 && (
         <Fragment>
           <PostList>

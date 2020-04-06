@@ -102,8 +102,6 @@ export type Query = {
   allSite: SiteConnection;
   wordpressSiteMetadata?: Maybe<Wordpress__Site_Metadata>;
   allWordpressSiteMetadata: Wordpress__Site_MetadataConnection;
-  wordpressPost?: Maybe<Wordpress__Post>;
-  allWordpressPost: Wordpress__PostConnection;
   wordpressPage?: Maybe<Wordpress__Page>;
   allWordpressPage: Wordpress__PageConnection;
   wordpressWpTaxonomies?: Maybe<Wordpress__Wp_Taxonomies>;
@@ -112,6 +110,8 @@ export type Query = {
   allWordpressTag: Wordpress__TagConnection;
   wordpressAcfOptions?: Maybe<Wordpress__Acf_Options>;
   allWordpressAcfOptions: Wordpress__Acf_OptionsConnection;
+  wordpressPost?: Maybe<Wordpress__Post>;
+  allWordpressPost: Wordpress__PostConnection;
 };
 
 
@@ -202,44 +202,6 @@ export type QueryWordpressSiteMetadataArgs = {
 export type QueryAllWordpressSiteMetadataArgs = {
   filter?: Maybe<Wordpress__Site_MetadataFilterInput>;
   sort?: Maybe<Wordpress__Site_MetadataSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryWordpressPostArgs = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  wordpress_id?: Maybe<IntQueryOperatorInput>;
-  date?: Maybe<DateQueryOperatorInput>;
-  guid?: Maybe<StringQueryOperatorInput>;
-  modified?: Maybe<DateQueryOperatorInput>;
-  slug?: Maybe<StringQueryOperatorInput>;
-  status?: Maybe<StringQueryOperatorInput>;
-  type?: Maybe<StringQueryOperatorInput>;
-  link?: Maybe<StringQueryOperatorInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-  content?: Maybe<StringQueryOperatorInput>;
-  excerpt?: Maybe<StringQueryOperatorInput>;
-  author?: Maybe<IntQueryOperatorInput>;
-  comment_status?: Maybe<StringQueryOperatorInput>;
-  ping_status?: Maybe<StringQueryOperatorInput>;
-  sticky?: Maybe<BooleanQueryOperatorInput>;
-  template?: Maybe<StringQueryOperatorInput>;
-  format?: Maybe<StringQueryOperatorInput>;
-  categories?: Maybe<IntQueryOperatorInput>;
-  tags?: Maybe<Wordpress__TagFilterListInput>;
-  _links?: Maybe<Wordpress__Post_LinksFilterInput>;
-  path?: Maybe<StringQueryOperatorInput>;
-  source?: Maybe<StringQueryOperatorInput>;
-};
-
-
-export type QueryAllWordpressPostArgs = {
-  filter?: Maybe<Wordpress__PostFilterInput>;
-  sort?: Maybe<Wordpress__PostSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
@@ -341,6 +303,44 @@ export type QueryWordpressAcfOptionsArgs = {
 export type QueryAllWordpressAcfOptionsArgs = {
   filter?: Maybe<Wordpress__Acf_OptionsFilterInput>;
   sort?: Maybe<Wordpress__Acf_OptionsSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryWordpressPostArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  wordpress_id?: Maybe<IntQueryOperatorInput>;
+  date?: Maybe<DateQueryOperatorInput>;
+  guid?: Maybe<StringQueryOperatorInput>;
+  modified?: Maybe<DateQueryOperatorInput>;
+  slug?: Maybe<StringQueryOperatorInput>;
+  status?: Maybe<StringQueryOperatorInput>;
+  type?: Maybe<StringQueryOperatorInput>;
+  link?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  content?: Maybe<StringQueryOperatorInput>;
+  excerpt?: Maybe<StringQueryOperatorInput>;
+  author?: Maybe<IntQueryOperatorInput>;
+  comment_status?: Maybe<StringQueryOperatorInput>;
+  ping_status?: Maybe<StringQueryOperatorInput>;
+  sticky?: Maybe<BooleanQueryOperatorInput>;
+  template?: Maybe<StringQueryOperatorInput>;
+  format?: Maybe<StringQueryOperatorInput>;
+  categories?: Maybe<IntQueryOperatorInput>;
+  tags?: Maybe<Wordpress__TagFilterListInput>;
+  _links?: Maybe<Wordpress__Post_LinksFilterInput>;
+  path?: Maybe<StringQueryOperatorInput>;
+  source?: Maybe<StringQueryOperatorInput>;
+};
+
+
+export type QueryAllWordpressPostArgs = {
+  filter?: Maybe<Wordpress__PostFilterInput>;
+  sort?: Maybe<Wordpress__PostSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
@@ -3074,7 +3074,7 @@ export type TagPageQuery = (
   { __typename?: 'Query' }
   & { wordpressTag?: Maybe<(
     { __typename?: 'wordpress__TAG' }
-    & Pick<Wordpress__Tag, 'count' | 'name' | 'slug'>
+    & Pick<Wordpress__Tag, 'count' | 'description' | 'name' | 'slug'>
   )>, allWordpressPost: (
     { __typename?: 'wordpress__POSTConnection' }
     & { nodes: Array<(
