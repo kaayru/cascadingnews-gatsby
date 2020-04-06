@@ -2,20 +2,29 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
+import { PageContent, PageTitle } from 'src/components/base';
 import Layout from 'src/components/layout';
 import SEO from 'src/components/seo';
 import { Wordpress__Page } from 'src/generated/graphql';
+import NotFoundPage from 'src/pages/404';
 
 type Props = {
   data: { wordpressPage: Wordpress__Page };
 };
 const Page = ({ data }: Props) => {
-  const pageData = data.wordpressPage;
+  const { content, excerpt, title } = data.wordpressPage;
+
+  if (!title || !content) {
+    return <NotFoundPage />;
+  }
+
   return (
     <Layout>
-      {pageData.title && <SEO title={pageData.title} description={pageData.excerpt || undefined} />}
-      {pageData.title && <h1 dangerouslySetInnerHTML={{ __html: pageData.title }} />}
-      {pageData.content && <div dangerouslySetInnerHTML={{ __html: pageData.content }} />}
+      <SEO title={title} description={excerpt || undefined} />
+      <PageContent>
+        <PageTitle>{title}</PageTitle>
+        <div dangerouslySetInnerHTML={{ __html: content }} />
+      </PageContent>
     </Layout>
   );
 };
