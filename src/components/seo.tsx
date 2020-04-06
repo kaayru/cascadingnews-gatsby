@@ -41,6 +41,21 @@ const SEO = ({ description, lang = 'en', meta, title }: Props) => {
       htmlAttributes={{
         lang: lang,
       }}
+      link={[
+        {
+          rel: 'shortcut icon',
+          href: '/favicon.png',
+        },
+        {
+          rel: 'apple-touch-icon-precomposed',
+          href: '/favicon57.png',
+        },
+        {
+          rel: 'apple-touch-icon-precomposed',
+          href: '/favicon72.png',
+          sizes: '72x72',
+        },
+      ]}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
