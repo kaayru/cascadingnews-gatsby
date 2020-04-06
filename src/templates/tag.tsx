@@ -28,7 +28,12 @@ const Tag = ({ data }: Props) => {
 
   return (
     <Layout>
-      <SEO title={tagData.name} />
+      <SEO
+        title={tagData.name}
+        description={
+          tagData.description || `Curated articles about ${tagData.name} in frontend development`
+        }
+      />
       <PageTitle>
         {tagData.name} <Count>({tagData.count} articles)</Count>
       </PageTitle>
@@ -59,6 +64,7 @@ export const query = graphql`
   query TagPage($id: Int!) {
     wordpressTag(wordpress_id: { eq: $id }) {
       count
+      description
       name
       slug
     }

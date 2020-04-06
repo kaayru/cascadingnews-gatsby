@@ -34,7 +34,7 @@ const SEO = ({ description, lang = 'en', meta, title }: Props) => {
   if (!site?.siteMetadata) return null;
 
   const metaDescription = description || site.siteMetadata.description || '';
-  const metaAuthor = site.siteMetadata.author || '';
+  const twitterUsername = site.siteMetadata.social?.twitter || '';
 
   return (
     <Helmet
@@ -81,7 +81,7 @@ const SEO = ({ description, lang = 'en', meta, title }: Props) => {
         },
         {
           name: 'twitter:creator',
-          content: metaAuthor,
+          content: twitterUsername,
         },
         {
           name: 'twitter:title',
