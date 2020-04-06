@@ -3,7 +3,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Maybe, SiteSiteMetadataMenuLinks } from 'src/generated/graphql';
-import { rhythm, scale, MIN_DEFAULT_MEDIA_QUERY, PRIMARY_TEXT_COLOR } from 'src/utils/typography';
+import {
+  rhythm,
+  scale,
+  LINK_COLOR,
+  MIN_DEFAULT_MEDIA_QUERY,
+  PRIMARY_TEXT_COLOR,
+} from 'src/utils/typography';
 import { notEmpty } from 'src/utils/typeUtils';
 import { FlatList } from 'src/components/base';
 
@@ -31,6 +37,10 @@ const SiteTitle = styled.p`
     color: ${PRIMARY_TEXT_COLOR};
     background-image: none;
   }
+
+  span:nth-child(2) {
+    color: ${LINK_COLOR};
+  }
 `;
 
 const NavLinks = styled.nav`
@@ -41,15 +51,14 @@ const NavLinks = styled.nav`
 
 type Props = {
   menuLinks?: Maybe<Array<Maybe<SiteSiteMetadataMenuLinks>>>;
-  title?: Maybe<string>;
 };
-const Header = ({ menuLinks, title }: Props) => (
+const Header = ({ menuLinks }: Props) => (
   <Container>
-    {title && (
-      <SiteTitle>
-        <Link to="/">{title}</Link>
-      </SiteTitle>
-    )}
+    <SiteTitle>
+      <Link to="/">
+        <span>Cascading</span> <span>News</span>
+      </Link>
+    </SiteTitle>
 
     {menuLinks && (
       <NavLinks>

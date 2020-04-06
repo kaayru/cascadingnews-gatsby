@@ -50,10 +50,7 @@ const Layout = ({ children }: Props) => {
 
   return (
     <Fragment>
-      <Header
-        menuLinks={data.site?.siteMetadata?.menuLinks}
-        title={data.wordpressSiteMetadata?.name}
-      />
+      <Header menuLinks={data.site?.siteMetadata?.menuLinks} />
       <Main>{children}</Main>
       <Footer>
         © {new Date('2013').getFullYear()} - {new Date().getFullYear()}. Built with{' '}
