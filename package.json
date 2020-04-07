@@ -8,6 +8,7 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
+    "babel-plugin-styled-components": "^1.10.7",
     "color": "^3.1.2",
     "dotenv": "^8.0.0",
     "esm": "^3.2.25",
@@ -18,6 +19,7 @@
     "gatsby-plugin-manifest": "^2.2.5",
     "gatsby-plugin-offline": "^2.2.6",
     "gatsby-plugin-react-helmet": "^3.1.3",
+    "gatsby-plugin-styled-components": "^3.2.1",
     "gatsby-plugin-typescript": "^2.3.1",
     "gatsby-plugin-typography": "^2.3.2",
     "gatsby-remark-copy-linked-files": "^2.1.6",
