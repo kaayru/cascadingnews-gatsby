@@ -96,5 +96,6 @@ module.exports = {
         utils: path.join(__dirname, 'utils'),
       },
     },
+    'gatsby-plugin-styled-components',
   ],
 };
