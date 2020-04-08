@@ -2,12 +2,7 @@
 
 # Cascading News
 
-**Cascading News** is a website whose purpose is to provide the latest news and tutorials on frontend development.
-
-> ⚠️ The website is on the process of being remade.
->
-> - Old site for reference: https://www.cascading-news.com
-> - New site on Netlify: https://app.netlify.com/sites/condescending-perlman-298bba/deploys
+**[Cascading News](https://www.cascading-news.com)** is a website whose purpose is to provide the latest news and tutorials on frontend development.
 
 ## 🚀 How it's built
 
@@ -37,7 +32,7 @@ If you want to contribute to the frontend code, here's how to set up the project
 1. **Checkout this project**
 2. **Create `.env.development` containing:**
    ```shell
-   GATSBY_WP_URL=cascading-news.com
+   GATSBY_WP_URL=admin.cascading-news.com
    GATSBY_WP_PROTOCOL=https
    GATSBY_REPLACEMENT_URL=http://localhost:8000
    ```
