@@ -1,11 +1,13 @@
 {
   "name": "cascading-news-gatsby",
-  "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "private": false,
+  "description": "Codebase for the frontend of cascading-news.com",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  "author": "Vincent Ballut <contact@vincentballut.fr>",
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn eslint . && yarn test"
+    }
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.7",
@@ -71,6 +73,7 @@
     "eslint-plugin-react-hooks": "^2.5.1",
     "gatsby-plugin-eslint": "^2.0.8",
     "gatsby-plugin-root-import": "^2.0.5",
+    "husky": "^4.2.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^25.2.1",
     "prettier": "^1.18.2",
