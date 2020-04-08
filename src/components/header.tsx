@@ -3,13 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Maybe, SiteSiteMetadataMenuLinks } from 'src/generated/graphql';
-import {
-  rhythm,
-  scale,
-  LINK_COLOR,
-  MIN_DEFAULT_MEDIA_QUERY,
-  PRIMARY_TEXT_COLOR,
-} from 'src/utils/typography';
+import { rhythm, scale, MIN_DEFAULT_MEDIA_QUERY } from 'src/utils/typography';
 import { notEmpty } from 'src/utils/typeUtils';
 import { FlatList } from 'src/components/base';
 
@@ -34,12 +28,12 @@ const SiteTitle = styled.p`
   line-height: ${scale(1).lineHeight};
 
   a {
-    color: ${PRIMARY_TEXT_COLOR};
+    color: var(--primaryTextColor);
     background-image: none;
   }
 
   span:nth-child(2) {
-    color: ${LINK_COLOR};
+    color: var(--linkColor);
   }
 `;
 
