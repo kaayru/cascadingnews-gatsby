@@ -4,19 +4,12 @@ import styled from 'styled-components';
 
 import { PostFragment } from 'src/generated/graphql';
 import { notEmpty } from 'src/utils/typeUtils';
-import {
-  PRIMARY_TEXT_COLOR,
-  SECONDARY_TEXT_COLOR,
-  MIN_DEFAULT_MEDIA_QUERY,
-  rhythm,
-  scale,
-  LINK_COLOR,
-} from 'src/utils/typography';
+import { MIN_DEFAULT_MEDIA_QUERY, rhythm, scale } from 'src/utils/typography';
 import { FlatList } from 'src/components/base';
 
 const Li = styled.li`
   padding: ${rhythm(1)};
-  background: #ffffff;
+  background: var(--blockBackgroundColor);
   position: relative;
 `;
 
@@ -25,7 +18,7 @@ const PostMeta = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   font-size: ${scale(-4 / 16).fontSize};
-  color: ${SECONDARY_TEXT_COLOR};
+  color: var(--secondaryTextColor);
   margin-bottom: ${rhythm(4 / 16)};
 
   ${MIN_DEFAULT_MEDIA_QUERY} {
@@ -35,23 +28,23 @@ const PostMeta = styled.div`
 `;
 
 const PostLink = styled.a`
-  color: ${PRIMARY_TEXT_COLOR};
+  color: var(--primaryTextColor);
   background-image: none;
 
   &:visited {
-    color: ${SECONDARY_TEXT_COLOR};
+    color: var(--secondaryTextColor);
   }
 `;
 
 const Date = styled.li`
-  color: ${SECONDARY_TEXT_COLOR};
+  color: var(--secondaryTextColor);
   margin: 0;
   margin-top: 0;
   margin-bottom: 0;
 `;
 
 const Source = styled.p`
-  color: ${SECONDARY_TEXT_COLOR};
+  color: var(--secondaryTextColor);
   font-weight: bold;
 `;
 
@@ -66,10 +59,10 @@ const Hint = styled.a`
   position: absolute;
   left: 0;
   top: 0;
-  background: ${LINK_COLOR};
+  background: var(--linkColor);
 
   &:visited {
-    background: #ffffff;
+    background: var(--blockBackgroundColor);
   }
 `;
 
