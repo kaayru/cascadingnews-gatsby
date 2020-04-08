@@ -6,7 +6,7 @@
   "author": "Vincent Ballut <contact@vincentballut.fr>",
   "husky": {
     "hooks": {
-      "pre-push": "yarn eslint . && yarn test"
+      "pre-push": "yarn eslint && yarn test"
     }
   },
   "dependencies": {
@@ -95,6 +95,7 @@
     "build": "npx --node-arg '-r esm' gatsby build",
     "clean": "gatsby clean",
     "develop": "npx --node-arg '-r esm' gatsby develop",
+    "eslint": "npx eslint . --ext tsx,ts,js",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "codegen": "graphql-codegen --config codegen.yml",
     "serve": "npx --node-arg '-r esm' gatsby serve",
