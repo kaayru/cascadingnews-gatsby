@@ -42,18 +42,33 @@ const SEO = ({ description, lang = 'en', meta, title }: Props) => {
         lang: lang,
       }}
       link={[
+        // basic favicon
         {
           rel: 'shortcut icon',
           href: '/favicon.png',
         },
+        // non-Retina iPhone, iPod Touch, and Android 2.1+ devices
         {
           rel: 'apple-touch-icon-precomposed',
           href: '/favicon57.png',
         },
+        // first- and second-generation iPad
         {
           rel: 'apple-touch-icon-precomposed',
           href: '/favicon72.png',
           sizes: '72x72',
+        },
+        // iPhone with high-resolution Retina display
+        {
+          rel: 'apple-touch-icon-precomposed',
+          href: '/favicon114.png',
+          sizes: '114x114',
+        },
+        // third-generation iPad with high-resolution Retina display
+        {
+          rel: 'apple-touch-icon-precomposed',
+          href: '/favicon144.png',
+          sizes: '144x144',
         },
       ]}
       title={title}
