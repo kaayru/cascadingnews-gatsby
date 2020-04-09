@@ -1,14 +1,5 @@
-import color from 'color';
 import Typography, { TypographyOptions } from 'typography';
 import * as breakpoints from 'typography-breakpoint-constants';
-
-export const BODY_COLOR = '#F7F7F7';
-export const PRIMARY_TEXT_COLOR = '#22181C';
-export const SECONDARY_TEXT_COLOR = '#a5a4a4';
-export const LINK_COLOR = '#FF483B';
-export const LINK_COLOR_ACTIVE = color(LINK_COLOR)
-  .darken(0.2)
-  .hex();
 
 const theme: TypographyOptions = {
   baseFontSize: '17px',
@@ -26,18 +17,18 @@ const theme: TypographyOptions = {
   ],
   headerFontFamily: ['Lato', 'sans-serif'],
   bodyFontFamily: ['Lato', 'serif'],
-  headerColor: 'hsla(0,0%,0%,0.9)',
-  bodyColor: 'hsla(0,0%,0%,0.8)',
+  headerColor: 'var(--primaryTextColor)',
+  bodyColor: 'var(--primaryTextColor)',
   headerWeight: '700',
   bodyWeight: 400,
   boldWeight: 700,
   overrideStyles: ({ adjustFontSizeTo, scale, rhythm }, options) => {
     return {
       body: {
-        backgroundColor: BODY_COLOR,
+        backgroundColor: 'var(--bodyColor)',
       },
       a: {
-        color: LINK_COLOR,
+        color: 'var(--linkColor)',
         textDecoration: 'none',
         backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 1px, currentColor 1px, currentColor 2px, rgba(0, 0, 0, 0) 2px)`, // eslint-disable-line
       },
@@ -55,8 +46,8 @@ const theme: TypographyOptions = {
       // Blockquote styles.
       blockquote: {
         ...scale(1 / 5),
-        borderLeft: `${rhythm(6 / 16)} solid ${LINK_COLOR}`,
-        color: SECONDARY_TEXT_COLOR,
+        borderLeft: `${rhythm(6 / 16)} solid var(--linkColor)`,
+        color: 'var(--secondaryTextColor)',
         paddingLeft: rhythm(10 / 16),
         fontStyle: 'italic',
         marginLeft: 0,
@@ -76,7 +67,7 @@ const theme: TypographyOptions = {
       },
       [breakpoints.MOBILE_MEDIA_QUERY]: {
         blockquote: {
-          borderLeft: `${rhythm(3 / 16)} solid ${LINK_COLOR}`,
+          borderLeft: `${rhythm(3 / 16)} solid var(--linkColor)`,
           paddingLeft: rhythm(9 / 16),
           fontStyle: 'italic',
           marginLeft: rhythm(-3 / 4),

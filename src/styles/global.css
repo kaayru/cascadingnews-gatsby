@@ -1,0 +1,19 @@
+:root {
+  --bodyColor: #f7f7f7;
+  --linkColor: #ff483b;
+  --linkColorActive: hsl(4, 100%, 49%);
+  --blockBackgroundColor: #ffffff;
+  --primaryTextColor: #22181c;
+  --secondaryTextColor: #a5a4a4;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bodyColor: #38444c;
+    --linkColor: #ff483b;
+    --linkColorActive: #fb1100;
+    --blockBackgroundColor: #21272c;
+    --primaryTextColor: #ffffff;
+    --secondaryTextColor: #a5a4a4;
+  }
+}

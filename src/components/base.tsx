@@ -1,12 +1,6 @@
 import styled from 'styled-components';
 
-import {
-  rhythm,
-  scale,
-  LINK_COLOR,
-  LINK_COLOR_ACTIVE,
-  SECONDARY_TEXT_COLOR,
-} from 'src/utils/typography';
+import { rhythm, scale } from 'src/utils/typography';
 
 export const FlatList = styled.ul`
   display: flex;
@@ -26,14 +20,14 @@ export const PostList = styled.ul`
 `;
 
 export const LoadMoreButton = styled.button`
-  background: ${LINK_COLOR};
+  background: var(--linkColor);
   color: #ffffff;
-  border: 2px solid ${LINK_COLOR};
+  border: 2px solid var(--linkColor);
   cursor: pointer;
 
   &:hover {
-    background: ${LINK_COLOR_ACTIVE};
-    border-color: ${LINK_COLOR_ACTIVE};
+    background: var(--linkColorActive);
+    border-color: var(--linkColorActive);
   }
 `;
 
@@ -44,11 +38,11 @@ export const PageTitle = styled.h1`
 `;
 
 export const Count = styled.span`
-  color: ${SECONDARY_TEXT_COLOR};
+  color: var(--secondaryTextColor);
   font-size: ${scale(4 / 16).fontSize};
 `;
 
 export const PageContent = styled.div`
-  background: #ffffff;
+  background: var(--blockBackgroundColor);
   padding: ${rhythm(1)};
 `;

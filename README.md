@@ -2,18 +2,11 @@
 
 # Cascading News
 
-**Cascading News** is a website whose purpose is to provide the latest news and tutorials on frontend development.
-
-> ⚠️ The website is on the process of being remade.
->
-> - Old site for reference: https://www.cascading-news.com
-> - New site on Netlify: https://app.netlify.com/sites/condescending-perlman-298bba/deploys
+**[Cascading News](https://www.cascading-news.com)** is a website whose purpose is to provide the latest news and tutorials on frontend development.
 
 ## 🚀 How it's built
 
 This site is built using **WordPress** for the backend, **Gatsby + React** for the statically generated frontend, and **Netlify** for awesome hosting and CI.
-
-My challenge when building this site was to make it as automatic as possible.
 
 ## 🧩 Contributing
 
@@ -24,11 +17,12 @@ My challenge when building this site was to make it as automatic as possible.
 
 ### 🔀 **Git flow**
 
-1. **Fork** the repo on GitHub
-2. Create a **Feature branch** from `develop`
-3. **Commit** changes to this branch
-4. **Push** your work back up to your fork
-5. Submit a **Pull request** so that we can review your changes and merge it
+1. **Fork** the repo on GitHub.
+2. Create a **Feature branch** from `develop`.
+3. **Commit** changes to this branch.
+4. **Push** your work back up to your fork.
+5. Submit a **Pull request** so that we can review your changes and merge it.
+6. Any Pull Request is automatically deployed on Netlify, see [Deploy Previews](https://app.netlify.com/sites/condescending-perlman-298bba/deploys?filter=deploy%20previews).
 
 ### ⚛️ **Set up**
 
@@ -37,7 +31,7 @@ If you want to contribute to the frontend code, here's how to set up the project
 1. **Checkout this project**
 2. **Create `.env.development` containing:**
    ```shell
-   GATSBY_WP_URL=cascading-news.com
+   GATSBY_WP_URL=admin.cascading-news.com
    GATSBY_WP_PROTOCOL=https
    GATSBY_REPLACEMENT_URL=http://localhost:8000
    ```
