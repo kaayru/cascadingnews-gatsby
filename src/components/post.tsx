@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import styled from 'styled-components';
 
 import { PostFragment } from 'src/generated/graphql';
@@ -27,7 +28,7 @@ const PostMeta = styled.div`
   }
 `;
 
-const PostLink = styled.a`
+const PostLink = styled(OutboundLink)`
   color: var(--primaryTextColor);
   background-image: none;
 
