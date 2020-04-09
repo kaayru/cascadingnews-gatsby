@@ -8,8 +8,6 @@
 
 This site is built using **WordPress** for the backend, **Gatsby + React** for the statically generated frontend, and **Netlify** for awesome hosting and CI.
 
-My challenge when building this site was to make it as automatic as possible.
-
 ## 🧩 Contributing
 
 > **Useful links**
@@ -19,11 +17,12 @@ My challenge when building this site was to make it as automatic as possible.
 
 ### 🔀 **Git flow**
 
-1. **Fork** the repo on GitHub
-2. Create a **Feature branch** from `develop`
-3. **Commit** changes to this branch
-4. **Push** your work back up to your fork
-5. Submit a **Pull request** so that we can review your changes and merge it
+1. **Fork** the repo on GitHub.
+2. Create a **Feature branch** from `develop`.
+3. **Commit** changes to this branch.
+4. **Push** your work back up to your fork.
+5. Submit a **Pull request** so that we can review your changes and merge it.
+6. Any Pull Request is automatically deployed on Netlify, see [Deploy Previews](https://app.netlify.com/sites/condescending-perlman-298bba/deploys?filter=deploy%20previews).
 
 ### ⚛️ **Set up**
 
