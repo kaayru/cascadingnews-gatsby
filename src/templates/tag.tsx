@@ -12,8 +12,9 @@ import { useLoadMore } from 'src/hooks/useLoadMore';
 
 type Props = {
   data: TagPageQuery;
+  location: Location;
 };
-const Tag = ({ data }: Props) => {
+const Tag = ({ data, location }: Props) => {
   const tagData = data.wordpressTag;
 
   const { loadNextPage, postsData, pageInfo } = useLoadMore({
@@ -28,12 +29,7 @@ const Tag = ({ data }: Props) => {
 
   return (
     <Layout>
-      <SEO
-        title={tagData.name}
-        description={
-          tagData.description || `Curated articles about ${tagData.name} in frontend development`
-        }
-      />
+      <SEO title={tagData?.yoast_title} meta={tagData?.yoast_meta} pathname={location.pathname} />
       <PageTitle>
         {tagData.name} <Count>({tagData.count} articles)</Count>
       </PageTitle>
@@ -64,9 +60,14 @@ export const query = graphql`
   query TagPage($id: Int!) {
     wordpressTag(wordpress_id: { eq: $id }) {
       count
-      description
       name
       slug
+      yoast_title
+      yoast_meta {
+        content
+        name
+        property
+      }
     }
 
     allWordpressPost(limit: 20, filter: { tags: { elemMatch: { wordpress_id: { eq: $id } } } }) {

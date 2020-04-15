@@ -8,33 +8,52 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
-import { Site } from 'src/generated/graphql';
+
+import { Wordpress__PageYoast_Meta, Maybe, SeoComponentQuery } from 'src/generated/graphql';
 
 type Props = {
-  description?: string;
   lang?: string;
-  meta?: [JSX.IntrinsicElements['meta']];
-  title: string;
+  meta?: Maybe<Array<Maybe<Wordpress__PageYoast_Meta>>> | null;
+  title?: string | null;
+  pathname?: string;
 };
-const SEO = ({ description, lang = 'en', meta, title }: Props) => {
-  const { site } = useStaticQuery<{ site: Site }>(
+
+const fixMetaOgUrl = (meta: Maybe<Wordpress__PageYoast_Meta>, url?: string) =>
+  meta?.property === 'og:url'
+    ? {
+        ...meta,
+        content: url,
+      }
+    : meta;
+
+const fixMetaTypes = (meta: Maybe<Wordpress__PageYoast_Meta>) => ({
+  ...(meta?.name ? { name: meta.name } : null),
+  ...(meta?.content ? { content: meta.content } : null),
+  ...(meta?.property ? { property: meta.property } : null),
+});
+
+const SEO = ({ lang = 'en', meta, title, pathname }: Props) => {
+  if (!title) {
+    throw new Error('Missing title in SEO component');
+  }
+
+  if (!pathname) {
+    throw new Error('Missing pathname in SEO component');
+  }
+
+  const { site } = useStaticQuery<SeoComponentQuery>(
     graphql`
-      query {
+      query SeoComponent {
         site {
           siteMetadata {
-            title
-            description
-            author
+            siteUrl
           }
         }
       }
     `,
   );
 
-  if (!site?.siteMetadata) return null;
-
-  const metaDescription = description || site.siteMetadata.description || '';
-  const twitterUsername = site.siteMetadata.social?.twitter || '';
+  const url = `${site?.siteMetadata?.siteUrl}${pathname}`;
 
   return (
     <Helmet
@@ -42,6 +61,10 @@ const SEO = ({ description, lang = 'en', meta, title }: Props) => {
         lang: lang,
       }}
       link={[
+        {
+          rel: 'canonical',
+          href: url,
+        },
         // basic favicon
         {
           rel: 'shortcut icon',
@@ -72,42 +95,7 @@ const SEO = ({ description, lang = 'en', meta, title }: Props) => {
         },
       ]}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
-      meta={[
-        {
-          name: 'description',
-          content: metaDescription,
-        },
-        {
-          property: 'og:title',
-          content: title,
-        },
-        {
-          property: 'og:description',
-          content: metaDescription,
-        },
-        {
-          property: 'og:type',
-          content: 'website',
-        },
-        {
-          name: 'twitter:card',
-          content: 'summary',
-        },
-        {
-          name: 'twitter:creator',
-          content: twitterUsername,
-        },
-        {
-          name: 'twitter:title',
-          content: title,
-        },
-        {
-          name: 'twitter:description',
-          content: metaDescription,
-        },
-        ...(meta || []),
-      ]}
+      meta={meta?.map(metaItem => fixMetaOgUrl(metaItem, url)).map(fixMetaTypes) || []}
     />
   );
 };
