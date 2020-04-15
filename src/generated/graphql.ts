@@ -229,6 +229,9 @@ export type QueryWordpressPageArgs = {
   comment_status?: Maybe<StringQueryOperatorInput>;
   ping_status?: Maybe<StringQueryOperatorInput>;
   template?: Maybe<StringQueryOperatorInput>;
+  yoast_title?: Maybe<StringQueryOperatorInput>;
+  yoast_meta?: Maybe<Wordpress__PageYoast_MetaFilterListInput>;
+  yoast_json_ld?: Maybe<Wordpress__PageYoast_Json_LdFilterListInput>;
   _links?: Maybe<Wordpress__Page_LinksFilterInput>;
   path?: Maybe<StringQueryOperatorInput>;
 };
@@ -277,9 +280,11 @@ export type QueryWordpressTagArgs = {
   link?: Maybe<StringQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
-  taxonomy?: Maybe<Wordpress__Wp_TaxonomiesFilterInput>;
   _links?: Maybe<Wordpress__Tag_LinksFilterInput>;
+  taxonomy?: Maybe<Wordpress__Wp_TaxonomiesFilterInput>;
   path?: Maybe<StringQueryOperatorInput>;
+  yoast_title?: Maybe<StringQueryOperatorInput>;
+  yoast_meta?: Maybe<Wordpress__TagYoast_MetaFilterListInput>;
 };
 
 
@@ -331,8 +336,11 @@ export type QueryWordpressPostArgs = {
   template?: Maybe<StringQueryOperatorInput>;
   format?: Maybe<StringQueryOperatorInput>;
   categories?: Maybe<IntQueryOperatorInput>;
-  tags?: Maybe<Wordpress__TagFilterListInput>;
+  yoast_title?: Maybe<StringQueryOperatorInput>;
+  yoast_meta?: Maybe<Wordpress__PostYoast_MetaFilterListInput>;
+  yoast_json_ld?: Maybe<Wordpress__PostYoast_Json_LdFilterListInput>;
   _links?: Maybe<Wordpress__Post_LinksFilterInput>;
+  tags?: Maybe<Wordpress__TagFilterListInput>;
   path?: Maybe<StringQueryOperatorInput>;
   source?: Maybe<StringQueryOperatorInput>;
 };
@@ -485,7 +493,6 @@ export enum SiteFieldsEnum {
   InternalType = 'internal___type',
   SiteMetadataTitle = 'siteMetadata___title',
   SiteMetadataAuthor = 'siteMetadata___author',
-  SiteMetadataDescription = 'siteMetadata___description',
   SiteMetadataSiteUrl = 'siteMetadata___siteUrl',
   SiteMetadataSocialTwitter = 'siteMetadata___social___twitter',
   SiteMetadataMenuLinks = 'siteMetadata___menuLinks',
@@ -716,10 +723,10 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsUseAcf = 'pluginCreator___pluginOptions___useACF',
   PluginCreatorPluginOptionsVerboseOutput = 'pluginCreator___pluginOptions___verboseOutput',
   PluginCreatorPluginOptionsPerPage = 'pluginCreator___pluginOptions___perPage',
-  PluginCreatorPluginOptionsSearchAndReplaceContentUrlsSourceUrl = 'pluginCreator___pluginOptions___searchAndReplaceContentUrls___sourceUrl',
-  PluginCreatorPluginOptionsSearchAndReplaceContentUrlsReplacementUrl = 'pluginCreator___pluginOptions___searchAndReplaceContentUrls___replacementUrl',
   PluginCreatorPluginOptionsConcurrentRequests = 'pluginCreator___pluginOptions___concurrentRequests',
   PluginCreatorPluginOptionsIncludedRoutes = 'pluginCreator___pluginOptions___includedRoutes',
+  PluginCreatorPluginOptionsTrackingId = 'pluginCreator___pluginOptions___trackingId',
+  PluginCreatorPluginOptionsRespectDnt = 'pluginCreator___pluginOptions___respectDNT',
   PluginCreatorPluginOptionsPathToConfigModule = 'pluginCreator___pluginOptions___pathToConfigModule',
   PluginCreatorPluginOptionsSrc = 'pluginCreator___pluginOptions___src',
   PluginCreatorPluginOptionsFixtures = 'pluginCreator___pluginOptions___fixtures',
@@ -924,10 +931,10 @@ export enum SitePluginFieldsEnum {
   PluginOptionsUseAcf = 'pluginOptions___useACF',
   PluginOptionsVerboseOutput = 'pluginOptions___verboseOutput',
   PluginOptionsPerPage = 'pluginOptions___perPage',
-  PluginOptionsSearchAndReplaceContentUrlsSourceUrl = 'pluginOptions___searchAndReplaceContentUrls___sourceUrl',
-  PluginOptionsSearchAndReplaceContentUrlsReplacementUrl = 'pluginOptions___searchAndReplaceContentUrls___replacementUrl',
   PluginOptionsConcurrentRequests = 'pluginOptions___concurrentRequests',
   PluginOptionsIncludedRoutes = 'pluginOptions___includedRoutes',
+  PluginOptionsTrackingId = 'pluginOptions___trackingId',
+  PluginOptionsRespectDnt = 'pluginOptions___respectDNT',
   PluginOptionsPathToConfigModule = 'pluginOptions___pathToConfigModule',
   PluginOptionsSrc = 'pluginOptions___src',
   PluginOptionsFixtures = 'pluginOptions___fixtures',
@@ -1063,9 +1070,10 @@ export type SitePluginPluginOptions = {
   useACF?: Maybe<Scalars['Boolean']>;
   verboseOutput?: Maybe<Scalars['Boolean']>;
   perPage?: Maybe<Scalars['Int']>;
-  searchAndReplaceContentUrls?: Maybe<SitePluginPluginOptionsSearchAndReplaceContentUrls>;
   concurrentRequests?: Maybe<Scalars['Int']>;
   includedRoutes?: Maybe<Array<Maybe<Scalars['String']>>>;
+  trackingId?: Maybe<Scalars['String']>;
+  respectDNT?: Maybe<Scalars['Boolean']>;
   pathToConfigModule?: Maybe<Scalars['String']>;
   src?: Maybe<Scalars['String']>;
   fixtures?: Maybe<Scalars['String']>;
@@ -1082,9 +1090,10 @@ export type SitePluginPluginOptionsFilterInput = {
   useACF?: Maybe<BooleanQueryOperatorInput>;
   verboseOutput?: Maybe<BooleanQueryOperatorInput>;
   perPage?: Maybe<IntQueryOperatorInput>;
-  searchAndReplaceContentUrls?: Maybe<SitePluginPluginOptionsSearchAndReplaceContentUrlsFilterInput>;
   concurrentRequests?: Maybe<IntQueryOperatorInput>;
   includedRoutes?: Maybe<StringQueryOperatorInput>;
+  trackingId?: Maybe<StringQueryOperatorInput>;
+  respectDNT?: Maybe<BooleanQueryOperatorInput>;
   pathToConfigModule?: Maybe<StringQueryOperatorInput>;
   src?: Maybe<StringQueryOperatorInput>;
   fixtures?: Maybe<StringQueryOperatorInput>;
@@ -1092,17 +1101,6 @@ export type SitePluginPluginOptionsFilterInput = {
   utils?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
-};
-
-export type SitePluginPluginOptionsSearchAndReplaceContentUrls = {
-   __typename?: 'SitePluginPluginOptionsSearchAndReplaceContentUrls';
-  sourceUrl?: Maybe<Scalars['String']>;
-  replacementUrl?: Maybe<Scalars['String']>;
-};
-
-export type SitePluginPluginOptionsSearchAndReplaceContentUrlsFilterInput = {
-  sourceUrl?: Maybe<StringQueryOperatorInput>;
-  replacementUrl?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginSortInput = {
@@ -1114,7 +1112,6 @@ export type SiteSiteMetadata = {
    __typename?: 'SiteSiteMetadata';
   title?: Maybe<Scalars['String']>;
   author?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
   siteUrl?: Maybe<Scalars['String']>;
   social?: Maybe<SiteSiteMetadataSocial>;
   menuLinks?: Maybe<Array<Maybe<SiteSiteMetadataMenuLinks>>>;
@@ -1123,7 +1120,6 @@ export type SiteSiteMetadata = {
 export type SiteSiteMetadataFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   author?: Maybe<StringQueryOperatorInput>;
-  description?: Maybe<StringQueryOperatorInput>;
   siteUrl?: Maybe<StringQueryOperatorInput>;
   social?: Maybe<SiteSiteMetadataSocialFilterInput>;
   menuLinks?: Maybe<SiteSiteMetadataMenuLinksFilterListInput>;
@@ -1346,6 +1342,9 @@ export type Wordpress__Page = Node & {
   comment_status?: Maybe<Scalars['String']>;
   ping_status?: Maybe<Scalars['String']>;
   template?: Maybe<Scalars['String']>;
+  yoast_title?: Maybe<Scalars['String']>;
+  yoast_meta?: Maybe<Array<Maybe<Wordpress__PageYoast_Meta>>>;
+  yoast_json_ld?: Maybe<Array<Maybe<Wordpress__PageYoast_Json_Ld>>>;
   _links?: Maybe<Wordpress__Page_Links>;
   path?: Maybe<Scalars['String']>;
 };
@@ -1653,6 +1652,36 @@ export enum Wordpress__PageFieldsEnum {
   CommentStatus = 'comment_status',
   PingStatus = 'ping_status',
   Template = 'template',
+  YoastTitle = 'yoast_title',
+  YoastMeta = 'yoast_meta',
+  YoastMetaName = 'yoast_meta___name',
+  YoastMetaContent = 'yoast_meta___content',
+  YoastMetaProperty = 'yoast_meta___property',
+  YoastJsonLd = 'yoast_json_ld',
+  YoastJsonLdWordpressContext = 'yoast_json_ld___wordpress__context',
+  YoastJsonLdWordpressGraph = 'yoast_json_ld___wordpress__graph',
+  YoastJsonLdWordpressGraphWordpressType = 'yoast_json_ld___wordpress__graph___wordpress__type',
+  YoastJsonLdWordpressGraphWordpressId = 'yoast_json_ld___wordpress__graph___wordpress__id',
+  YoastJsonLdWordpressGraphName = 'yoast_json_ld___wordpress__graph___name',
+  YoastJsonLdWordpressGraphUrl = 'yoast_json_ld___wordpress__graph___url',
+  YoastJsonLdWordpressGraphSameAs = 'yoast_json_ld___wordpress__graph___sameAs',
+  YoastJsonLdWordpressGraphLogoWordpressType = 'yoast_json_ld___wordpress__graph___logo___wordpress__type',
+  YoastJsonLdWordpressGraphLogoWordpressId = 'yoast_json_ld___wordpress__graph___logo___wordpress__id',
+  YoastJsonLdWordpressGraphLogoInLanguage = 'yoast_json_ld___wordpress__graph___logo___inLanguage',
+  YoastJsonLdWordpressGraphLogoUrl = 'yoast_json_ld___wordpress__graph___logo___url',
+  YoastJsonLdWordpressGraphLogoWidth = 'yoast_json_ld___wordpress__graph___logo___width',
+  YoastJsonLdWordpressGraphLogoHeight = 'yoast_json_ld___wordpress__graph___logo___height',
+  YoastJsonLdWordpressGraphLogoCaption = 'yoast_json_ld___wordpress__graph___logo___caption',
+  YoastJsonLdWordpressGraphImageWordpressId = 'yoast_json_ld___wordpress__graph___image___wordpress__id',
+  YoastJsonLdWordpressGraphInLanguage = 'yoast_json_ld___wordpress__graph___inLanguage',
+  YoastJsonLdWordpressGraphDescription = 'yoast_json_ld___wordpress__graph___description',
+  YoastJsonLdWordpressGraphPublisherWordpressId = 'yoast_json_ld___wordpress__graph___publisher___wordpress__id',
+  YoastJsonLdWordpressGraphPotentialAction = 'yoast_json_ld___wordpress__graph___potentialAction',
+  YoastJsonLdWordpressGraphPotentialActionWordpressType = 'yoast_json_ld___wordpress__graph___potentialAction___wordpress__type',
+  YoastJsonLdWordpressGraphPotentialActionQueryInput = 'yoast_json_ld___wordpress__graph___potentialAction___query_input',
+  YoastJsonLdWordpressGraphIsPartOfWordpressId = 'yoast_json_ld___wordpress__graph___isPartOf___wordpress__id',
+  YoastJsonLdWordpressGraphDatePublished = 'yoast_json_ld___wordpress__graph___datePublished',
+  YoastJsonLdWordpressGraphDateModified = 'yoast_json_ld___wordpress__graph___dateModified',
   LinksSelf = '_links___self',
   LinksSelfHref = '_links___self___href',
   LinksCollection = '_links___collection',
@@ -1702,6 +1731,9 @@ export type Wordpress__PageFilterInput = {
   comment_status?: Maybe<StringQueryOperatorInput>;
   ping_status?: Maybe<StringQueryOperatorInput>;
   template?: Maybe<StringQueryOperatorInput>;
+  yoast_title?: Maybe<StringQueryOperatorInput>;
+  yoast_meta?: Maybe<Wordpress__PageYoast_MetaFilterListInput>;
+  yoast_json_ld?: Maybe<Wordpress__PageYoast_Json_LdFilterListInput>;
   _links?: Maybe<Wordpress__Page_LinksFilterInput>;
   path?: Maybe<StringQueryOperatorInput>;
 };
@@ -1719,6 +1751,156 @@ export type Wordpress__PageGroupConnection = {
 export type Wordpress__PageSortInput = {
   fields?: Maybe<Array<Maybe<Wordpress__PageFieldsEnum>>>;
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
+
+export type Wordpress__PageYoast_Json_Ld = {
+   __typename?: 'wordpress__PAGEYoast_json_ld';
+  wordpress__context?: Maybe<Scalars['String']>;
+  wordpress__graph?: Maybe<Array<Maybe<Wordpress__PageYoast_Json_LdWordpress__Graph>>>;
+};
+
+export type Wordpress__PageYoast_Json_LdFilterInput = {
+  wordpress__context?: Maybe<StringQueryOperatorInput>;
+  wordpress__graph?: Maybe<Wordpress__PageYoast_Json_LdWordpress__GraphFilterListInput>;
+};
+
+export type Wordpress__PageYoast_Json_LdFilterListInput = {
+  elemMatch?: Maybe<Wordpress__PageYoast_Json_LdFilterInput>;
+};
+
+export type Wordpress__PageYoast_Json_LdWordpress__Graph = {
+   __typename?: 'wordpress__PAGEYoast_json_ldWordpress__graph';
+  wordpress__type?: Maybe<Scalars['String']>;
+  wordpress__id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
+  sameAs?: Maybe<Array<Maybe<Scalars['String']>>>;
+  logo?: Maybe<Wordpress__PageYoast_Json_LdWordpress__GraphLogo>;
+  image?: Maybe<Wordpress__PageYoast_Json_LdWordpress__GraphImage>;
+  inLanguage?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  publisher?: Maybe<Wordpress__PageYoast_Json_LdWordpress__GraphPublisher>;
+  potentialAction?: Maybe<Array<Maybe<Wordpress__PageYoast_Json_LdWordpress__GraphPotentialAction>>>;
+  isPartOf?: Maybe<Wordpress__PageYoast_Json_LdWordpress__GraphIsPartOf>;
+  datePublished?: Maybe<Scalars['Date']>;
+  dateModified?: Maybe<Scalars['Date']>;
+};
+
+
+export type Wordpress__PageYoast_Json_LdWordpress__GraphDatePublishedArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+
+export type Wordpress__PageYoast_Json_LdWordpress__GraphDateModifiedArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type Wordpress__PageYoast_Json_LdWordpress__GraphFilterInput = {
+  wordpress__type?: Maybe<StringQueryOperatorInput>;
+  wordpress__id?: Maybe<StringQueryOperatorInput>;
+  name?: Maybe<StringQueryOperatorInput>;
+  url?: Maybe<StringQueryOperatorInput>;
+  sameAs?: Maybe<StringQueryOperatorInput>;
+  logo?: Maybe<Wordpress__PageYoast_Json_LdWordpress__GraphLogoFilterInput>;
+  image?: Maybe<Wordpress__PageYoast_Json_LdWordpress__GraphImageFilterInput>;
+  inLanguage?: Maybe<StringQueryOperatorInput>;
+  description?: Maybe<StringQueryOperatorInput>;
+  publisher?: Maybe<Wordpress__PageYoast_Json_LdWordpress__GraphPublisherFilterInput>;
+  potentialAction?: Maybe<Wordpress__PageYoast_Json_LdWordpress__GraphPotentialActionFilterListInput>;
+  isPartOf?: Maybe<Wordpress__PageYoast_Json_LdWordpress__GraphIsPartOfFilterInput>;
+  datePublished?: Maybe<DateQueryOperatorInput>;
+  dateModified?: Maybe<DateQueryOperatorInput>;
+};
+
+export type Wordpress__PageYoast_Json_LdWordpress__GraphFilterListInput = {
+  elemMatch?: Maybe<Wordpress__PageYoast_Json_LdWordpress__GraphFilterInput>;
+};
+
+export type Wordpress__PageYoast_Json_LdWordpress__GraphImage = {
+   __typename?: 'wordpress__PAGEYoast_json_ldWordpress__graphImage';
+  wordpress__id?: Maybe<Scalars['String']>;
+};
+
+export type Wordpress__PageYoast_Json_LdWordpress__GraphImageFilterInput = {
+  wordpress__id?: Maybe<StringQueryOperatorInput>;
+};
+
+export type Wordpress__PageYoast_Json_LdWordpress__GraphIsPartOf = {
+   __typename?: 'wordpress__PAGEYoast_json_ldWordpress__graphIsPartOf';
+  wordpress__id?: Maybe<Scalars['String']>;
+};
+
+export type Wordpress__PageYoast_Json_LdWordpress__GraphIsPartOfFilterInput = {
+  wordpress__id?: Maybe<StringQueryOperatorInput>;
+};
+
+export type Wordpress__PageYoast_Json_LdWordpress__GraphLogo = {
+   __typename?: 'wordpress__PAGEYoast_json_ldWordpress__graphLogo';
+  wordpress__type?: Maybe<Scalars['String']>;
+  wordpress__id?: Maybe<Scalars['String']>;
+  inLanguage?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
+  width?: Maybe<Scalars['Int']>;
+  height?: Maybe<Scalars['Int']>;
+  caption?: Maybe<Scalars['String']>;
+};
+
+export type Wordpress__PageYoast_Json_LdWordpress__GraphLogoFilterInput = {
+  wordpress__type?: Maybe<StringQueryOperatorInput>;
+  wordpress__id?: Maybe<StringQueryOperatorInput>;
+  inLanguage?: Maybe<StringQueryOperatorInput>;
+  url?: Maybe<StringQueryOperatorInput>;
+  width?: Maybe<IntQueryOperatorInput>;
+  height?: Maybe<IntQueryOperatorInput>;
+  caption?: Maybe<StringQueryOperatorInput>;
+};
+
+export type Wordpress__PageYoast_Json_LdWordpress__GraphPotentialAction = {
+   __typename?: 'wordpress__PAGEYoast_json_ldWordpress__graphPotentialAction';
+  wordpress__type?: Maybe<Scalars['String']>;
+  query_input?: Maybe<Scalars['String']>;
+};
+
+export type Wordpress__PageYoast_Json_LdWordpress__GraphPotentialActionFilterInput = {
+  wordpress__type?: Maybe<StringQueryOperatorInput>;
+  query_input?: Maybe<StringQueryOperatorInput>;
+};
+
+export type Wordpress__PageYoast_Json_LdWordpress__GraphPotentialActionFilterListInput = {
+  elemMatch?: Maybe<Wordpress__PageYoast_Json_LdWordpress__GraphPotentialActionFilterInput>;
+};
+
+export type Wordpress__PageYoast_Json_LdWordpress__GraphPublisher = {
+   __typename?: 'wordpress__PAGEYoast_json_ldWordpress__graphPublisher';
+  wordpress__id?: Maybe<Scalars['String']>;
+};
+
+export type Wordpress__PageYoast_Json_LdWordpress__GraphPublisherFilterInput = {
+  wordpress__id?: Maybe<StringQueryOperatorInput>;
+};
+
+export type Wordpress__PageYoast_Meta = {
+   __typename?: 'wordpress__PAGEYoast_meta';
+  name?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']>;
+  property?: Maybe<Scalars['String']>;
+};
+
+export type Wordpress__PageYoast_MetaFilterInput = {
+  name?: Maybe<StringQueryOperatorInput>;
+  content?: Maybe<StringQueryOperatorInput>;
+  property?: Maybe<StringQueryOperatorInput>;
+};
+
+export type Wordpress__PageYoast_MetaFilterListInput = {
+  elemMatch?: Maybe<Wordpress__PageYoast_MetaFilterInput>;
 };
 
 export type Wordpress__Post = Node & {
@@ -1745,8 +1927,11 @@ export type Wordpress__Post = Node & {
   template?: Maybe<Scalars['String']>;
   format?: Maybe<Scalars['String']>;
   categories?: Maybe<Array<Maybe<Scalars['Int']>>>;
-  tags?: Maybe<Array<Maybe<Wordpress__Tag>>>;
+  yoast_title?: Maybe<Scalars['String']>;
+  yoast_meta?: Maybe<Array<Maybe<Wordpress__PostYoast_Meta>>>;
+  yoast_json_ld?: Maybe<Array<Maybe<Wordpress__PostYoast_Json_Ld>>>;
   _links?: Maybe<Wordpress__Post_Links>;
+  tags?: Maybe<Array<Maybe<Wordpress__Tag>>>;
   path?: Maybe<Scalars['String']>;
   source?: Maybe<Scalars['String']>;
 };
@@ -2091,6 +2276,79 @@ export enum Wordpress__PostFieldsEnum {
   Template = 'template',
   Format = 'format',
   Categories = 'categories',
+  YoastTitle = 'yoast_title',
+  YoastMeta = 'yoast_meta',
+  YoastMetaName = 'yoast_meta___name',
+  YoastMetaContent = 'yoast_meta___content',
+  YoastMetaProperty = 'yoast_meta___property',
+  YoastJsonLd = 'yoast_json_ld',
+  YoastJsonLdWordpressContext = 'yoast_json_ld___wordpress__context',
+  YoastJsonLdWordpressGraph = 'yoast_json_ld___wordpress__graph',
+  YoastJsonLdWordpressGraphWordpressId = 'yoast_json_ld___wordpress__graph___wordpress__id',
+  YoastJsonLdWordpressGraphName = 'yoast_json_ld___wordpress__graph___name',
+  YoastJsonLdWordpressGraphUrl = 'yoast_json_ld___wordpress__graph___url',
+  YoastJsonLdWordpressGraphSameAs = 'yoast_json_ld___wordpress__graph___sameAs',
+  YoastJsonLdWordpressGraphLogoWordpressType = 'yoast_json_ld___wordpress__graph___logo___wordpress__type',
+  YoastJsonLdWordpressGraphLogoWordpressId = 'yoast_json_ld___wordpress__graph___logo___wordpress__id',
+  YoastJsonLdWordpressGraphLogoInLanguage = 'yoast_json_ld___wordpress__graph___logo___inLanguage',
+  YoastJsonLdWordpressGraphLogoUrl = 'yoast_json_ld___wordpress__graph___logo___url',
+  YoastJsonLdWordpressGraphLogoWidth = 'yoast_json_ld___wordpress__graph___logo___width',
+  YoastJsonLdWordpressGraphLogoHeight = 'yoast_json_ld___wordpress__graph___logo___height',
+  YoastJsonLdWordpressGraphLogoCaption = 'yoast_json_ld___wordpress__graph___logo___caption',
+  YoastJsonLdWordpressGraphImageWordpressId = 'yoast_json_ld___wordpress__graph___image___wordpress__id',
+  YoastJsonLdWordpressGraphImageWordpressType = 'yoast_json_ld___wordpress__graph___image___wordpress__type',
+  YoastJsonLdWordpressGraphImageInLanguage = 'yoast_json_ld___wordpress__graph___image___inLanguage',
+  YoastJsonLdWordpressGraphImageUrl = 'yoast_json_ld___wordpress__graph___image___url',
+  YoastJsonLdWordpressGraphImageCaption = 'yoast_json_ld___wordpress__graph___image___caption',
+  YoastJsonLdWordpressGraphInLanguage = 'yoast_json_ld___wordpress__graph___inLanguage',
+  YoastJsonLdWordpressGraphDescription = 'yoast_json_ld___wordpress__graph___description',
+  YoastJsonLdWordpressGraphPublisherWordpressId = 'yoast_json_ld___wordpress__graph___publisher___wordpress__id',
+  YoastJsonLdWordpressGraphPotentialAction = 'yoast_json_ld___wordpress__graph___potentialAction',
+  YoastJsonLdWordpressGraphPotentialActionWordpressType = 'yoast_json_ld___wordpress__graph___potentialAction___wordpress__type',
+  YoastJsonLdWordpressGraphPotentialActionQueryInput = 'yoast_json_ld___wordpress__graph___potentialAction___query_input',
+  YoastJsonLdWordpressGraphIsPartOfWordpressId = 'yoast_json_ld___wordpress__graph___isPartOf___wordpress__id',
+  YoastJsonLdWordpressGraphDatePublished = 'yoast_json_ld___wordpress__graph___datePublished',
+  YoastJsonLdWordpressGraphDateModified = 'yoast_json_ld___wordpress__graph___dateModified',
+  YoastJsonLdWordpressGraphAuthorWordpressId = 'yoast_json_ld___wordpress__graph___author___wordpress__id',
+  YoastJsonLdWordpressGraphHeadline = 'yoast_json_ld___wordpress__graph___headline',
+  YoastJsonLdWordpressGraphCommentCount = 'yoast_json_ld___wordpress__graph___commentCount',
+  YoastJsonLdWordpressGraphMainEntityOfPageWordpressId = 'yoast_json_ld___wordpress__graph___mainEntityOfPage___wordpress__id',
+  YoastJsonLdWordpressGraphKeywords = 'yoast_json_ld___wordpress__graph___keywords',
+  YoastJsonLdWordpressGraphPrimaryImageOfPageWordpressId = 'yoast_json_ld___wordpress__graph___primaryImageOfPage___wordpress__id',
+  YoastJsonLdWordpressGraphArticleSection = 'yoast_json_ld___wordpress__graph___articleSection',
+  YoastJsonLdWordpressGraphWidth = 'yoast_json_ld___wordpress__graph___width',
+  YoastJsonLdWordpressGraphHeight = 'yoast_json_ld___wordpress__graph___height',
+  LinksSelf = '_links___self',
+  LinksSelfHref = '_links___self___href',
+  LinksCollection = '_links___collection',
+  LinksCollectionHref = '_links___collection___href',
+  LinksAbout = '_links___about',
+  LinksAboutHref = '_links___about___href',
+  LinksAuthor = '_links___author',
+  LinksAuthorEmbeddable = '_links___author___embeddable',
+  LinksAuthorHref = '_links___author___href',
+  LinksReplies = '_links___replies',
+  LinksRepliesEmbeddable = '_links___replies___embeddable',
+  LinksRepliesHref = '_links___replies___href',
+  LinksVersionHistory = '_links___version_history',
+  LinksVersionHistoryCount = '_links___version_history___count',
+  LinksVersionHistoryHref = '_links___version_history___href',
+  LinksPredecessorVersion = '_links___predecessor_version',
+  LinksPredecessorVersionWordpressId = '_links___predecessor_version___wordpress_id',
+  LinksPredecessorVersionHref = '_links___predecessor_version___href',
+  LinksWpAttachment = '_links___wp_attachment',
+  LinksWpAttachmentHref = '_links___wp_attachment___href',
+  LinksWpTerm = '_links___wp_term',
+  LinksWpTermTaxonomy = '_links___wp_term___taxonomy',
+  LinksWpTermEmbeddable = '_links___wp_term___embeddable',
+  LinksWpTermHref = '_links___wp_term___href',
+  LinksCuries = '_links___curies',
+  LinksCuriesName = '_links___curies___name',
+  LinksCuriesHref = '_links___curies___href',
+  LinksCuriesTemplated = '_links___curies___templated',
+  LinksWpFeaturedmedia = '_links___wp_featuredmedia',
+  LinksWpFeaturedmediaEmbeddable = '_links___wp_featuredmedia___embeddable',
+  LinksWpFeaturedmediaHref = '_links___wp_featuredmedia___href',
   Tags = 'tags',
   TagsId = 'tags___id',
   TagsParentId = 'tags___parent___id',
@@ -2136,6 +2394,18 @@ export enum Wordpress__PostFieldsEnum {
   TagsLink = 'tags___link',
   TagsName = 'tags___name',
   TagsSlug = 'tags___slug',
+  TagsLinksSelf = 'tags____links___self',
+  TagsLinksSelfHref = 'tags____links___self___href',
+  TagsLinksCollection = 'tags____links___collection',
+  TagsLinksCollectionHref = 'tags____links___collection___href',
+  TagsLinksAbout = 'tags____links___about',
+  TagsLinksAboutHref = 'tags____links___about___href',
+  TagsLinksWpPostType = 'tags____links___wp_post_type',
+  TagsLinksWpPostTypeHref = 'tags____links___wp_post_type___href',
+  TagsLinksCuries = 'tags____links___curies',
+  TagsLinksCuriesName = 'tags____links___curies___name',
+  TagsLinksCuriesHref = 'tags____links___curies___href',
+  TagsLinksCuriesTemplated = 'tags____links___curies___templated',
   TagsTaxonomyId = 'tags___taxonomy___id',
   TagsTaxonomyParentId = 'tags___taxonomy___parent___id',
   TagsTaxonomyParentChildren = 'tags___taxonomy___parent___children',
@@ -2160,50 +2430,12 @@ export enum Wordpress__PostFieldsEnum {
   TagsTaxonomyLinksCollection = 'tags___taxonomy____links___collection',
   TagsTaxonomyLinksWpItems = 'tags___taxonomy____links___wp_items',
   TagsTaxonomyLinksCuries = 'tags___taxonomy____links___curies',
-  TagsLinksSelf = 'tags____links___self',
-  TagsLinksSelfHref = 'tags____links___self___href',
-  TagsLinksCollection = 'tags____links___collection',
-  TagsLinksCollectionHref = 'tags____links___collection___href',
-  TagsLinksAbout = 'tags____links___about',
-  TagsLinksAboutHref = 'tags____links___about___href',
-  TagsLinksWpPostType = 'tags____links___wp_post_type',
-  TagsLinksWpPostTypeHref = 'tags____links___wp_post_type___href',
-  TagsLinksCuries = 'tags____links___curies',
-  TagsLinksCuriesName = 'tags____links___curies___name',
-  TagsLinksCuriesHref = 'tags____links___curies___href',
-  TagsLinksCuriesTemplated = 'tags____links___curies___templated',
   TagsPath = 'tags___path',
-  LinksSelf = '_links___self',
-  LinksSelfHref = '_links___self___href',
-  LinksCollection = '_links___collection',
-  LinksCollectionHref = '_links___collection___href',
-  LinksAbout = '_links___about',
-  LinksAboutHref = '_links___about___href',
-  LinksAuthor = '_links___author',
-  LinksAuthorEmbeddable = '_links___author___embeddable',
-  LinksAuthorHref = '_links___author___href',
-  LinksReplies = '_links___replies',
-  LinksRepliesEmbeddable = '_links___replies___embeddable',
-  LinksRepliesHref = '_links___replies___href',
-  LinksVersionHistory = '_links___version_history',
-  LinksVersionHistoryCount = '_links___version_history___count',
-  LinksVersionHistoryHref = '_links___version_history___href',
-  LinksPredecessorVersion = '_links___predecessor_version',
-  LinksPredecessorVersionWordpressId = '_links___predecessor_version___wordpress_id',
-  LinksPredecessorVersionHref = '_links___predecessor_version___href',
-  LinksWpAttachment = '_links___wp_attachment',
-  LinksWpAttachmentHref = '_links___wp_attachment___href',
-  LinksWpTerm = '_links___wp_term',
-  LinksWpTermTaxonomy = '_links___wp_term___taxonomy',
-  LinksWpTermEmbeddable = '_links___wp_term___embeddable',
-  LinksWpTermHref = '_links___wp_term___href',
-  LinksCuries = '_links___curies',
-  LinksCuriesName = '_links___curies___name',
-  LinksCuriesHref = '_links___curies___href',
-  LinksCuriesTemplated = '_links___curies___templated',
-  LinksWpFeaturedmedia = '_links___wp_featuredmedia',
-  LinksWpFeaturedmediaEmbeddable = '_links___wp_featuredmedia___embeddable',
-  LinksWpFeaturedmediaHref = '_links___wp_featuredmedia___href',
+  TagsYoastTitle = 'tags___yoast_title',
+  TagsYoastMeta = 'tags___yoast_meta',
+  TagsYoastMetaName = 'tags___yoast_meta___name',
+  TagsYoastMetaContent = 'tags___yoast_meta___content',
+  TagsYoastMetaProperty = 'tags___yoast_meta___property',
   Path = 'path',
   Source = 'source'
 }
@@ -2231,8 +2463,11 @@ export type Wordpress__PostFilterInput = {
   template?: Maybe<StringQueryOperatorInput>;
   format?: Maybe<StringQueryOperatorInput>;
   categories?: Maybe<IntQueryOperatorInput>;
-  tags?: Maybe<Wordpress__TagFilterListInput>;
+  yoast_title?: Maybe<StringQueryOperatorInput>;
+  yoast_meta?: Maybe<Wordpress__PostYoast_MetaFilterListInput>;
+  yoast_json_ld?: Maybe<Wordpress__PostYoast_Json_LdFilterListInput>;
   _links?: Maybe<Wordpress__Post_LinksFilterInput>;
+  tags?: Maybe<Wordpress__TagFilterListInput>;
   path?: Maybe<StringQueryOperatorInput>;
   source?: Maybe<StringQueryOperatorInput>;
 };
@@ -2250,6 +2485,207 @@ export type Wordpress__PostGroupConnection = {
 export type Wordpress__PostSortInput = {
   fields?: Maybe<Array<Maybe<Wordpress__PostFieldsEnum>>>;
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
+
+export type Wordpress__PostYoast_Json_Ld = {
+   __typename?: 'wordpress__POSTYoast_json_ld';
+  wordpress__context?: Maybe<Scalars['String']>;
+  wordpress__graph?: Maybe<Array<Maybe<Wordpress__PostYoast_Json_LdWordpress__Graph>>>;
+};
+
+export type Wordpress__PostYoast_Json_LdFilterInput = {
+  wordpress__context?: Maybe<StringQueryOperatorInput>;
+  wordpress__graph?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphFilterListInput>;
+};
+
+export type Wordpress__PostYoast_Json_LdFilterListInput = {
+  elemMatch?: Maybe<Wordpress__PostYoast_Json_LdFilterInput>;
+};
+
+export type Wordpress__PostYoast_Json_LdWordpress__Graph = {
+   __typename?: 'wordpress__POSTYoast_json_ldWordpress__graph';
+  wordpress__id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
+  sameAs?: Maybe<Array<Maybe<Scalars['String']>>>;
+  logo?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphLogo>;
+  image?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphImage>;
+  inLanguage?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  publisher?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphPublisher>;
+  potentialAction?: Maybe<Array<Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphPotentialAction>>>;
+  isPartOf?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphIsPartOf>;
+  datePublished?: Maybe<Scalars['Date']>;
+  dateModified?: Maybe<Scalars['Date']>;
+  author?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphAuthor>;
+  headline?: Maybe<Scalars['String']>;
+  commentCount?: Maybe<Scalars['Int']>;
+  mainEntityOfPage?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphMainEntityOfPage>;
+  keywords?: Maybe<Scalars['String']>;
+  primaryImageOfPage?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphPrimaryImageOfPage>;
+  articleSection?: Maybe<Scalars['String']>;
+  width?: Maybe<Scalars['Int']>;
+  height?: Maybe<Scalars['Int']>;
+};
+
+
+export type Wordpress__PostYoast_Json_LdWordpress__GraphDatePublishedArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+
+export type Wordpress__PostYoast_Json_LdWordpress__GraphDateModifiedArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type Wordpress__PostYoast_Json_LdWordpress__GraphAuthor = {
+   __typename?: 'wordpress__POSTYoast_json_ldWordpress__graphAuthor';
+  wordpress__id?: Maybe<Scalars['String']>;
+};
+
+export type Wordpress__PostYoast_Json_LdWordpress__GraphAuthorFilterInput = {
+  wordpress__id?: Maybe<StringQueryOperatorInput>;
+};
+
+export type Wordpress__PostYoast_Json_LdWordpress__GraphFilterInput = {
+  wordpress__id?: Maybe<StringQueryOperatorInput>;
+  name?: Maybe<StringQueryOperatorInput>;
+  url?: Maybe<StringQueryOperatorInput>;
+  sameAs?: Maybe<StringQueryOperatorInput>;
+  logo?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphLogoFilterInput>;
+  image?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphImageFilterInput>;
+  inLanguage?: Maybe<StringQueryOperatorInput>;
+  description?: Maybe<StringQueryOperatorInput>;
+  publisher?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphPublisherFilterInput>;
+  potentialAction?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphPotentialActionFilterListInput>;
+  isPartOf?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphIsPartOfFilterInput>;
+  datePublished?: Maybe<DateQueryOperatorInput>;
+  dateModified?: Maybe<DateQueryOperatorInput>;
+  author?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphAuthorFilterInput>;
+  headline?: Maybe<StringQueryOperatorInput>;
+  commentCount?: Maybe<IntQueryOperatorInput>;
+  mainEntityOfPage?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphMainEntityOfPageFilterInput>;
+  keywords?: Maybe<StringQueryOperatorInput>;
+  primaryImageOfPage?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphPrimaryImageOfPageFilterInput>;
+  articleSection?: Maybe<StringQueryOperatorInput>;
+  width?: Maybe<IntQueryOperatorInput>;
+  height?: Maybe<IntQueryOperatorInput>;
+};
+
+export type Wordpress__PostYoast_Json_LdWordpress__GraphFilterListInput = {
+  elemMatch?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphFilterInput>;
+};
+
+export type Wordpress__PostYoast_Json_LdWordpress__GraphImage = {
+   __typename?: 'wordpress__POSTYoast_json_ldWordpress__graphImage';
+  wordpress__id?: Maybe<Scalars['String']>;
+  wordpress__type?: Maybe<Scalars['String']>;
+  inLanguage?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
+  caption?: Maybe<Scalars['String']>;
+};
+
+export type Wordpress__PostYoast_Json_LdWordpress__GraphImageFilterInput = {
+  wordpress__id?: Maybe<StringQueryOperatorInput>;
+  wordpress__type?: Maybe<StringQueryOperatorInput>;
+  inLanguage?: Maybe<StringQueryOperatorInput>;
+  url?: Maybe<StringQueryOperatorInput>;
+  caption?: Maybe<StringQueryOperatorInput>;
+};
+
+export type Wordpress__PostYoast_Json_LdWordpress__GraphIsPartOf = {
+   __typename?: 'wordpress__POSTYoast_json_ldWordpress__graphIsPartOf';
+  wordpress__id?: Maybe<Scalars['String']>;
+};
+
+export type Wordpress__PostYoast_Json_LdWordpress__GraphIsPartOfFilterInput = {
+  wordpress__id?: Maybe<StringQueryOperatorInput>;
+};
+
+export type Wordpress__PostYoast_Json_LdWordpress__GraphLogo = {
+   __typename?: 'wordpress__POSTYoast_json_ldWordpress__graphLogo';
+  wordpress__type?: Maybe<Scalars['String']>;
+  wordpress__id?: Maybe<Scalars['String']>;
+  inLanguage?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
+  width?: Maybe<Scalars['Int']>;
+  height?: Maybe<Scalars['Int']>;
+  caption?: Maybe<Scalars['String']>;
+};
+
+export type Wordpress__PostYoast_Json_LdWordpress__GraphLogoFilterInput = {
+  wordpress__type?: Maybe<StringQueryOperatorInput>;
+  wordpress__id?: Maybe<StringQueryOperatorInput>;
+  inLanguage?: Maybe<StringQueryOperatorInput>;
+  url?: Maybe<StringQueryOperatorInput>;
+  width?: Maybe<IntQueryOperatorInput>;
+  height?: Maybe<IntQueryOperatorInput>;
+  caption?: Maybe<StringQueryOperatorInput>;
+};
+
+export type Wordpress__PostYoast_Json_LdWordpress__GraphMainEntityOfPage = {
+   __typename?: 'wordpress__POSTYoast_json_ldWordpress__graphMainEntityOfPage';
+  wordpress__id?: Maybe<Scalars['String']>;
+};
+
+export type Wordpress__PostYoast_Json_LdWordpress__GraphMainEntityOfPageFilterInput = {
+  wordpress__id?: Maybe<StringQueryOperatorInput>;
+};
+
+export type Wordpress__PostYoast_Json_LdWordpress__GraphPotentialAction = {
+   __typename?: 'wordpress__POSTYoast_json_ldWordpress__graphPotentialAction';
+  wordpress__type?: Maybe<Scalars['String']>;
+  query_input?: Maybe<Scalars['String']>;
+};
+
+export type Wordpress__PostYoast_Json_LdWordpress__GraphPotentialActionFilterInput = {
+  wordpress__type?: Maybe<StringQueryOperatorInput>;
+  query_input?: Maybe<StringQueryOperatorInput>;
+};
+
+export type Wordpress__PostYoast_Json_LdWordpress__GraphPotentialActionFilterListInput = {
+  elemMatch?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphPotentialActionFilterInput>;
+};
+
+export type Wordpress__PostYoast_Json_LdWordpress__GraphPrimaryImageOfPage = {
+   __typename?: 'wordpress__POSTYoast_json_ldWordpress__graphPrimaryImageOfPage';
+  wordpress__id?: Maybe<Scalars['String']>;
+};
+
+export type Wordpress__PostYoast_Json_LdWordpress__GraphPrimaryImageOfPageFilterInput = {
+  wordpress__id?: Maybe<StringQueryOperatorInput>;
+};
+
+export type Wordpress__PostYoast_Json_LdWordpress__GraphPublisher = {
+   __typename?: 'wordpress__POSTYoast_json_ldWordpress__graphPublisher';
+  wordpress__id?: Maybe<Scalars['String']>;
+};
+
+export type Wordpress__PostYoast_Json_LdWordpress__GraphPublisherFilterInput = {
+  wordpress__id?: Maybe<StringQueryOperatorInput>;
+};
+
+export type Wordpress__PostYoast_Meta = {
+   __typename?: 'wordpress__POSTYoast_meta';
+  name?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']>;
+  property?: Maybe<Scalars['String']>;
+};
+
+export type Wordpress__PostYoast_MetaFilterInput = {
+  name?: Maybe<StringQueryOperatorInput>;
+  content?: Maybe<StringQueryOperatorInput>;
+  property?: Maybe<StringQueryOperatorInput>;
+};
+
+export type Wordpress__PostYoast_MetaFilterListInput = {
+  elemMatch?: Maybe<Wordpress__PostYoast_MetaFilterInput>;
 };
 
 export type Wordpress__Site_Metadata = Node & {
@@ -2424,9 +2860,11 @@ export type Wordpress__Tag = Node & {
   link?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
-  taxonomy?: Maybe<Wordpress__Wp_Taxonomies>;
   _links?: Maybe<Wordpress__Tag_Links>;
+  taxonomy?: Maybe<Wordpress__Wp_Taxonomies>;
   path?: Maybe<Scalars['String']>;
+  yoast_title?: Maybe<Scalars['String']>;
+  yoast_meta?: Maybe<Array<Maybe<Wordpress__TagYoast_Meta>>>;
 };
 
 export type Wordpress__Tag_Links = {
@@ -2637,6 +3075,18 @@ export enum Wordpress__TagFieldsEnum {
   Link = 'link',
   Name = 'name',
   Slug = 'slug',
+  LinksSelf = '_links___self',
+  LinksSelfHref = '_links___self___href',
+  LinksCollection = '_links___collection',
+  LinksCollectionHref = '_links___collection___href',
+  LinksAbout = '_links___about',
+  LinksAboutHref = '_links___about___href',
+  LinksWpPostType = '_links___wp_post_type',
+  LinksWpPostTypeHref = '_links___wp_post_type___href',
+  LinksCuries = '_links___curies',
+  LinksCuriesName = '_links___curies___name',
+  LinksCuriesHref = '_links___curies___href',
+  LinksCuriesTemplated = '_links___curies___templated',
   TaxonomyId = 'taxonomy___id',
   TaxonomyParentId = 'taxonomy___parent___id',
   TaxonomyParentParentId = 'taxonomy___parent___parent___id',
@@ -2690,19 +3140,12 @@ export enum Wordpress__TagFieldsEnum {
   TaxonomyLinksCuriesName = 'taxonomy____links___curies___name',
   TaxonomyLinksCuriesHref = 'taxonomy____links___curies___href',
   TaxonomyLinksCuriesTemplated = 'taxonomy____links___curies___templated',
-  LinksSelf = '_links___self',
-  LinksSelfHref = '_links___self___href',
-  LinksCollection = '_links___collection',
-  LinksCollectionHref = '_links___collection___href',
-  LinksAbout = '_links___about',
-  LinksAboutHref = '_links___about___href',
-  LinksWpPostType = '_links___wp_post_type',
-  LinksWpPostTypeHref = '_links___wp_post_type___href',
-  LinksCuries = '_links___curies',
-  LinksCuriesName = '_links___curies___name',
-  LinksCuriesHref = '_links___curies___href',
-  LinksCuriesTemplated = '_links___curies___templated',
-  Path = 'path'
+  Path = 'path',
+  YoastTitle = 'yoast_title',
+  YoastMeta = 'yoast_meta',
+  YoastMetaName = 'yoast_meta___name',
+  YoastMetaContent = 'yoast_meta___content',
+  YoastMetaProperty = 'yoast_meta___property'
 }
 
 export type Wordpress__TagFilterInput = {
@@ -2716,9 +3159,11 @@ export type Wordpress__TagFilterInput = {
   link?: Maybe<StringQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
-  taxonomy?: Maybe<Wordpress__Wp_TaxonomiesFilterInput>;
   _links?: Maybe<Wordpress__Tag_LinksFilterInput>;
+  taxonomy?: Maybe<Wordpress__Wp_TaxonomiesFilterInput>;
   path?: Maybe<StringQueryOperatorInput>;
+  yoast_title?: Maybe<StringQueryOperatorInput>;
+  yoast_meta?: Maybe<Wordpress__TagYoast_MetaFilterListInput>;
 };
 
 export type Wordpress__TagFilterListInput = {
@@ -2738,6 +3183,23 @@ export type Wordpress__TagGroupConnection = {
 export type Wordpress__TagSortInput = {
   fields?: Maybe<Array<Maybe<Wordpress__TagFieldsEnum>>>;
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
+
+export type Wordpress__TagYoast_Meta = {
+   __typename?: 'wordpress__TAGYoast_meta';
+  name?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']>;
+  property?: Maybe<Scalars['String']>;
+};
+
+export type Wordpress__TagYoast_MetaFilterInput = {
+  name?: Maybe<StringQueryOperatorInput>;
+  content?: Maybe<StringQueryOperatorInput>;
+  property?: Maybe<StringQueryOperatorInput>;
+};
+
+export type Wordpress__TagYoast_MetaFilterListInput = {
+  elemMatch?: Maybe<Wordpress__TagYoast_MetaFilterInput>;
 };
 
 export type Wordpress__Wp_Taxonomies = Node & {
@@ -3018,16 +3480,16 @@ export type PostFragment = (
   )>>> }
 );
 
-export type Unnamed_1_QueryVariables = {};
+export type SeoComponentQueryVariables = {};
 
 
-export type Unnamed_1_Query = (
+export type SeoComponentQuery = (
   { __typename?: 'Query' }
   & { site?: Maybe<(
     { __typename?: 'Site' }
     & { siteMetadata?: Maybe<(
       { __typename?: 'SiteSiteMetadata' }
-      & Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>
+      & Pick<SiteSiteMetadata, 'siteUrl'>
     )> }
   )> }
 );
@@ -3046,22 +3508,33 @@ export type IndexPageQuery = (
       { __typename?: 'PageInfo' }
       & Pick<PageInfo, 'hasNextPage'>
     ) }
-  ), wordpressSiteMetadata?: Maybe<(
+  ), wordpressPage?: Maybe<(
+    { __typename?: 'wordpress__PAGE' }
+    & Pick<Wordpress__Page, 'yoast_title'>
+    & { yoast_meta?: Maybe<Array<Maybe<(
+      { __typename?: 'wordpress__PAGEYoast_meta' }
+      & Pick<Wordpress__PageYoast_Meta, 'content' | 'name' | 'property'>
+    )>>> }
+  )>, wordpressSiteMetadata?: Maybe<(
     { __typename?: 'wordpress__site_metadata' }
     & Pick<Wordpress__Site_Metadata, 'description'>
   )> }
 );
 
-export type Unnamed_2_QueryVariables = {
+export type PageQueryVariables = {
   id: Scalars['Int'];
 };
 
 
-export type Unnamed_2_Query = (
+export type PageQuery = (
   { __typename?: 'Query' }
   & { wordpressPage?: Maybe<(
     { __typename?: 'wordpress__PAGE' }
-    & Pick<Wordpress__Page, 'title' | 'excerpt' | 'content'>
+    & Pick<Wordpress__Page, 'title' | 'content' | 'yoast_title'>
+    & { yoast_meta?: Maybe<Array<Maybe<(
+      { __typename?: 'wordpress__PAGEYoast_meta' }
+      & Pick<Wordpress__PageYoast_Meta, 'content' | 'name' | 'property'>
+    )>>> }
   )> }
 );
 
@@ -3074,7 +3547,11 @@ export type TagPageQuery = (
   { __typename?: 'Query' }
   & { wordpressTag?: Maybe<(
     { __typename?: 'wordpress__TAG' }
-    & Pick<Wordpress__Tag, 'count' | 'description' | 'name' | 'slug'>
+    & Pick<Wordpress__Tag, 'count' | 'name' | 'slug' | 'yoast_title'>
+    & { yoast_meta?: Maybe<Array<Maybe<(
+      { __typename?: 'wordpress__TAGYoast_meta' }
+      & Pick<Wordpress__TagYoast_Meta, 'content' | 'name' | 'property'>
+    )>>> }
   )>, allWordpressPost: (
     { __typename?: 'wordpress__POSTConnection' }
     & { nodes: Array<(

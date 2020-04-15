@@ -9,8 +9,7 @@ module.exports = {
   siteMetadata: {
     title: 'Cascading News',
     author: 'Vincent Ballut',
-    description: 'n/a',
-    siteUrl: 'https://www.cascaing-news.com',
+    siteUrl: 'https://www.cascading-news.com',
     social: {
       twitter: 'cascadingnews',
     },
@@ -53,10 +52,10 @@ module.exports = {
         // Set how many pages are retrieved per API request.
         perPage: 20,
         // Search and Replace Urls across WordPress content.
-        searchAndReplaceContentUrls: {
-          sourceUrl: `${process.env.GATSBY_WP_PROTOCOL}://${process.env.GATSBY_WP_URL}`,
-          replacementUrl: process.env.GATSBY_REPLACEMENT_URL,
-        },
+        // searchAndReplaceContentUrls: {
+        //   sourceUrl: `${process.env.GATSBY_WP_PROTOCOL}://${process.env.GATSBY_WP_URL}`,
+        //   replacementUrl: process.env.GATSBY_REPLACEMENT_URL,
+        // },
         // Set how many simultaneous requests are sent at once.
         concurrentRequests: 10,
         includedRoutes: [

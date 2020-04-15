@@ -5,36 +5,44 @@ import { graphql } from 'gatsby';
 import { PageContent, PageTitle } from 'src/components/base';
 import Layout from 'src/components/layout';
 import SEO from 'src/components/seo';
-import { Wordpress__Page } from 'src/generated/graphql';
+import { PageQuery } from 'src/generated/graphql';
 import NotFoundPage from 'src/pages/404';
 
 type Props = {
-  data: { wordpressPage: Wordpress__Page };
+  data: PageQuery;
+  location: Location;
 };
-const Page = ({ data }: Props) => {
-  const { content, excerpt, title } = data.wordpressPage;
-
-  if (!title || !content) {
+const Page = ({ data, location }: Props) => {
+  if (!data.wordpressPage?.title || !data.wordpressPage?.content) {
     return <NotFoundPage />;
   }
 
   return (
     <Layout>
-      <SEO title={title} description={excerpt || undefined} />
+      <SEO
+        title={data.wordpressPage?.yoast_title}
+        meta={data.wordpressPage?.yoast_meta}
+        pathname={location.pathname}
+      />
       <PageContent>
-        <PageTitle>{title}</PageTitle>
-        <div dangerouslySetInnerHTML={{ __html: content }} />
+        <PageTitle>{data.wordpressPage?.title}</PageTitle>
+        <div dangerouslySetInnerHTML={{ __html: data.wordpressPage?.content }} />
       </PageContent>
     </Layout>
   );
 };
 
 export const query = graphql`
-  query($id: Int!) {
+  query Page($id: Int!) {
     wordpressPage(wordpress_id: { eq: $id }) {
       title
-      excerpt
       content
+      yoast_title
+      yoast_meta {
+        content
+        name
+        property
+      }
     }
   }
 `;
