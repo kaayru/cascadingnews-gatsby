@@ -11,7 +11,8 @@ module.exports = {
     author: 'Vincent Ballut',
     siteUrl: 'https://www.cascading-news.com',
     social: {
-      twitter: 'cascadingnews',
+      twitter: 'https://twitter.com/cascadingnews',
+      github: 'https://github.com/kaayru/cascadingnews-gatsby',
     },
     menuLinks: [
       {
@@ -130,6 +131,14 @@ module.exports = {
           },
         ],
         crossOrigin: 'use-credentials',
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /assets/,
+        },
       },
     },
   ],
