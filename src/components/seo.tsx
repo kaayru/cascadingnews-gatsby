@@ -15,7 +15,7 @@ type Props = {
   lang?: string;
   meta?: Maybe<Array<Maybe<Wordpress__PageYoast_Meta>>> | null;
   title?: string | null;
-  pathname?: string;
+  path: string;
 };
 
 const fixMetaOgUrl = (meta: Maybe<Wordpress__PageYoast_Meta>, url?: string) =>
@@ -32,14 +32,14 @@ const fixMetaTypes = (meta: Maybe<Wordpress__PageYoast_Meta>) => ({
   ...(meta?.property ? { property: meta.property } : null),
 });
 
-const SEO = ({ lang = 'en', meta, title, pathname }: Props) => {
+const SEO = ({ lang = 'en', meta, title, path }: Props) => {
   if (!title) {
     throw new Error('Missing title in SEO component');
   }
 
-  if (!pathname) {
-    throw new Error('Missing pathname in SEO component');
-  }
+  // if (!pathname) {
+  //   throw new Error('Missing pathname in SEO component');
+  // }
 
   const { site } = useStaticQuery<SeoComponentQuery>(
     graphql`
@@ -53,7 +53,7 @@ const SEO = ({ lang = 'en', meta, title, pathname }: Props) => {
     `,
   );
 
-  const url = `${site?.siteMetadata?.siteUrl}${pathname}`;
+  const url = `${site?.siteMetadata?.siteUrl}${path}`;
 
   return (
     <Helmet

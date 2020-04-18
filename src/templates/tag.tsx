@@ -12,9 +12,9 @@ import { useLoadMore } from 'src/hooks/useLoadMore';
 
 type Props = {
   data: TagPageQuery;
-  location: Location;
+  path: string;
 };
-const Tag = ({ data, location }: Props) => {
+const Tag = ({ data, path }: Props) => {
   const tagData = data.wordpressTag;
 
   const { loadNextPage, postsData, pageInfo } = useLoadMore({
@@ -24,12 +24,12 @@ const Tag = ({ data, location }: Props) => {
   });
 
   if (!tagData || !tagData.name) {
-    return <NotFoundPage />;
+    return <NotFoundPage path={path} />;
   }
 
   return (
     <Layout>
-      <SEO title={tagData?.yoast_title} meta={tagData?.yoast_meta} pathname={location.pathname} />
+      <SEO title={tagData?.yoast_title} meta={tagData?.yoast_meta} path={path} />
       <PageTitle>
         {tagData.name} <Count>({tagData.count} articles)</Count>
       </PageTitle>
