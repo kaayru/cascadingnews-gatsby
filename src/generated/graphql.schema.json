@@ -1016,6 +1016,16 @@
                 "defaultValue": null
               },
               {
+                "name": "isVideo",
+                "description": "",
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "BooleanQueryOperatorInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
                 "name": "tags",
                 "description": "",
                 "type": {
@@ -13009,6 +13019,18 @@
             "deprecationReason": null
           },
           {
+            "name": "isVideo",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "tags",
             "description": "",
             "args": [],
@@ -15473,6 +15495,16 @@
             "defaultValue": null
           },
           {
+            "name": "isVideo",
+            "description": "",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "BooleanQueryOperatorInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "tags",
             "description": "",
             "type": {
@@ -16604,6 +16636,12 @@
           },
           {
             "name": "source",
+            "description": "",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "isVideo",
             "description": "",
             "isDeprecated": false,
             "deprecationReason": null

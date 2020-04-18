@@ -90,4 +90,22 @@ describe('Normalizer', () => {
     });
     expect(posts[0]).toEqual(entities[0]);
   });
+
+  it('Should set isVideo to true if link is a video provider', () => {
+    const entities = [{ __type: 'wordpress__POST', link: 'https://www.youtube.com/some-video-id' }];
+    const posts = normalizer({
+      entities,
+    });
+    expect(posts[0]).toEqual(expect.objectContaining({ isVideo: true }));
+  });
+
+  it('Should set isVideo to false if link is not a video provider', () => {
+    const entities = [
+      { __type: 'wordpress__POST', link: 'https://www.domain.com/another-article-on-js-fatigue' },
+    ];
+    const posts = normalizer({
+      entities,
+    });
+    expect(posts[0]).toEqual(expect.objectContaining({ isVideo: false }));
+  });
 });

@@ -70,7 +70,7 @@ const Hint = styled.a`
 type Props = {
   post: PostFragment;
 };
-const Post = ({ post: { date, link, source, tags = [], title, wordpress_id } }: Props) => {
+const Post = ({ post: { date, isVideo, link, source, tags = [], title, wordpress_id } }: Props) => {
   if (!link || !title || !wordpress_id) return null;
 
   return (
@@ -86,6 +86,11 @@ const Post = ({ post: { date, link, source, tags = [], title, wordpress_id } }: 
 
       <h2 style={{ marginTop: 0 }}>
         <PostLink href={link} target="_blank" rel="noopener noreferrer nofollow" title={title}>
+          {isVideo && (
+            <span role="img" aria-label="play icon" style={{ marginRight: 10 }}>
+              ▶️
+            </span>
+          )}
           {title}
         </PostLink>
       </h2>
@@ -109,6 +114,7 @@ export default Post;
 
 export const postFragment = graphql`
   fragment Post on wordpress__POST {
+    isVideo
     link
     source
     title
