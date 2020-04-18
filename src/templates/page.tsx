@@ -10,11 +10,11 @@ import NotFoundPage from 'src/pages/404';
 
 type Props = {
   data: PageQuery;
-  location: Location;
+  path: string;
 };
-const Page = ({ data, location }: Props) => {
+const Page = ({ data, path }: Props) => {
   if (!data.wordpressPage?.title || !data.wordpressPage?.content) {
-    return <NotFoundPage />;
+    return <NotFoundPage path={path} />;
   }
 
   return (
@@ -22,7 +22,7 @@ const Page = ({ data, location }: Props) => {
       <SEO
         title={data.wordpressPage?.yoast_title}
         meta={data.wordpressPage?.yoast_meta}
-        pathname={location.pathname}
+        path={path}
       />
       <PageContent>
         <PageTitle>{data.wordpressPage?.title}</PageTitle>

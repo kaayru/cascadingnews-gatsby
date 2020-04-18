@@ -10,9 +10,9 @@ import { notEmpty } from 'src/utils/typeUtils';
 
 type Props = {
   data: IndexPageQuery;
-  location: Location;
+  path: string;
 };
-const IndexPage = ({ data, location }: Props) => {
+const IndexPage = ({ data, path }: Props) => {
   const { loadNextPage, postsData, pageInfo } = useLoadMore({
     initialPageInfo: data.allWordpressPost.pageInfo,
     initialPostsData: data.allWordpressPost.nodes.filter(notEmpty),
@@ -24,7 +24,7 @@ const IndexPage = ({ data, location }: Props) => {
       <SEO
         title={data.wordpressPage?.yoast_title}
         meta={data.wordpressPage?.yoast_meta}
-        pathname={location.pathname}
+        path={path}
       />
       <PageTitle>
         <span role="img" aria-label="rocket emoji">
