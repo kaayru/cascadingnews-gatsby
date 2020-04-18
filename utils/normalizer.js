@@ -9,6 +9,16 @@ const getDomainFromLink = link => {
 
 const forceSecureLink = link => link.replace('http://', 'https://');
 
+const isVideoLink = link => {
+  try {
+    const videoProviders = ['www.youtube.com'];
+    const { hostname } = new URL(link);
+    return videoProviders.some(provider => hostname === provider);
+  } catch (e) {
+    return false;
+  }
+};
+
 export const normalizer = ({ entities }) => {
   const masterTagPage = entities.find(
     entity => entity.__type === 'wordpress__PAGE' && entity.slug === 'tag-page',
@@ -22,6 +32,7 @@ export const normalizer = ({ entities }) => {
         ...entity,
         source: getDomainFromLink(entity.link),
         link: forceSecureLink(entity.link),
+        isVideo: isVideoLink(entity.link),
       };
     }
 

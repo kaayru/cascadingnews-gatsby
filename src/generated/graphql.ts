@@ -225,6 +225,7 @@ export type QueryWordpressPostArgs = {
   _links?: Maybe<Wordpress__Post_LinksFilterInput>;
   path?: Maybe<StringQueryOperatorInput>;
   source?: Maybe<StringQueryOperatorInput>;
+  isVideo?: Maybe<BooleanQueryOperatorInput>;
   tags?: Maybe<Wordpress__TagFilterListInput>;
 };
 
@@ -1963,6 +1964,7 @@ export type Wordpress__Post = Node & {
   _links?: Maybe<Wordpress__Post_Links>;
   path?: Maybe<Scalars['String']>;
   source?: Maybe<Scalars['String']>;
+  isVideo?: Maybe<Scalars['Boolean']>;
   tags?: Maybe<Array<Maybe<Wordpress__Tag>>>;
 };
 
@@ -2377,6 +2379,7 @@ export enum Wordpress__PostFieldsEnum {
   LinksWpFeaturedmediaHref = '_links___wp_featuredmedia___href',
   Path = 'path',
   Source = 'source',
+  IsVideo = 'isVideo',
   Tags = 'tags',
   TagsId = 'tags___id',
   TagsParentId = 'tags___parent___id',
@@ -2495,6 +2498,7 @@ export type Wordpress__PostFilterInput = {
   _links?: Maybe<Wordpress__Post_LinksFilterInput>;
   path?: Maybe<StringQueryOperatorInput>;
   source?: Maybe<StringQueryOperatorInput>;
+  isVideo?: Maybe<BooleanQueryOperatorInput>;
   tags?: Maybe<Wordpress__TagFilterListInput>;
 };
 
@@ -3503,7 +3507,7 @@ export type SiteLayoutQuery = { __typename?: 'Query' } & {
 
 export type PostFragment = { __typename?: 'wordpress__POST' } & Pick<
   Wordpress__Post,
-  'link' | 'source' | 'title' | 'wordpress_id' | 'date'
+  'isVideo' | 'link' | 'source' | 'title' | 'wordpress_id' | 'date'
 > & {
     tags?: Maybe<
       Array<Maybe<{ __typename?: 'wordpress__TAG' } & Pick<Wordpress__Tag, 'id' | 'name' | 'slug'>>>
