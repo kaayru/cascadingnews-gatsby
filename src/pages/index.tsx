@@ -10,8 +10,9 @@ import { notEmpty } from 'src/utils/typeUtils';
 
 type Props = {
   data: IndexPageQuery;
+  path: string;
 };
-const IndexPage = ({ data }: Props) => {
+const IndexPage = ({ data, path }: Props) => {
   const { loadNextPage, postsData, pageInfo } = useLoadMore({
     initialPageInfo: data.allWordpressPost.pageInfo,
     initialPostsData: data.allWordpressPost.nodes.filter(notEmpty),
@@ -20,7 +21,11 @@ const IndexPage = ({ data }: Props) => {
 
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO
+        title={data.wordpressPage?.yoast_title}
+        meta={data.wordpressPage?.yoast_meta}
+        path={path}
+      />
       <PageTitle>
         <span role="img" aria-label="rocket emoji">
           🚀
@@ -58,6 +63,14 @@ export const query = graphql`
       }
       pageInfo {
         hasNextPage
+      }
+    }
+    wordpressPage(slug: { eq: "home" }) {
+      yoast_title
+      yoast_meta {
+        content
+        name
+        property
       }
     }
     wordpressSiteMetadata {

@@ -57,4 +57,55 @@ describe('Normalizer', () => {
     });
     expect(posts[0]).toEqual(entities[0]);
   });
+
+  it('Should set yoast_title and yoast_meta on tag pages', () => {
+    const entities = [
+      {
+        __type: 'wordpress__PAGE',
+        slug: 'tag-page',
+        yoast_meta: [
+          { name: 'description', content: 'some content for description for {tagName}' },
+        ],
+        yoast_title: 'some title for {tagName}',
+      },
+      { __type: 'wordpress__TAG', name: 'React Native' },
+    ];
+    const posts = normalizer({
+      entities,
+    });
+    expect(posts[1]).toEqual(
+      expect.objectContaining({
+        yoast_title: 'some title for React Native',
+        yoast_meta: [
+          { name: 'description', content: 'some content for description for React Native' },
+        ],
+      }),
+    );
+  });
+
+  it('Should not set yoast attributes if master tag page is not found', () => {
+    const entities = [{ __type: 'wordpress__TAG', name: 'React Native' }];
+    const posts = normalizer({
+      entities,
+    });
+    expect(posts[0]).toEqual(entities[0]);
+  });
+
+  it('Should set isVideo to true if link is a video provider', () => {
+    const entities = [{ __type: 'wordpress__POST', link: 'https://www.youtube.com/some-video-id' }];
+    const posts = normalizer({
+      entities,
+    });
+    expect(posts[0]).toEqual(expect.objectContaining({ isVideo: true }));
+  });
+
+  it('Should set isVideo to false if link is not a video provider', () => {
+    const entities = [
+      { __type: 'wordpress__POST', link: 'https://www.domain.com/another-article-on-js-fatigue' },
+    ];
+    const posts = normalizer({
+      entities,
+    });
+    expect(posts[0]).toEqual(expect.objectContaining({ isVideo: false }));
+  });
 });

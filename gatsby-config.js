@@ -9,10 +9,10 @@ module.exports = {
   siteMetadata: {
     title: 'Cascading News',
     author: 'Vincent Ballut',
-    description: 'n/a',
-    siteUrl: 'https://www.cascaing-news.com',
+    siteUrl: 'https://www.cascading-news.com',
     social: {
-      twitter: 'cascadingnews',
+      twitter: 'https://twitter.com/cascadingnews',
+      github: 'https://github.com/kaayru/cascadingnews-gatsby',
     },
     menuLinks: [
       {
@@ -53,10 +53,10 @@ module.exports = {
         // Set how many pages are retrieved per API request.
         perPage: 20,
         // Search and Replace Urls across WordPress content.
-        searchAndReplaceContentUrls: {
-          sourceUrl: `${process.env.GATSBY_WP_PROTOCOL}://${process.env.GATSBY_WP_URL}`,
-          replacementUrl: process.env.GATSBY_REPLACEMENT_URL,
-        },
+        // searchAndReplaceContentUrls: {
+        //   sourceUrl: `${process.env.GATSBY_WP_PROTOCOL}://${process.env.GATSBY_WP_URL}`,
+        //   replacementUrl: process.env.GATSBY_REPLACEMENT_URL,
+        // },
         // Set how many simultaneous requests are sent at once.
         concurrentRequests: 10,
         includedRoutes: [
@@ -98,5 +98,48 @@ module.exports = {
       },
     },
     'gatsby-plugin-styled-components',
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        exclude: ['/sample-page', '/tag-page', '/home'],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'Cascading News',
+        short_name: 'CN',
+        start_url: '/',
+        background_color: '#f7f7f7',
+        theme_color: '#ff483b',
+        display: 'standalone',
+        icons: [
+          {
+            src: 'static/favicon-app-192.png',
+            sizes: '192x192',
+            type: 'image/png',
+          },
+          {
+            src: 'static/favicon-app-256.png',
+            sizes: '256x256',
+            type: 'image/png',
+          },
+          {
+            src: 'static/favicon-app-512.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
+        ],
+        crossOrigin: 'use-credentials',
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /assets/,
+        },
+      },
+    },
   ],
 };

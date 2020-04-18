@@ -70,22 +70,27 @@ const Hint = styled.a`
 type Props = {
   post: PostFragment;
 };
-const Post = ({ post: { date, link, source, tags = [], title, wordpress_id } }: Props) => {
-  if (!link || !wordpress_id) return null;
+const Post = ({ post: { date, isVideo, link, source, tags = [], title, wordpress_id } }: Props) => {
+  if (!link || !title || !wordpress_id) return null;
 
   return (
     <Li key={wordpress_id}>
       <Hint
         href={link}
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener noreferrer nofollow"
         aria-hidden="true"
         tabIndex={-1}
       />
       {source && <Source>{source}</Source>}
 
       <h2 style={{ marginTop: 0 }}>
-        <PostLink href={link} target="_blank" rel="noopener noreferrer">
+        <PostLink href={link} target="_blank" rel="noopener noreferrer nofollow" title={title}>
+          {isVideo && (
+            <span role="img" aria-label="play icon" style={{ marginRight: 10 }}>
+              ▶️
+            </span>
+          )}
           {title}
         </PostLink>
       </h2>
@@ -109,6 +114,7 @@ export default Post;
 
 export const postFragment = graphql`
   fragment Post on wordpress__POST {
+    isVideo
     link
     source
     title

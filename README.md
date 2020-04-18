@@ -18,11 +18,22 @@ This site is built using **WordPress** for the backend, **Gatsby + React** for t
 ### 🔀 **Git flow**
 
 1. **Fork** the repo on GitHub.
-2. Create a **Feature branch** from `develop`.
+2. Create a **Feature branch** from `develop` (ex: `feature/add-cool-stuff`)
 3. **Commit** changes to this branch.
 4. **Push** your work back up to your fork.
 5. Submit a **Pull request** so that we can review your changes and merge it.
-6. Any Pull Request is automatically deployed on Netlify, see [Deploy Previews](https://app.netlify.com/sites/condescending-perlman-298bba/deploys?filter=deploy%20previews).
+
+Any Pull Request is automatically deployed on Netlify, see **[Deploy Previews](https://app.netlify.com/sites/condescending-perlman-298bba/deploys?filter=deploy%20previews)**.
+
+Once merged, **develop** branch is deployed on **Netlify**. All develop builts are accessible [here](https://app.netlify.com/sites/condescending-perlman-298bba/deploys?filter=develop).
+
+**`[For repository admins]`** How to publish a new release:
+
+1. Create a new **Release branch** from `develop` (ex: `release/1.5.0`)
+2. On this branch, **update version number** in `package.json` and proceed to **last fixes**.
+3. **Merge** the release branch on **master and develop**.
+
+Master branch in automatically built by **Netlify** and deployed on **cascading-news.com**. All master builts are accessible [here](https://app.netlify.com/sites/condescending-perlman-298bba/deploys?filter=master)
 
 ### ⚛️ **Set up**
 

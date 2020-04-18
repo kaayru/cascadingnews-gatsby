@@ -40,6 +40,10 @@ const Layout = ({ children }: Props) => {
             name
             link
           }
+          social {
+            twitter
+            github
+          }
         }
       }
       wordpressSiteMetadata {
@@ -50,7 +54,10 @@ const Layout = ({ children }: Props) => {
 
   return (
     <Fragment>
-      <Header menuLinks={data.site?.siteMetadata?.menuLinks} />
+      <Header
+        menuLinks={data.site?.siteMetadata?.menuLinks}
+        socialLinks={data.site?.siteMetadata?.social}
+      />
       <Main>{children}</Main>
       <Footer>
         © {new Date('2013').getFullYear()} - {new Date().getFullYear()}. Built with{' '}
