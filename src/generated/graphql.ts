@@ -17,7 +17,6 @@ export type BooleanQueryOperatorInput = {
   nin?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
 };
 
-
 export type DateQueryOperatorInput = {
   eq?: Maybe<Scalars['Date']>;
   ne?: Maybe<Scalars['Date']>;
@@ -30,7 +29,7 @@ export type DateQueryOperatorInput = {
 };
 
 export type Internal = {
-   __typename?: 'Internal';
+  __typename?: 'Internal';
   content?: Maybe<Scalars['String']>;
   contentDigest: Scalars['String'];
   description?: Maybe<Scalars['String']>;
@@ -63,7 +62,6 @@ export type IntQueryOperatorInput = {
   nin?: Maybe<Array<Maybe<Scalars['Int']>>>;
 };
 
-
 export type Node = {
   id: Scalars['ID'];
   parent?: Maybe<Node>;
@@ -83,7 +81,7 @@ export type NodeFilterListInput = {
 };
 
 export type PageInfo = {
-   __typename?: 'PageInfo';
+  __typename?: 'PageInfo';
   currentPage: Scalars['Int'];
   hasPreviousPage: Scalars['Boolean'];
   hasNextPage: Scalars['Boolean'];
@@ -93,7 +91,7 @@ export type PageInfo = {
 };
 
 export type Query = {
-   __typename?: 'Query';
+  __typename?: 'Query';
   sitePage?: Maybe<SitePage>;
   allSitePage: SitePageConnection;
   sitePlugin?: Maybe<SitePlugin>;
@@ -114,7 +112,6 @@ export type Query = {
   allWordpressPost: Wordpress__PostConnection;
 };
 
-
 export type QuerySitePageArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -131,14 +128,12 @@ export type QuerySitePageArgs = {
   componentPath?: Maybe<StringQueryOperatorInput>;
 };
 
-
 export type QueryAllSitePageArgs = {
   filter?: Maybe<SitePageFilterInput>;
   sort?: Maybe<SitePageSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
-
 
 export type QuerySitePluginArgs = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -156,14 +151,12 @@ export type QuerySitePluginArgs = {
   packageJson?: Maybe<SitePluginPackageJsonFilterInput>;
 };
 
-
 export type QueryAllSitePluginArgs = {
   filter?: Maybe<SitePluginFilterInput>;
   sort?: Maybe<SitePluginSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
-
 
 export type QuerySiteArgs = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -178,14 +171,12 @@ export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
 };
 
-
 export type QueryAllSiteArgs = {
   filter?: Maybe<SiteFilterInput>;
   sort?: Maybe<SiteSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
-
 
 export type QueryWordpressSiteMetadataArgs = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -198,14 +189,12 @@ export type QueryWordpressSiteMetadataArgs = {
   home?: Maybe<StringQueryOperatorInput>;
 };
 
-
 export type QueryAllWordpressSiteMetadataArgs = {
   filter?: Maybe<Wordpress__Site_MetadataFilterInput>;
   sort?: Maybe<Wordpress__Site_MetadataSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
-
 
 export type QueryWordpressPageArgs = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -236,14 +225,12 @@ export type QueryWordpressPageArgs = {
   path?: Maybe<StringQueryOperatorInput>;
 };
 
-
 export type QueryAllWordpressPageArgs = {
   filter?: Maybe<Wordpress__PageFilterInput>;
   sort?: Maybe<Wordpress__PageSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
-
 
 export type QueryWordpressWpTaxonomiesArgs = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -260,14 +247,12 @@ export type QueryWordpressWpTaxonomiesArgs = {
   _links?: Maybe<Wordpress__Wp_Taxonomies_LinksFilterInput>;
 };
 
-
 export type QueryAllWordpressWpTaxonomiesArgs = {
   filter?: Maybe<Wordpress__Wp_TaxonomiesFilterInput>;
   sort?: Maybe<Wordpress__Wp_TaxonomiesSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
-
 
 export type QueryWordpressTagArgs = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -287,14 +272,12 @@ export type QueryWordpressTagArgs = {
   yoast_meta?: Maybe<Wordpress__TagYoast_MetaFilterListInput>;
 };
 
-
 export type QueryAllWordpressTagArgs = {
   filter?: Maybe<Wordpress__TagFilterInput>;
   sort?: Maybe<Wordpress__TagSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
-
 
 export type QueryWordpressAcfOptionsArgs = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -304,14 +287,12 @@ export type QueryWordpressAcfOptionsArgs = {
   wordpress_id?: Maybe<StringQueryOperatorInput>;
 };
 
-
 export type QueryAllWordpressAcfOptionsArgs = {
   filter?: Maybe<Wordpress__Acf_OptionsFilterInput>;
   sort?: Maybe<Wordpress__Acf_OptionsSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
-
 
 export type QueryWordpressPostArgs = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -345,7 +326,6 @@ export type QueryWordpressPostArgs = {
   source?: Maybe<StringQueryOperatorInput>;
 };
 
-
 export type QueryAllWordpressPostArgs = {
   filter?: Maybe<Wordpress__PostFilterInput>;
   sort?: Maybe<Wordpress__PostSortInput>;
@@ -354,7 +334,7 @@ export type QueryAllWordpressPostArgs = {
 };
 
 export type Site = Node & {
-   __typename?: 'Site';
+  __typename?: 'Site';
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
@@ -367,7 +347,6 @@ export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
 };
 
-
 export type SiteBuildTimeArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
@@ -376,7 +355,7 @@ export type SiteBuildTimeArgs = {
 };
 
 export type SiteConnection = {
-   __typename?: 'SiteConnection';
+  __typename?: 'SiteConnection';
   totalCount: Scalars['Int'];
   edges: Array<SiteEdge>;
   nodes: Array<Site>;
@@ -385,11 +364,9 @@ export type SiteConnection = {
   group: Array<SiteGroupConnection>;
 };
 
-
 export type SiteConnectionDistinctArgs = {
   field: SiteFieldsEnum;
 };
-
 
 export type SiteConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -398,7 +375,7 @@ export type SiteConnectionGroupArgs = {
 };
 
 export type SiteEdge = {
-   __typename?: 'SiteEdge';
+  __typename?: 'SiteEdge';
   next?: Maybe<Site>;
   node: Site;
   previous?: Maybe<Site>;
@@ -502,7 +479,7 @@ export enum SiteFieldsEnum {
   Host = 'host',
   Polyfill = 'polyfill',
   PathPrefix = 'pathPrefix',
-  BuildTime = 'buildTime'
+  BuildTime = 'buildTime',
 }
 
 export type SiteFilterInput = {
@@ -519,7 +496,7 @@ export type SiteFilterInput = {
 };
 
 export type SiteGroupConnection = {
-   __typename?: 'SiteGroupConnection';
+  __typename?: 'SiteGroupConnection';
   totalCount: Scalars['Int'];
   edges: Array<SiteEdge>;
   nodes: Array<Site>;
@@ -529,7 +506,7 @@ export type SiteGroupConnection = {
 };
 
 export type SitePage = Node & {
-   __typename?: 'SitePage';
+  __typename?: 'SitePage';
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
@@ -546,7 +523,7 @@ export type SitePage = Node & {
 };
 
 export type SitePageConnection = {
-   __typename?: 'SitePageConnection';
+  __typename?: 'SitePageConnection';
   totalCount: Scalars['Int'];
   edges: Array<SitePageEdge>;
   nodes: Array<SitePage>;
@@ -555,11 +532,9 @@ export type SitePageConnection = {
   group: Array<SitePageGroupConnection>;
 };
 
-
 export type SitePageConnectionDistinctArgs = {
   field: SitePageFieldsEnum;
 };
-
 
 export type SitePageConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -568,7 +543,7 @@ export type SitePageConnectionGroupArgs = {
 };
 
 export type SitePageContext = {
-   __typename?: 'SitePageContext';
+  __typename?: 'SitePageContext';
   id?: Maybe<Scalars['Int']>;
 };
 
@@ -577,7 +552,7 @@ export type SitePageContextFilterInput = {
 };
 
 export type SitePageEdge = {
-   __typename?: 'SitePageEdge';
+  __typename?: 'SitePageEdge';
   next?: Maybe<SitePage>;
   node: SitePage;
   previous?: Maybe<SitePage>;
@@ -754,8 +729,7 @@ export enum SitePageFieldsEnum {
   PluginCreatorPackageJsonPeerDependenciesName = 'pluginCreator___packageJson___peerDependencies___name',
   PluginCreatorPackageJsonPeerDependenciesVersion = 'pluginCreator___packageJson___peerDependencies___version',
   PluginCreatorPackageJsonKeywords = 'pluginCreator___packageJson___keywords',
-  PluginCreatorId = 'pluginCreatorId',
-  ComponentPath = 'componentPath'
+  ComponentPath = 'componentPath',
 }
 
 export type SitePageFilterInput = {
@@ -775,7 +749,7 @@ export type SitePageFilterInput = {
 };
 
 export type SitePageGroupConnection = {
-   __typename?: 'SitePageGroupConnection';
+  __typename?: 'SitePageGroupConnection';
   totalCount: Scalars['Int'];
   edges: Array<SitePageEdge>;
   nodes: Array<SitePage>;
@@ -790,7 +764,7 @@ export type SitePageSortInput = {
 };
 
 export type SitePlugin = Node & {
-   __typename?: 'SitePlugin';
+  __typename?: 'SitePlugin';
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
@@ -807,7 +781,7 @@ export type SitePlugin = Node & {
 };
 
 export type SitePluginConnection = {
-   __typename?: 'SitePluginConnection';
+  __typename?: 'SitePluginConnection';
   totalCount: Scalars['Int'];
   edges: Array<SitePluginEdge>;
   nodes: Array<SitePlugin>;
@@ -816,11 +790,9 @@ export type SitePluginConnection = {
   group: Array<SitePluginGroupConnection>;
 };
 
-
 export type SitePluginConnectionDistinctArgs = {
   field: SitePluginFieldsEnum;
 };
-
 
 export type SitePluginConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -829,7 +801,7 @@ export type SitePluginConnectionGroupArgs = {
 };
 
 export type SitePluginEdge = {
-   __typename?: 'SitePluginEdge';
+  __typename?: 'SitePluginEdge';
   next?: Maybe<SitePlugin>;
   node: SitePlugin;
   previous?: Maybe<SitePlugin>;
@@ -961,7 +933,7 @@ export enum SitePluginFieldsEnum {
   PackageJsonPeerDependencies = 'packageJson___peerDependencies',
   PackageJsonPeerDependenciesName = 'packageJson___peerDependencies___name',
   PackageJsonPeerDependenciesVersion = 'packageJson___peerDependencies___version',
-  PackageJsonKeywords = 'packageJson___keywords'
+  PackageJsonKeywords = 'packageJson___keywords',
 }
 
 export type SitePluginFilterInput = {
@@ -981,7 +953,7 @@ export type SitePluginFilterInput = {
 };
 
 export type SitePluginGroupConnection = {
-   __typename?: 'SitePluginGroupConnection';
+  __typename?: 'SitePluginGroupConnection';
   totalCount: Scalars['Int'];
   edges: Array<SitePluginEdge>;
   nodes: Array<SitePlugin>;
@@ -991,7 +963,7 @@ export type SitePluginGroupConnection = {
 };
 
 export type SitePluginPackageJson = {
-   __typename?: 'SitePluginPackageJson';
+  __typename?: 'SitePluginPackageJson';
   name?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   version?: Maybe<Scalars['String']>;
@@ -1005,7 +977,7 @@ export type SitePluginPackageJson = {
 };
 
 export type SitePluginPackageJsonDependencies = {
-   __typename?: 'SitePluginPackageJsonDependencies';
+  __typename?: 'SitePluginPackageJsonDependencies';
   name?: Maybe<Scalars['String']>;
   version?: Maybe<Scalars['String']>;
 };
@@ -1020,7 +992,7 @@ export type SitePluginPackageJsonDependenciesFilterListInput = {
 };
 
 export type SitePluginPackageJsonDevDependencies = {
-   __typename?: 'SitePluginPackageJsonDevDependencies';
+  __typename?: 'SitePluginPackageJsonDevDependencies';
   name?: Maybe<Scalars['String']>;
   version?: Maybe<Scalars['String']>;
 };
@@ -1048,7 +1020,7 @@ export type SitePluginPackageJsonFilterInput = {
 };
 
 export type SitePluginPackageJsonPeerDependencies = {
-   __typename?: 'SitePluginPackageJsonPeerDependencies';
+  __typename?: 'SitePluginPackageJsonPeerDependencies';
   name?: Maybe<Scalars['String']>;
   version?: Maybe<Scalars['String']>;
 };
@@ -1063,7 +1035,7 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 };
 
 export type SitePluginPluginOptions = {
-   __typename?: 'SitePluginPluginOptions';
+  __typename?: 'SitePluginPluginOptions';
   baseUrl?: Maybe<Scalars['String']>;
   protocol?: Maybe<Scalars['String']>;
   hostingWPCOM?: Maybe<Scalars['Boolean']>;
@@ -1109,7 +1081,7 @@ export type SitePluginSortInput = {
 };
 
 export type SiteSiteMetadata = {
-   __typename?: 'SiteSiteMetadata';
+  __typename?: 'SiteSiteMetadata';
   title?: Maybe<Scalars['String']>;
   author?: Maybe<Scalars['String']>;
   siteUrl?: Maybe<Scalars['String']>;
@@ -1126,7 +1098,7 @@ export type SiteSiteMetadataFilterInput = {
 };
 
 export type SiteSiteMetadataMenuLinks = {
-   __typename?: 'SiteSiteMetadataMenuLinks';
+  __typename?: 'SiteSiteMetadataMenuLinks';
   name?: Maybe<Scalars['String']>;
   link?: Maybe<Scalars['String']>;
 };
@@ -1141,7 +1113,7 @@ export type SiteSiteMetadataMenuLinksFilterListInput = {
 };
 
 export type SiteSiteMetadataSocial = {
-   __typename?: 'SiteSiteMetadataSocial';
+  __typename?: 'SiteSiteMetadataSocial';
   twitter?: Maybe<Scalars['String']>;
 };
 
@@ -1156,7 +1128,7 @@ export type SiteSortInput = {
 
 export enum SortOrderEnum {
   Asc = 'ASC',
-  Desc = 'DESC'
+  Desc = 'DESC',
 }
 
 export type StringQueryOperatorInput = {
@@ -1169,7 +1141,7 @@ export type StringQueryOperatorInput = {
 };
 
 export type Wordpress__Acf_Options = Node & {
-   __typename?: 'wordpress__acf_options';
+  __typename?: 'wordpress__acf_options';
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
@@ -1178,7 +1150,7 @@ export type Wordpress__Acf_Options = Node & {
 };
 
 export type Wordpress__Acf_OptionsConnection = {
-   __typename?: 'wordpress__acf_optionsConnection';
+  __typename?: 'wordpress__acf_optionsConnection';
   totalCount: Scalars['Int'];
   edges: Array<Wordpress__Acf_OptionsEdge>;
   nodes: Array<Wordpress__Acf_Options>;
@@ -1187,11 +1159,9 @@ export type Wordpress__Acf_OptionsConnection = {
   group: Array<Wordpress__Acf_OptionsGroupConnection>;
 };
 
-
 export type Wordpress__Acf_OptionsConnectionDistinctArgs = {
   field: Wordpress__Acf_OptionsFieldsEnum;
 };
-
 
 export type Wordpress__Acf_OptionsConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -1200,7 +1170,7 @@ export type Wordpress__Acf_OptionsConnectionGroupArgs = {
 };
 
 export type Wordpress__Acf_OptionsEdge = {
-   __typename?: 'wordpress__acf_optionsEdge';
+  __typename?: 'wordpress__acf_optionsEdge';
   next?: Maybe<Wordpress__Acf_Options>;
   node: Wordpress__Acf_Options;
   previous?: Maybe<Wordpress__Acf_Options>;
@@ -1293,7 +1263,7 @@ export enum Wordpress__Acf_OptionsFieldsEnum {
   InternalMediaType = 'internal___mediaType',
   InternalOwner = 'internal___owner',
   InternalType = 'internal___type',
-  WordpressId = 'wordpress_id'
+  WordpressId = 'wordpress_id',
 }
 
 export type Wordpress__Acf_OptionsFilterInput = {
@@ -1305,7 +1275,7 @@ export type Wordpress__Acf_OptionsFilterInput = {
 };
 
 export type Wordpress__Acf_OptionsGroupConnection = {
-   __typename?: 'wordpress__acf_optionsGroupConnection';
+  __typename?: 'wordpress__acf_optionsGroupConnection';
   totalCount: Scalars['Int'];
   edges: Array<Wordpress__Acf_OptionsEdge>;
   nodes: Array<Wordpress__Acf_Options>;
@@ -1320,7 +1290,7 @@ export type Wordpress__Acf_OptionsSortInput = {
 };
 
 export type Wordpress__Page = Node & {
-   __typename?: 'wordpress__PAGE';
+  __typename?: 'wordpress__PAGE';
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
@@ -1349,14 +1319,12 @@ export type Wordpress__Page = Node & {
   path?: Maybe<Scalars['String']>;
 };
 
-
 export type Wordpress__PageDateArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
 };
-
 
 export type Wordpress__PageModifiedArgs = {
   formatString?: Maybe<Scalars['String']>;
@@ -1366,7 +1334,7 @@ export type Wordpress__PageModifiedArgs = {
 };
 
 export type Wordpress__Page_Links = {
-   __typename?: 'wordpress__PAGE_links';
+  __typename?: 'wordpress__PAGE_links';
   self?: Maybe<Array<Maybe<Wordpress__Page_LinksSelf>>>;
   collection?: Maybe<Array<Maybe<Wordpress__Page_LinksCollection>>>;
   about?: Maybe<Array<Maybe<Wordpress__Page_LinksAbout>>>;
@@ -1379,7 +1347,7 @@ export type Wordpress__Page_Links = {
 };
 
 export type Wordpress__Page_LinksAbout = {
-   __typename?: 'wordpress__PAGE_linksAbout';
+  __typename?: 'wordpress__PAGE_linksAbout';
   href?: Maybe<Scalars['String']>;
 };
 
@@ -1392,7 +1360,7 @@ export type Wordpress__Page_LinksAboutFilterListInput = {
 };
 
 export type Wordpress__Page_LinksAuthor = {
-   __typename?: 'wordpress__PAGE_linksAuthor';
+  __typename?: 'wordpress__PAGE_linksAuthor';
   embeddable?: Maybe<Scalars['Boolean']>;
   href?: Maybe<Scalars['String']>;
 };
@@ -1407,7 +1375,7 @@ export type Wordpress__Page_LinksAuthorFilterListInput = {
 };
 
 export type Wordpress__Page_LinksCollection = {
-   __typename?: 'wordpress__PAGE_linksCollection';
+  __typename?: 'wordpress__PAGE_linksCollection';
   href?: Maybe<Scalars['String']>;
 };
 
@@ -1420,7 +1388,7 @@ export type Wordpress__Page_LinksCollectionFilterListInput = {
 };
 
 export type Wordpress__Page_LinksCuries = {
-   __typename?: 'wordpress__PAGE_linksCuries';
+  __typename?: 'wordpress__PAGE_linksCuries';
   name?: Maybe<Scalars['String']>;
   href?: Maybe<Scalars['String']>;
   templated?: Maybe<Scalars['Boolean']>;
@@ -1449,7 +1417,7 @@ export type Wordpress__Page_LinksFilterInput = {
 };
 
 export type Wordpress__Page_LinksPredecessor_Version = {
-   __typename?: 'wordpress__PAGE_linksPredecessor_version';
+  __typename?: 'wordpress__PAGE_linksPredecessor_version';
   wordpress_id?: Maybe<Scalars['Int']>;
   href?: Maybe<Scalars['String']>;
 };
@@ -1464,7 +1432,7 @@ export type Wordpress__Page_LinksPredecessor_VersionFilterListInput = {
 };
 
 export type Wordpress__Page_LinksReplies = {
-   __typename?: 'wordpress__PAGE_linksReplies';
+  __typename?: 'wordpress__PAGE_linksReplies';
   embeddable?: Maybe<Scalars['Boolean']>;
   href?: Maybe<Scalars['String']>;
 };
@@ -1479,7 +1447,7 @@ export type Wordpress__Page_LinksRepliesFilterListInput = {
 };
 
 export type Wordpress__Page_LinksSelf = {
-   __typename?: 'wordpress__PAGE_linksSelf';
+  __typename?: 'wordpress__PAGE_linksSelf';
   href?: Maybe<Scalars['String']>;
 };
 
@@ -1492,7 +1460,7 @@ export type Wordpress__Page_LinksSelfFilterListInput = {
 };
 
 export type Wordpress__Page_LinksVersion_History = {
-   __typename?: 'wordpress__PAGE_linksVersion_history';
+  __typename?: 'wordpress__PAGE_linksVersion_history';
   count?: Maybe<Scalars['Int']>;
   href?: Maybe<Scalars['String']>;
 };
@@ -1507,7 +1475,7 @@ export type Wordpress__Page_LinksVersion_HistoryFilterListInput = {
 };
 
 export type Wordpress__Page_LinksWp_Attachment = {
-   __typename?: 'wordpress__PAGE_linksWp_attachment';
+  __typename?: 'wordpress__PAGE_linksWp_attachment';
   href?: Maybe<Scalars['String']>;
 };
 
@@ -1520,7 +1488,7 @@ export type Wordpress__Page_LinksWp_AttachmentFilterListInput = {
 };
 
 export type Wordpress__PageConnection = {
-   __typename?: 'wordpress__PAGEConnection';
+  __typename?: 'wordpress__PAGEConnection';
   totalCount: Scalars['Int'];
   edges: Array<Wordpress__PageEdge>;
   nodes: Array<Wordpress__Page>;
@@ -1529,11 +1497,9 @@ export type Wordpress__PageConnection = {
   group: Array<Wordpress__PageGroupConnection>;
 };
 
-
 export type Wordpress__PageConnectionDistinctArgs = {
   field: Wordpress__PageFieldsEnum;
 };
-
 
 export type Wordpress__PageConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -1542,7 +1508,7 @@ export type Wordpress__PageConnectionGroupArgs = {
 };
 
 export type Wordpress__PageEdge = {
-   __typename?: 'wordpress__PAGEEdge';
+  __typename?: 'wordpress__PAGEEdge';
   next?: Maybe<Wordpress__Page>;
   node: Wordpress__Page;
   previous?: Maybe<Wordpress__Page>;
@@ -1706,7 +1672,7 @@ export enum Wordpress__PageFieldsEnum {
   LinksCuriesName = '_links___curies___name',
   LinksCuriesHref = '_links___curies___href',
   LinksCuriesTemplated = '_links___curies___templated',
-  Path = 'path'
+  Path = 'path',
 }
 
 export type Wordpress__PageFilterInput = {
@@ -1739,7 +1705,7 @@ export type Wordpress__PageFilterInput = {
 };
 
 export type Wordpress__PageGroupConnection = {
-   __typename?: 'wordpress__PAGEGroupConnection';
+  __typename?: 'wordpress__PAGEGroupConnection';
   totalCount: Scalars['Int'];
   edges: Array<Wordpress__PageEdge>;
   nodes: Array<Wordpress__Page>;
@@ -1754,7 +1720,7 @@ export type Wordpress__PageSortInput = {
 };
 
 export type Wordpress__PageYoast_Json_Ld = {
-   __typename?: 'wordpress__PAGEYoast_json_ld';
+  __typename?: 'wordpress__PAGEYoast_json_ld';
   wordpress__context?: Maybe<Scalars['String']>;
   wordpress__graph?: Maybe<Array<Maybe<Wordpress__PageYoast_Json_LdWordpress__Graph>>>;
 };
@@ -1769,7 +1735,7 @@ export type Wordpress__PageYoast_Json_LdFilterListInput = {
 };
 
 export type Wordpress__PageYoast_Json_LdWordpress__Graph = {
-   __typename?: 'wordpress__PAGEYoast_json_ldWordpress__graph';
+  __typename?: 'wordpress__PAGEYoast_json_ldWordpress__graph';
   wordpress__type?: Maybe<Scalars['String']>;
   wordpress__id?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
@@ -1780,12 +1746,13 @@ export type Wordpress__PageYoast_Json_LdWordpress__Graph = {
   inLanguage?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   publisher?: Maybe<Wordpress__PageYoast_Json_LdWordpress__GraphPublisher>;
-  potentialAction?: Maybe<Array<Maybe<Wordpress__PageYoast_Json_LdWordpress__GraphPotentialAction>>>;
+  potentialAction?: Maybe<
+    Array<Maybe<Wordpress__PageYoast_Json_LdWordpress__GraphPotentialAction>>
+  >;
   isPartOf?: Maybe<Wordpress__PageYoast_Json_LdWordpress__GraphIsPartOf>;
   datePublished?: Maybe<Scalars['Date']>;
   dateModified?: Maybe<Scalars['Date']>;
 };
-
 
 export type Wordpress__PageYoast_Json_LdWordpress__GraphDatePublishedArgs = {
   formatString?: Maybe<Scalars['String']>;
@@ -1793,7 +1760,6 @@ export type Wordpress__PageYoast_Json_LdWordpress__GraphDatePublishedArgs = {
   difference?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
 };
-
 
 export type Wordpress__PageYoast_Json_LdWordpress__GraphDateModifiedArgs = {
   formatString?: Maybe<Scalars['String']>;
@@ -1813,7 +1779,9 @@ export type Wordpress__PageYoast_Json_LdWordpress__GraphFilterInput = {
   inLanguage?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
   publisher?: Maybe<Wordpress__PageYoast_Json_LdWordpress__GraphPublisherFilterInput>;
-  potentialAction?: Maybe<Wordpress__PageYoast_Json_LdWordpress__GraphPotentialActionFilterListInput>;
+  potentialAction?: Maybe<
+    Wordpress__PageYoast_Json_LdWordpress__GraphPotentialActionFilterListInput
+  >;
   isPartOf?: Maybe<Wordpress__PageYoast_Json_LdWordpress__GraphIsPartOfFilterInput>;
   datePublished?: Maybe<DateQueryOperatorInput>;
   dateModified?: Maybe<DateQueryOperatorInput>;
@@ -1824,7 +1792,7 @@ export type Wordpress__PageYoast_Json_LdWordpress__GraphFilterListInput = {
 };
 
 export type Wordpress__PageYoast_Json_LdWordpress__GraphImage = {
-   __typename?: 'wordpress__PAGEYoast_json_ldWordpress__graphImage';
+  __typename?: 'wordpress__PAGEYoast_json_ldWordpress__graphImage';
   wordpress__id?: Maybe<Scalars['String']>;
 };
 
@@ -1833,7 +1801,7 @@ export type Wordpress__PageYoast_Json_LdWordpress__GraphImageFilterInput = {
 };
 
 export type Wordpress__PageYoast_Json_LdWordpress__GraphIsPartOf = {
-   __typename?: 'wordpress__PAGEYoast_json_ldWordpress__graphIsPartOf';
+  __typename?: 'wordpress__PAGEYoast_json_ldWordpress__graphIsPartOf';
   wordpress__id?: Maybe<Scalars['String']>;
 };
 
@@ -1842,7 +1810,7 @@ export type Wordpress__PageYoast_Json_LdWordpress__GraphIsPartOfFilterInput = {
 };
 
 export type Wordpress__PageYoast_Json_LdWordpress__GraphLogo = {
-   __typename?: 'wordpress__PAGEYoast_json_ldWordpress__graphLogo';
+  __typename?: 'wordpress__PAGEYoast_json_ldWordpress__graphLogo';
   wordpress__type?: Maybe<Scalars['String']>;
   wordpress__id?: Maybe<Scalars['String']>;
   inLanguage?: Maybe<Scalars['String']>;
@@ -1863,7 +1831,7 @@ export type Wordpress__PageYoast_Json_LdWordpress__GraphLogoFilterInput = {
 };
 
 export type Wordpress__PageYoast_Json_LdWordpress__GraphPotentialAction = {
-   __typename?: 'wordpress__PAGEYoast_json_ldWordpress__graphPotentialAction';
+  __typename?: 'wordpress__PAGEYoast_json_ldWordpress__graphPotentialAction';
   wordpress__type?: Maybe<Scalars['String']>;
   query_input?: Maybe<Scalars['String']>;
 };
@@ -1878,7 +1846,7 @@ export type Wordpress__PageYoast_Json_LdWordpress__GraphPotentialActionFilterLis
 };
 
 export type Wordpress__PageYoast_Json_LdWordpress__GraphPublisher = {
-   __typename?: 'wordpress__PAGEYoast_json_ldWordpress__graphPublisher';
+  __typename?: 'wordpress__PAGEYoast_json_ldWordpress__graphPublisher';
   wordpress__id?: Maybe<Scalars['String']>;
 };
 
@@ -1887,7 +1855,7 @@ export type Wordpress__PageYoast_Json_LdWordpress__GraphPublisherFilterInput = {
 };
 
 export type Wordpress__PageYoast_Meta = {
-   __typename?: 'wordpress__PAGEYoast_meta';
+  __typename?: 'wordpress__PAGEYoast_meta';
   name?: Maybe<Scalars['String']>;
   content?: Maybe<Scalars['String']>;
   property?: Maybe<Scalars['String']>;
@@ -1904,7 +1872,7 @@ export type Wordpress__PageYoast_MetaFilterListInput = {
 };
 
 export type Wordpress__Post = Node & {
-   __typename?: 'wordpress__POST';
+  __typename?: 'wordpress__POST';
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
@@ -1936,14 +1904,12 @@ export type Wordpress__Post = Node & {
   source?: Maybe<Scalars['String']>;
 };
 
-
 export type Wordpress__PostDateArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
 };
-
 
 export type Wordpress__PostModifiedArgs = {
   formatString?: Maybe<Scalars['String']>;
@@ -1953,7 +1919,7 @@ export type Wordpress__PostModifiedArgs = {
 };
 
 export type Wordpress__Post_Links = {
-   __typename?: 'wordpress__POST_links';
+  __typename?: 'wordpress__POST_links';
   self?: Maybe<Array<Maybe<Wordpress__Post_LinksSelf>>>;
   collection?: Maybe<Array<Maybe<Wordpress__Post_LinksCollection>>>;
   about?: Maybe<Array<Maybe<Wordpress__Post_LinksAbout>>>;
@@ -1968,7 +1934,7 @@ export type Wordpress__Post_Links = {
 };
 
 export type Wordpress__Post_LinksAbout = {
-   __typename?: 'wordpress__POST_linksAbout';
+  __typename?: 'wordpress__POST_linksAbout';
   href?: Maybe<Scalars['String']>;
 };
 
@@ -1981,7 +1947,7 @@ export type Wordpress__Post_LinksAboutFilterListInput = {
 };
 
 export type Wordpress__Post_LinksAuthor = {
-   __typename?: 'wordpress__POST_linksAuthor';
+  __typename?: 'wordpress__POST_linksAuthor';
   embeddable?: Maybe<Scalars['Boolean']>;
   href?: Maybe<Scalars['String']>;
 };
@@ -1996,7 +1962,7 @@ export type Wordpress__Post_LinksAuthorFilterListInput = {
 };
 
 export type Wordpress__Post_LinksCollection = {
-   __typename?: 'wordpress__POST_linksCollection';
+  __typename?: 'wordpress__POST_linksCollection';
   href?: Maybe<Scalars['String']>;
 };
 
@@ -2009,7 +1975,7 @@ export type Wordpress__Post_LinksCollectionFilterListInput = {
 };
 
 export type Wordpress__Post_LinksCuries = {
-   __typename?: 'wordpress__POST_linksCuries';
+  __typename?: 'wordpress__POST_linksCuries';
   name?: Maybe<Scalars['String']>;
   href?: Maybe<Scalars['String']>;
   templated?: Maybe<Scalars['Boolean']>;
@@ -2040,7 +2006,7 @@ export type Wordpress__Post_LinksFilterInput = {
 };
 
 export type Wordpress__Post_LinksPredecessor_Version = {
-   __typename?: 'wordpress__POST_linksPredecessor_version';
+  __typename?: 'wordpress__POST_linksPredecessor_version';
   wordpress_id?: Maybe<Scalars['Int']>;
   href?: Maybe<Scalars['String']>;
 };
@@ -2055,7 +2021,7 @@ export type Wordpress__Post_LinksPredecessor_VersionFilterListInput = {
 };
 
 export type Wordpress__Post_LinksReplies = {
-   __typename?: 'wordpress__POST_linksReplies';
+  __typename?: 'wordpress__POST_linksReplies';
   embeddable?: Maybe<Scalars['Boolean']>;
   href?: Maybe<Scalars['String']>;
 };
@@ -2070,7 +2036,7 @@ export type Wordpress__Post_LinksRepliesFilterListInput = {
 };
 
 export type Wordpress__Post_LinksSelf = {
-   __typename?: 'wordpress__POST_linksSelf';
+  __typename?: 'wordpress__POST_linksSelf';
   href?: Maybe<Scalars['String']>;
 };
 
@@ -2083,7 +2049,7 @@ export type Wordpress__Post_LinksSelfFilterListInput = {
 };
 
 export type Wordpress__Post_LinksVersion_History = {
-   __typename?: 'wordpress__POST_linksVersion_history';
+  __typename?: 'wordpress__POST_linksVersion_history';
   count?: Maybe<Scalars['Int']>;
   href?: Maybe<Scalars['String']>;
 };
@@ -2098,7 +2064,7 @@ export type Wordpress__Post_LinksVersion_HistoryFilterListInput = {
 };
 
 export type Wordpress__Post_LinksWp_Attachment = {
-   __typename?: 'wordpress__POST_linksWp_attachment';
+  __typename?: 'wordpress__POST_linksWp_attachment';
   href?: Maybe<Scalars['String']>;
 };
 
@@ -2111,7 +2077,7 @@ export type Wordpress__Post_LinksWp_AttachmentFilterListInput = {
 };
 
 export type Wordpress__Post_LinksWp_Featuredmedia = {
-   __typename?: 'wordpress__POST_linksWp_featuredmedia';
+  __typename?: 'wordpress__POST_linksWp_featuredmedia';
   embeddable?: Maybe<Scalars['Boolean']>;
   href?: Maybe<Scalars['String']>;
 };
@@ -2126,7 +2092,7 @@ export type Wordpress__Post_LinksWp_FeaturedmediaFilterListInput = {
 };
 
 export type Wordpress__Post_LinksWp_Term = {
-   __typename?: 'wordpress__POST_linksWp_term';
+  __typename?: 'wordpress__POST_linksWp_term';
   taxonomy?: Maybe<Scalars['String']>;
   embeddable?: Maybe<Scalars['Boolean']>;
   href?: Maybe<Scalars['String']>;
@@ -2143,7 +2109,7 @@ export type Wordpress__Post_LinksWp_TermFilterListInput = {
 };
 
 export type Wordpress__PostConnection = {
-   __typename?: 'wordpress__POSTConnection';
+  __typename?: 'wordpress__POSTConnection';
   totalCount: Scalars['Int'];
   edges: Array<Wordpress__PostEdge>;
   nodes: Array<Wordpress__Post>;
@@ -2152,11 +2118,9 @@ export type Wordpress__PostConnection = {
   group: Array<Wordpress__PostGroupConnection>;
 };
 
-
 export type Wordpress__PostConnectionDistinctArgs = {
   field: Wordpress__PostFieldsEnum;
 };
-
 
 export type Wordpress__PostConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -2165,7 +2129,7 @@ export type Wordpress__PostConnectionGroupArgs = {
 };
 
 export type Wordpress__PostEdge = {
-   __typename?: 'wordpress__POSTEdge';
+  __typename?: 'wordpress__POSTEdge';
   next?: Maybe<Wordpress__Post>;
   node: Wordpress__Post;
   previous?: Maybe<Wordpress__Post>;
@@ -2437,7 +2401,7 @@ export enum Wordpress__PostFieldsEnum {
   TagsYoastMetaContent = 'tags___yoast_meta___content',
   TagsYoastMetaProperty = 'tags___yoast_meta___property',
   Path = 'path',
-  Source = 'source'
+  Source = 'source',
 }
 
 export type Wordpress__PostFilterInput = {
@@ -2473,7 +2437,7 @@ export type Wordpress__PostFilterInput = {
 };
 
 export type Wordpress__PostGroupConnection = {
-   __typename?: 'wordpress__POSTGroupConnection';
+  __typename?: 'wordpress__POSTGroupConnection';
   totalCount: Scalars['Int'];
   edges: Array<Wordpress__PostEdge>;
   nodes: Array<Wordpress__Post>;
@@ -2488,7 +2452,7 @@ export type Wordpress__PostSortInput = {
 };
 
 export type Wordpress__PostYoast_Json_Ld = {
-   __typename?: 'wordpress__POSTYoast_json_ld';
+  __typename?: 'wordpress__POSTYoast_json_ld';
   wordpress__context?: Maybe<Scalars['String']>;
   wordpress__graph?: Maybe<Array<Maybe<Wordpress__PostYoast_Json_LdWordpress__Graph>>>;
 };
@@ -2503,7 +2467,7 @@ export type Wordpress__PostYoast_Json_LdFilterListInput = {
 };
 
 export type Wordpress__PostYoast_Json_LdWordpress__Graph = {
-   __typename?: 'wordpress__POSTYoast_json_ldWordpress__graph';
+  __typename?: 'wordpress__POSTYoast_json_ldWordpress__graph';
   wordpress__id?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   url?: Maybe<Scalars['String']>;
@@ -2513,7 +2477,9 @@ export type Wordpress__PostYoast_Json_LdWordpress__Graph = {
   inLanguage?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   publisher?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphPublisher>;
-  potentialAction?: Maybe<Array<Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphPotentialAction>>>;
+  potentialAction?: Maybe<
+    Array<Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphPotentialAction>>
+  >;
   isPartOf?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphIsPartOf>;
   datePublished?: Maybe<Scalars['Date']>;
   dateModified?: Maybe<Scalars['Date']>;
@@ -2528,14 +2494,12 @@ export type Wordpress__PostYoast_Json_LdWordpress__Graph = {
   height?: Maybe<Scalars['Int']>;
 };
 
-
 export type Wordpress__PostYoast_Json_LdWordpress__GraphDatePublishedArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
 };
-
 
 export type Wordpress__PostYoast_Json_LdWordpress__GraphDateModifiedArgs = {
   formatString?: Maybe<Scalars['String']>;
@@ -2545,7 +2509,7 @@ export type Wordpress__PostYoast_Json_LdWordpress__GraphDateModifiedArgs = {
 };
 
 export type Wordpress__PostYoast_Json_LdWordpress__GraphAuthor = {
-   __typename?: 'wordpress__POSTYoast_json_ldWordpress__graphAuthor';
+  __typename?: 'wordpress__POSTYoast_json_ldWordpress__graphAuthor';
   wordpress__id?: Maybe<Scalars['String']>;
 };
 
@@ -2563,7 +2527,9 @@ export type Wordpress__PostYoast_Json_LdWordpress__GraphFilterInput = {
   inLanguage?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
   publisher?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphPublisherFilterInput>;
-  potentialAction?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphPotentialActionFilterListInput>;
+  potentialAction?: Maybe<
+    Wordpress__PostYoast_Json_LdWordpress__GraphPotentialActionFilterListInput
+  >;
   isPartOf?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphIsPartOfFilterInput>;
   datePublished?: Maybe<DateQueryOperatorInput>;
   dateModified?: Maybe<DateQueryOperatorInput>;
@@ -2572,7 +2538,9 @@ export type Wordpress__PostYoast_Json_LdWordpress__GraphFilterInput = {
   commentCount?: Maybe<IntQueryOperatorInput>;
   mainEntityOfPage?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphMainEntityOfPageFilterInput>;
   keywords?: Maybe<StringQueryOperatorInput>;
-  primaryImageOfPage?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphPrimaryImageOfPageFilterInput>;
+  primaryImageOfPage?: Maybe<
+    Wordpress__PostYoast_Json_LdWordpress__GraphPrimaryImageOfPageFilterInput
+  >;
   articleSection?: Maybe<StringQueryOperatorInput>;
   width?: Maybe<IntQueryOperatorInput>;
   height?: Maybe<IntQueryOperatorInput>;
@@ -2583,7 +2551,7 @@ export type Wordpress__PostYoast_Json_LdWordpress__GraphFilterListInput = {
 };
 
 export type Wordpress__PostYoast_Json_LdWordpress__GraphImage = {
-   __typename?: 'wordpress__POSTYoast_json_ldWordpress__graphImage';
+  __typename?: 'wordpress__POSTYoast_json_ldWordpress__graphImage';
   wordpress__id?: Maybe<Scalars['String']>;
   wordpress__type?: Maybe<Scalars['String']>;
   inLanguage?: Maybe<Scalars['String']>;
@@ -2600,7 +2568,7 @@ export type Wordpress__PostYoast_Json_LdWordpress__GraphImageFilterInput = {
 };
 
 export type Wordpress__PostYoast_Json_LdWordpress__GraphIsPartOf = {
-   __typename?: 'wordpress__POSTYoast_json_ldWordpress__graphIsPartOf';
+  __typename?: 'wordpress__POSTYoast_json_ldWordpress__graphIsPartOf';
   wordpress__id?: Maybe<Scalars['String']>;
 };
 
@@ -2609,7 +2577,7 @@ export type Wordpress__PostYoast_Json_LdWordpress__GraphIsPartOfFilterInput = {
 };
 
 export type Wordpress__PostYoast_Json_LdWordpress__GraphLogo = {
-   __typename?: 'wordpress__POSTYoast_json_ldWordpress__graphLogo';
+  __typename?: 'wordpress__POSTYoast_json_ldWordpress__graphLogo';
   wordpress__type?: Maybe<Scalars['String']>;
   wordpress__id?: Maybe<Scalars['String']>;
   inLanguage?: Maybe<Scalars['String']>;
@@ -2630,7 +2598,7 @@ export type Wordpress__PostYoast_Json_LdWordpress__GraphLogoFilterInput = {
 };
 
 export type Wordpress__PostYoast_Json_LdWordpress__GraphMainEntityOfPage = {
-   __typename?: 'wordpress__POSTYoast_json_ldWordpress__graphMainEntityOfPage';
+  __typename?: 'wordpress__POSTYoast_json_ldWordpress__graphMainEntityOfPage';
   wordpress__id?: Maybe<Scalars['String']>;
 };
 
@@ -2639,7 +2607,7 @@ export type Wordpress__PostYoast_Json_LdWordpress__GraphMainEntityOfPageFilterIn
 };
 
 export type Wordpress__PostYoast_Json_LdWordpress__GraphPotentialAction = {
-   __typename?: 'wordpress__POSTYoast_json_ldWordpress__graphPotentialAction';
+  __typename?: 'wordpress__POSTYoast_json_ldWordpress__graphPotentialAction';
   wordpress__type?: Maybe<Scalars['String']>;
   query_input?: Maybe<Scalars['String']>;
 };
@@ -2654,7 +2622,7 @@ export type Wordpress__PostYoast_Json_LdWordpress__GraphPotentialActionFilterLis
 };
 
 export type Wordpress__PostYoast_Json_LdWordpress__GraphPrimaryImageOfPage = {
-   __typename?: 'wordpress__POSTYoast_json_ldWordpress__graphPrimaryImageOfPage';
+  __typename?: 'wordpress__POSTYoast_json_ldWordpress__graphPrimaryImageOfPage';
   wordpress__id?: Maybe<Scalars['String']>;
 };
 
@@ -2663,7 +2631,7 @@ export type Wordpress__PostYoast_Json_LdWordpress__GraphPrimaryImageOfPageFilter
 };
 
 export type Wordpress__PostYoast_Json_LdWordpress__GraphPublisher = {
-   __typename?: 'wordpress__POSTYoast_json_ldWordpress__graphPublisher';
+  __typename?: 'wordpress__POSTYoast_json_ldWordpress__graphPublisher';
   wordpress__id?: Maybe<Scalars['String']>;
 };
 
@@ -2672,7 +2640,7 @@ export type Wordpress__PostYoast_Json_LdWordpress__GraphPublisherFilterInput = {
 };
 
 export type Wordpress__PostYoast_Meta = {
-   __typename?: 'wordpress__POSTYoast_meta';
+  __typename?: 'wordpress__POSTYoast_meta';
   name?: Maybe<Scalars['String']>;
   content?: Maybe<Scalars['String']>;
   property?: Maybe<Scalars['String']>;
@@ -2689,7 +2657,7 @@ export type Wordpress__PostYoast_MetaFilterListInput = {
 };
 
 export type Wordpress__Site_Metadata = Node & {
-   __typename?: 'wordpress__site_metadata';
+  __typename?: 'wordpress__site_metadata';
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
@@ -2701,7 +2669,7 @@ export type Wordpress__Site_Metadata = Node & {
 };
 
 export type Wordpress__Site_MetadataConnection = {
-   __typename?: 'wordpress__site_metadataConnection';
+  __typename?: 'wordpress__site_metadataConnection';
   totalCount: Scalars['Int'];
   edges: Array<Wordpress__Site_MetadataEdge>;
   nodes: Array<Wordpress__Site_Metadata>;
@@ -2710,11 +2678,9 @@ export type Wordpress__Site_MetadataConnection = {
   group: Array<Wordpress__Site_MetadataGroupConnection>;
 };
 
-
 export type Wordpress__Site_MetadataConnectionDistinctArgs = {
   field: Wordpress__Site_MetadataFieldsEnum;
 };
-
 
 export type Wordpress__Site_MetadataConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -2723,7 +2689,7 @@ export type Wordpress__Site_MetadataConnectionGroupArgs = {
 };
 
 export type Wordpress__Site_MetadataEdge = {
-   __typename?: 'wordpress__site_metadataEdge';
+  __typename?: 'wordpress__site_metadataEdge';
   next?: Maybe<Wordpress__Site_Metadata>;
   node: Wordpress__Site_Metadata;
   previous?: Maybe<Wordpress__Site_Metadata>;
@@ -2819,7 +2785,7 @@ export enum Wordpress__Site_MetadataFieldsEnum {
   Name = 'name',
   Description = 'description',
   Url = 'url',
-  Home = 'home'
+  Home = 'home',
 }
 
 export type Wordpress__Site_MetadataFilterInput = {
@@ -2834,7 +2800,7 @@ export type Wordpress__Site_MetadataFilterInput = {
 };
 
 export type Wordpress__Site_MetadataGroupConnection = {
-   __typename?: 'wordpress__site_metadataGroupConnection';
+  __typename?: 'wordpress__site_metadataGroupConnection';
   totalCount: Scalars['Int'];
   edges: Array<Wordpress__Site_MetadataEdge>;
   nodes: Array<Wordpress__Site_Metadata>;
@@ -2849,7 +2815,7 @@ export type Wordpress__Site_MetadataSortInput = {
 };
 
 export type Wordpress__Tag = Node & {
-   __typename?: 'wordpress__TAG';
+  __typename?: 'wordpress__TAG';
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
@@ -2868,7 +2834,7 @@ export type Wordpress__Tag = Node & {
 };
 
 export type Wordpress__Tag_Links = {
-   __typename?: 'wordpress__TAG_links';
+  __typename?: 'wordpress__TAG_links';
   self?: Maybe<Array<Maybe<Wordpress__Tag_LinksSelf>>>;
   collection?: Maybe<Array<Maybe<Wordpress__Tag_LinksCollection>>>;
   about?: Maybe<Array<Maybe<Wordpress__Tag_LinksAbout>>>;
@@ -2877,7 +2843,7 @@ export type Wordpress__Tag_Links = {
 };
 
 export type Wordpress__Tag_LinksAbout = {
-   __typename?: 'wordpress__TAG_linksAbout';
+  __typename?: 'wordpress__TAG_linksAbout';
   href?: Maybe<Scalars['String']>;
 };
 
@@ -2890,7 +2856,7 @@ export type Wordpress__Tag_LinksAboutFilterListInput = {
 };
 
 export type Wordpress__Tag_LinksCollection = {
-   __typename?: 'wordpress__TAG_linksCollection';
+  __typename?: 'wordpress__TAG_linksCollection';
   href?: Maybe<Scalars['String']>;
 };
 
@@ -2903,7 +2869,7 @@ export type Wordpress__Tag_LinksCollectionFilterListInput = {
 };
 
 export type Wordpress__Tag_LinksCuries = {
-   __typename?: 'wordpress__TAG_linksCuries';
+  __typename?: 'wordpress__TAG_linksCuries';
   name?: Maybe<Scalars['String']>;
   href?: Maybe<Scalars['String']>;
   templated?: Maybe<Scalars['Boolean']>;
@@ -2928,7 +2894,7 @@ export type Wordpress__Tag_LinksFilterInput = {
 };
 
 export type Wordpress__Tag_LinksSelf = {
-   __typename?: 'wordpress__TAG_linksSelf';
+  __typename?: 'wordpress__TAG_linksSelf';
   href?: Maybe<Scalars['String']>;
 };
 
@@ -2941,7 +2907,7 @@ export type Wordpress__Tag_LinksSelfFilterListInput = {
 };
 
 export type Wordpress__Tag_LinksWp_Post_Type = {
-   __typename?: 'wordpress__TAG_linksWp_post_type';
+  __typename?: 'wordpress__TAG_linksWp_post_type';
   href?: Maybe<Scalars['String']>;
 };
 
@@ -2954,7 +2920,7 @@ export type Wordpress__Tag_LinksWp_Post_TypeFilterListInput = {
 };
 
 export type Wordpress__TagConnection = {
-   __typename?: 'wordpress__TAGConnection';
+  __typename?: 'wordpress__TAGConnection';
   totalCount: Scalars['Int'];
   edges: Array<Wordpress__TagEdge>;
   nodes: Array<Wordpress__Tag>;
@@ -2963,11 +2929,9 @@ export type Wordpress__TagConnection = {
   group: Array<Wordpress__TagGroupConnection>;
 };
 
-
 export type Wordpress__TagConnectionDistinctArgs = {
   field: Wordpress__TagFieldsEnum;
 };
-
 
 export type Wordpress__TagConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -2976,7 +2940,7 @@ export type Wordpress__TagConnectionGroupArgs = {
 };
 
 export type Wordpress__TagEdge = {
-   __typename?: 'wordpress__TAGEdge';
+  __typename?: 'wordpress__TAGEdge';
   next?: Maybe<Wordpress__Tag>;
   node: Wordpress__Tag;
   previous?: Maybe<Wordpress__Tag>;
@@ -3145,7 +3109,7 @@ export enum Wordpress__TagFieldsEnum {
   YoastMeta = 'yoast_meta',
   YoastMetaName = 'yoast_meta___name',
   YoastMetaContent = 'yoast_meta___content',
-  YoastMetaProperty = 'yoast_meta___property'
+  YoastMetaProperty = 'yoast_meta___property',
 }
 
 export type Wordpress__TagFilterInput = {
@@ -3171,7 +3135,7 @@ export type Wordpress__TagFilterListInput = {
 };
 
 export type Wordpress__TagGroupConnection = {
-   __typename?: 'wordpress__TAGGroupConnection';
+  __typename?: 'wordpress__TAGGroupConnection';
   totalCount: Scalars['Int'];
   edges: Array<Wordpress__TagEdge>;
   nodes: Array<Wordpress__Tag>;
@@ -3186,7 +3150,7 @@ export type Wordpress__TagSortInput = {
 };
 
 export type Wordpress__TagYoast_Meta = {
-   __typename?: 'wordpress__TAGYoast_meta';
+  __typename?: 'wordpress__TAGYoast_meta';
   name?: Maybe<Scalars['String']>;
   content?: Maybe<Scalars['String']>;
   property?: Maybe<Scalars['String']>;
@@ -3203,7 +3167,7 @@ export type Wordpress__TagYoast_MetaFilterListInput = {
 };
 
 export type Wordpress__Wp_Taxonomies = Node & {
-   __typename?: 'wordpress__wp_taxonomies';
+  __typename?: 'wordpress__wp_taxonomies';
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
@@ -3219,14 +3183,14 @@ export type Wordpress__Wp_Taxonomies = Node & {
 };
 
 export type Wordpress__Wp_Taxonomies_Links = {
-   __typename?: 'wordpress__wp_taxonomies_links';
+  __typename?: 'wordpress__wp_taxonomies_links';
   collection?: Maybe<Array<Maybe<Wordpress__Wp_Taxonomies_LinksCollection>>>;
   wp_items?: Maybe<Array<Maybe<Wordpress__Wp_Taxonomies_LinksWp_Items>>>;
   curies?: Maybe<Array<Maybe<Wordpress__Wp_Taxonomies_LinksCuries>>>;
 };
 
 export type Wordpress__Wp_Taxonomies_LinksCollection = {
-   __typename?: 'wordpress__wp_taxonomies_linksCollection';
+  __typename?: 'wordpress__wp_taxonomies_linksCollection';
   href?: Maybe<Scalars['String']>;
 };
 
@@ -3239,7 +3203,7 @@ export type Wordpress__Wp_Taxonomies_LinksCollectionFilterListInput = {
 };
 
 export type Wordpress__Wp_Taxonomies_LinksCuries = {
-   __typename?: 'wordpress__wp_taxonomies_linksCuries';
+  __typename?: 'wordpress__wp_taxonomies_linksCuries';
   name?: Maybe<Scalars['String']>;
   href?: Maybe<Scalars['String']>;
   templated?: Maybe<Scalars['Boolean']>;
@@ -3262,7 +3226,7 @@ export type Wordpress__Wp_Taxonomies_LinksFilterInput = {
 };
 
 export type Wordpress__Wp_Taxonomies_LinksWp_Items = {
-   __typename?: 'wordpress__wp_taxonomies_linksWp_items';
+  __typename?: 'wordpress__wp_taxonomies_linksWp_items';
   href?: Maybe<Scalars['String']>;
 };
 
@@ -3275,7 +3239,7 @@ export type Wordpress__Wp_Taxonomies_LinksWp_ItemsFilterListInput = {
 };
 
 export type Wordpress__Wp_TaxonomiesConnection = {
-   __typename?: 'wordpress__wp_taxonomiesConnection';
+  __typename?: 'wordpress__wp_taxonomiesConnection';
   totalCount: Scalars['Int'];
   edges: Array<Wordpress__Wp_TaxonomiesEdge>;
   nodes: Array<Wordpress__Wp_Taxonomies>;
@@ -3284,11 +3248,9 @@ export type Wordpress__Wp_TaxonomiesConnection = {
   group: Array<Wordpress__Wp_TaxonomiesGroupConnection>;
 };
 
-
 export type Wordpress__Wp_TaxonomiesConnectionDistinctArgs = {
   field: Wordpress__Wp_TaxonomiesFieldsEnum;
 };
-
 
 export type Wordpress__Wp_TaxonomiesConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -3297,7 +3259,7 @@ export type Wordpress__Wp_TaxonomiesConnectionGroupArgs = {
 };
 
 export type Wordpress__Wp_TaxonomiesEdge = {
-   __typename?: 'wordpress__wp_taxonomiesEdge';
+  __typename?: 'wordpress__wp_taxonomiesEdge';
   next?: Maybe<Wordpress__Wp_Taxonomies>;
   node: Wordpress__Wp_Taxonomies;
   previous?: Maybe<Wordpress__Wp_Taxonomies>;
@@ -3404,7 +3366,7 @@ export enum Wordpress__Wp_TaxonomiesFieldsEnum {
   LinksCuries = '_links___curies',
   LinksCuriesName = '_links___curies___name',
   LinksCuriesHref = '_links___curies___href',
-  LinksCuriesTemplated = '_links___curies___templated'
+  LinksCuriesTemplated = '_links___curies___templated',
 }
 
 export type Wordpress__Wp_TaxonomiesFilterInput = {
@@ -3423,7 +3385,7 @@ export type Wordpress__Wp_TaxonomiesFilterInput = {
 };
 
 export type Wordpress__Wp_TaxonomiesGroupConnection = {
-   __typename?: 'wordpress__wp_taxonomiesGroupConnection';
+  __typename?: 'wordpress__wp_taxonomiesGroupConnection';
   totalCount: Scalars['Int'];
   edges: Array<Wordpress__Wp_TaxonomiesEdge>;
   nodes: Array<Wordpress__Wp_Taxonomies>;
@@ -3439,127 +3401,131 @@ export type Wordpress__Wp_TaxonomiesSortInput = {
 
 export type PagesQueryQueryVariables = {};
 
-
-export type PagesQueryQuery = (
-  { __typename?: 'Query' }
-  & { allSitePage: (
-    { __typename?: 'SitePageConnection' }
-    & { nodes: Array<(
-      { __typename?: 'SitePage' }
-      & Pick<SitePage, 'path'>
-    )> }
-  ) }
-);
+export type PagesQueryQuery = { __typename?: 'Query' } & {
+  allSitePage: { __typename?: 'SitePageConnection' } & {
+    nodes: Array<{ __typename?: 'SitePage' } & Pick<SitePage, 'path'>>;
+  };
+};
 
 export type SiteLayoutQueryVariables = {};
 
+export type SiteLayoutQuery = { __typename?: 'Query' } & {
+  site?: Maybe<
+    { __typename?: 'Site' } & {
+      siteMetadata?: Maybe<
+        { __typename?: 'SiteSiteMetadata' } & {
+          menuLinks?: Maybe<
+            Array<
+              Maybe<
+                { __typename?: 'SiteSiteMetadataMenuLinks' } & Pick<
+                  SiteSiteMetadataMenuLinks,
+                  'name' | 'link'
+                >
+              >
+            >
+          >;
+        }
+      >;
+    }
+  >;
+  wordpressSiteMetadata?: Maybe<
+    { __typename?: 'wordpress__site_metadata' } & Pick<Wordpress__Site_Metadata, 'name'>
+  >;
+};
 
-export type SiteLayoutQuery = (
-  { __typename?: 'Query' }
-  & { site?: Maybe<(
-    { __typename?: 'Site' }
-    & { siteMetadata?: Maybe<(
-      { __typename?: 'SiteSiteMetadata' }
-      & { menuLinks?: Maybe<Array<Maybe<(
-        { __typename?: 'SiteSiteMetadataMenuLinks' }
-        & Pick<SiteSiteMetadataMenuLinks, 'name' | 'link'>
-      )>>> }
-    )> }
-  )>, wordpressSiteMetadata?: Maybe<(
-    { __typename?: 'wordpress__site_metadata' }
-    & Pick<Wordpress__Site_Metadata, 'name'>
-  )> }
-);
-
-export type PostFragment = (
-  { __typename?: 'wordpress__POST' }
-  & Pick<Wordpress__Post, 'link' | 'source' | 'title' | 'wordpress_id' | 'date'>
-  & { tags?: Maybe<Array<Maybe<(
-    { __typename?: 'wordpress__TAG' }
-    & Pick<Wordpress__Tag, 'id' | 'name' | 'slug'>
-  )>>> }
-);
+export type PostFragment = { __typename?: 'wordpress__POST' } & Pick<
+  Wordpress__Post,
+  'link' | 'source' | 'title' | 'wordpress_id' | 'date'
+> & {
+    tags?: Maybe<
+      Array<Maybe<{ __typename?: 'wordpress__TAG' } & Pick<Wordpress__Tag, 'id' | 'name' | 'slug'>>>
+    >;
+  };
 
 export type SeoComponentQueryVariables = {};
 
-
-export type SeoComponentQuery = (
-  { __typename?: 'Query' }
-  & { site?: Maybe<(
-    { __typename?: 'Site' }
-    & { siteMetadata?: Maybe<(
-      { __typename?: 'SiteSiteMetadata' }
-      & Pick<SiteSiteMetadata, 'siteUrl'>
-    )> }
-  )> }
-);
+export type SeoComponentQuery = { __typename?: 'Query' } & {
+  site?: Maybe<
+    { __typename?: 'Site' } & {
+      siteMetadata?: Maybe<{ __typename?: 'SiteSiteMetadata' } & Pick<SiteSiteMetadata, 'siteUrl'>>;
+    }
+  >;
+};
 
 export type IndexPageQueryVariables = {};
 
-
-export type IndexPageQuery = (
-  { __typename?: 'Query' }
-  & { allWordpressPost: (
-    { __typename?: 'wordpress__POSTConnection' }
-    & { nodes: Array<(
-      { __typename?: 'wordpress__POST' }
-      & PostFragment
-    )>, pageInfo: (
-      { __typename?: 'PageInfo' }
-      & Pick<PageInfo, 'hasNextPage'>
-    ) }
-  ), wordpressPage?: Maybe<(
-    { __typename?: 'wordpress__PAGE' }
-    & Pick<Wordpress__Page, 'yoast_title'>
-    & { yoast_meta?: Maybe<Array<Maybe<(
-      { __typename?: 'wordpress__PAGEYoast_meta' }
-      & Pick<Wordpress__PageYoast_Meta, 'content' | 'name' | 'property'>
-    )>>> }
-  )>, wordpressSiteMetadata?: Maybe<(
-    { __typename?: 'wordpress__site_metadata' }
-    & Pick<Wordpress__Site_Metadata, 'description'>
-  )> }
-);
+export type IndexPageQuery = { __typename?: 'Query' } & {
+  allWordpressPost: { __typename?: 'wordpress__POSTConnection' } & {
+    nodes: Array<{ __typename?: 'wordpress__POST' } & PostFragment>;
+    pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>;
+  };
+  wordpressPage?: Maybe<
+    { __typename?: 'wordpress__PAGE' } & Pick<Wordpress__Page, 'yoast_title'> & {
+        yoast_meta?: Maybe<
+          Array<
+            Maybe<
+              { __typename?: 'wordpress__PAGEYoast_meta' } & Pick<
+                Wordpress__PageYoast_Meta,
+                'content' | 'name' | 'property'
+              >
+            >
+          >
+        >;
+      }
+  >;
+  wordpressSiteMetadata?: Maybe<
+    { __typename?: 'wordpress__site_metadata' } & Pick<Wordpress__Site_Metadata, 'description'>
+  >;
+};
 
 export type PageQueryVariables = {
   id: Scalars['Int'];
 };
 
-
-export type PageQuery = (
-  { __typename?: 'Query' }
-  & { wordpressPage?: Maybe<(
-    { __typename?: 'wordpress__PAGE' }
-    & Pick<Wordpress__Page, 'title' | 'content' | 'yoast_title'>
-    & { yoast_meta?: Maybe<Array<Maybe<(
-      { __typename?: 'wordpress__PAGEYoast_meta' }
-      & Pick<Wordpress__PageYoast_Meta, 'content' | 'name' | 'property'>
-    )>>> }
-  )> }
-);
+export type PageQuery = { __typename?: 'Query' } & {
+  wordpressPage?: Maybe<
+    { __typename?: 'wordpress__PAGE' } & Pick<
+      Wordpress__Page,
+      'title' | 'content' | 'yoast_title'
+    > & {
+        yoast_meta?: Maybe<
+          Array<
+            Maybe<
+              { __typename?: 'wordpress__PAGEYoast_meta' } & Pick<
+                Wordpress__PageYoast_Meta,
+                'content' | 'name' | 'property'
+              >
+            >
+          >
+        >;
+      }
+  >;
+};
 
 export type TagPageQueryVariables = {
   id: Scalars['Int'];
 };
 
-
-export type TagPageQuery = (
-  { __typename?: 'Query' }
-  & { wordpressTag?: Maybe<(
-    { __typename?: 'wordpress__TAG' }
-    & Pick<Wordpress__Tag, 'count' | 'name' | 'slug' | 'yoast_title'>
-    & { yoast_meta?: Maybe<Array<Maybe<(
-      { __typename?: 'wordpress__TAGYoast_meta' }
-      & Pick<Wordpress__TagYoast_Meta, 'content' | 'name' | 'property'>
-    )>>> }
-  )>, allWordpressPost: (
-    { __typename?: 'wordpress__POSTConnection' }
-    & { nodes: Array<(
-      { __typename?: 'wordpress__POST' }
-      & PostFragment
-    )>, pageInfo: (
-      { __typename?: 'PageInfo' }
-      & Pick<PageInfo, 'hasNextPage'>
-    ) }
-  ) }
-);
+export type TagPageQuery = { __typename?: 'Query' } & {
+  wordpressTag?: Maybe<
+    { __typename?: 'wordpress__TAG' } & Pick<
+      Wordpress__Tag,
+      'count' | 'name' | 'slug' | 'yoast_title'
+    > & {
+        yoast_meta?: Maybe<
+          Array<
+            Maybe<
+              { __typename?: 'wordpress__TAGYoast_meta' } & Pick<
+                Wordpress__TagYoast_Meta,
+                'content' | 'name' | 'property'
+              >
+            >
+          >
+        >;
+      }
+  >;
+  allWordpressPost: { __typename?: 'wordpress__POSTConnection' } & {
+    nodes: Array<{ __typename?: 'wordpress__POST' } & PostFragment>;
+    pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage'>;
+  };
+};

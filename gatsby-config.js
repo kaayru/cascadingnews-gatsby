@@ -103,5 +103,34 @@ module.exports = {
         exclude: ['/sample-page', '/tag-page', '/home'],
       },
     },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'Cascading News',
+        short_name: 'CN',
+        start_url: '/',
+        background_color: '#f7f7f7',
+        theme_color: '#ff483b',
+        display: 'standalone',
+        icons: [
+          {
+            src: 'static/favicon-app-192.png',
+            sizes: '192x192',
+            type: 'image/png',
+          },
+          {
+            src: 'static/favicon-app-256.png',
+            sizes: '256x256',
+            type: 'image/png',
+          },
+          {
+            src: 'static/favicon-app-512.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
+        ],
+        crossOrigin: 'use-credentials',
+      },
+    },
   ],
 };
