@@ -97,5 +97,11 @@ module.exports = {
       },
     },
     'gatsby-plugin-styled-components',
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        exclude: ['/sample-page', '/tag-page', '/home'],
+      },
+    },
   ],
 };
