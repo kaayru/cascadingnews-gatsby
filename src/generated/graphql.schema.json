@@ -7609,6 +7609,16 @@
               "ofType": null
             },
             "defaultValue": null
+          },
+          {
+            "name": "rss",
+            "description": "",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "StringQueryOperatorInput",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -8068,6 +8078,18 @@
           },
           {
             "name": "github",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "rss",
             "description": "",
             "args": [],
             "type": {
@@ -8819,6 +8841,12 @@
           },
           {
             "name": "siteMetadata___social___github",
+            "description": "",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "siteMetadata___social___rss",
             "description": "",
             "isDeprecated": false,
             "deprecationReason": null

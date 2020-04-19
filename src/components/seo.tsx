@@ -65,6 +65,13 @@ const SEO = ({ lang = 'en', meta, title, path }: Props) => {
           rel: 'canonical',
           href: url,
         },
+        // RSS feed
+        {
+          href: 'https://admin.cascading-news.com/feed',
+          rel: 'alternate',
+          title: 'Cascading News &raquo; Feed',
+          type: 'application/rss+xml',
+        },
         // basic favicon
         {
           rel: 'shortcut icon',

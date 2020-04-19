@@ -9,6 +9,7 @@ import { notEmpty } from 'src/utils/typeUtils';
 import { FlatList } from 'src/components/base';
 import Twitter from 'src/assets/twitter.svg';
 import Github from 'src/assets/github.svg';
+import RSS from 'src/assets/rss.svg';
 
 const Container = styled.header`
   margin-top: 0;
@@ -57,6 +58,7 @@ const SocialIconLink = styled(OutboundLink)`
   justify-content: center;
 
   svg {
+    fill: var(--primaryTextColor);
     width: 1.2rem;
     height: 1.2rem;
   }
@@ -107,6 +109,18 @@ const Header = ({ menuLinks, socialLinks }: Props) => (
                 rel="noopener noreferrer"
               >
                 <Github />
+              </SocialIconLink>
+            </MenuLi>
+          )}
+          {socialLinks?.rss && (
+            <MenuLi>
+              <SocialIconLink
+                href={socialLinks.rss}
+                title="RSS Feed"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <RSS />
               </SocialIconLink>
             </MenuLi>
           )}

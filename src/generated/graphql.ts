@@ -474,6 +474,7 @@ export enum SiteFieldsEnum {
   SiteMetadataSiteUrl = 'siteMetadata___siteUrl',
   SiteMetadataSocialTwitter = 'siteMetadata___social___twitter',
   SiteMetadataSocialGithub = 'siteMetadata___social___github',
+  SiteMetadataSocialRss = 'siteMetadata___social___rss',
   SiteMetadataMenuLinks = 'siteMetadata___menuLinks',
   SiteMetadataMenuLinksName = 'siteMetadata___menuLinks___name',
   SiteMetadataMenuLinksLink = 'siteMetadata___menuLinks___link',
@@ -1181,11 +1182,13 @@ export type SiteSiteMetadataSocial = {
   __typename?: 'SiteSiteMetadataSocial';
   twitter?: Maybe<Scalars['String']>;
   github?: Maybe<Scalars['String']>;
+  rss?: Maybe<Scalars['String']>;
 };
 
 export type SiteSiteMetadataSocialFilterInput = {
   twitter?: Maybe<StringQueryOperatorInput>;
   github?: Maybe<StringQueryOperatorInput>;
+  rss?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SiteSortInput = {
@@ -3497,7 +3500,7 @@ export type SiteLayoutQuery = { __typename?: 'Query' } & {
           social?: Maybe<
             { __typename?: 'SiteSiteMetadataSocial' } & Pick<
               SiteSiteMetadataSocial,
-              'twitter' | 'github'
+              'twitter' | 'github' | 'rss'
             >
           >;
         }
