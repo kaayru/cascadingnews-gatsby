@@ -23,6 +23,10 @@ module.exports = {
         name: 'about',
         link: '/about',
       },
+      {
+        name: 'weekly newsletter',
+        link: '/mailing-list',
+      },
     ],
   },
   plugins: [
@@ -100,7 +104,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        exclude: ['/sample-page', '/tag-page', '/home'],
+        exclude: ['/sample-page', '/tag-page', '/home', '/weekly-newsletter'],
       },
     },
     {
@@ -138,6 +142,13 @@ module.exports = {
         rule: {
           include: /assets/,
         },
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-mailchimp',
+      options: {
+        endpoint:
+          'https://cascading-news.us19.list-manage.com/subscribe/post?u=c1ab33a63729c222c2676ad0b&amp;id=647c8d2bcb',
       },
     },
   ],

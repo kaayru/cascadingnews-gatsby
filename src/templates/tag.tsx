@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { graphql } from 'gatsby';
 
-import { Count, LoadMoreButton, PageTitle, PostList } from 'src/components/base';
+import { Count, Button, PageTitle, PostList } from 'src/components/base';
 import Layout from 'src/components/layout';
 import Post from 'src/components/post';
 import SEO from 'src/components/seo';
@@ -41,9 +41,9 @@ const Tag = ({ data, path }: Props) => {
             ))}
           </PostList>
           {pageInfo.hasNextPage && (
-            <LoadMoreButton type="button" onClick={loadNextPage}>
+            <Button type="button" onClick={loadNextPage}>
               Load more
-            </LoadMoreButton>
+            </Button>
           )}
         </Fragment>
       )}

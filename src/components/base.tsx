@@ -19,11 +19,23 @@ export const PostList = styled.ul`
   margin-left: 0;
 `;
 
-export const LoadMoreButton = styled.button`
+export const TextInput = styled.input`
+  background: #ffffff;
+  border: 1px solid var(--secondaryTextColor);
+  margin-right: ${rhythm(0.5)};
+  font-size: ${scale(2 / 16).fontSize};
+  line-height: ${scale(2 / 16).lineHeight};
+  padding: ${rhythm(0.2)} ${rhythm(0.4)};
+`;
+
+export const Button = styled.button`
   background: var(--linkColor);
   color: #ffffff;
   border: 2px solid var(--linkColor);
   cursor: pointer;
+  font-size: ${scale(2 / 16).fontSize};
+  line-height: ${scale(2 / 16).lineHeight};
+  padding: ${rhythm(0.2)} ${rhythm(0.4)};
 
   &:hover {
     background: var(--linkColorActive);
