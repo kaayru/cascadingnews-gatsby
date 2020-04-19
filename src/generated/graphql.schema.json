@@ -996,6 +996,16 @@
                 "defaultValue": null
               },
               {
+                "name": "tags",
+                "description": "",
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "wordpress__TAGFilterListInput",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
                 "name": "path",
                 "description": "",
                 "type": {
@@ -1021,16 +1031,6 @@
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "BooleanQueryOperatorInput",
-                  "ofType": null
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "tags",
-                "description": "",
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "wordpress__TAGFilterListInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -2806,6 +2806,16 @@
             "defaultValue": null
           },
           {
+            "name": "endpoint",
+            "description": "",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "StringQueryOperatorInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "path",
             "description": "",
             "type": {
@@ -4133,6 +4143,18 @@
           },
           {
             "name": "crossOrigin",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "endpoint",
             "description": "",
             "args": [],
             "type": {
@@ -5621,6 +5643,12 @@
             "deprecationReason": null
           },
           {
+            "name": "pluginCreator___pluginOptions___endpoint",
+            "description": "",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "pluginCreator___pluginOptions___path",
             "description": "",
             "isDeprecated": false,
@@ -6991,6 +7019,12 @@
           },
           {
             "name": "pluginOptions___crossOrigin",
+            "description": "",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "pluginOptions___endpoint",
             "description": "",
             "isDeprecated": false,
             "deprecationReason": null
@@ -10624,16 +10658,6 @@
             "defaultValue": null
           },
           {
-            "name": "primaryImageOfPage",
-            "description": "",
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "wordpress__POSTYoast_json_ldWordpress__graphPrimaryImageOfPageFilterInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
             "name": "datePublished",
             "description": "",
             "type": {
@@ -10699,6 +10723,16 @@
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "StringQueryOperatorInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "primaryImageOfPage",
+            "description": "",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "wordpress__POSTYoast_json_ldWordpress__graphPrimaryImageOfPageFilterInput",
               "ofType": null
             },
             "defaultValue": null
@@ -10976,27 +11010,6 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "wordpress__POSTYoast_json_ldWordpress__graphPrimaryImageOfPageFilterInput",
-        "description": "",
-        "fields": null,
-        "inputFields": [
-          {
-            "name": "wordpress__id",
-            "description": "",
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "StringQueryOperatorInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          }
-        ],
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "INPUT_OBJECT",
         "name": "wordpress__POSTYoast_json_ldWordpress__graphAuthorFilterInput",
         "description": "",
         "fields": null,
@@ -11019,6 +11032,27 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "wordpress__POSTYoast_json_ldWordpress__graphMainEntityOfPageFilterInput",
+        "description": "",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "wordpress__id",
+            "description": "",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "StringQueryOperatorInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "wordpress__POSTYoast_json_ldWordpress__graphPrimaryImageOfPageFilterInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -12995,6 +13029,22 @@
             "deprecationReason": null
           },
           {
+            "name": "tags",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "wordpress__TAG",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "path",
             "description": "",
             "args": [],
@@ -13026,22 +13076,6 @@
               "kind": "SCALAR",
               "name": "Boolean",
               "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "tags",
-            "description": "",
-            "args": [],
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "wordpress__TAG",
-                "ofType": null
-              }
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -13290,18 +13324,6 @@
             "deprecationReason": null
           },
           {
-            "name": "primaryImageOfPage",
-            "description": "",
-            "args": [],
-            "type": {
-              "kind": "OBJECT",
-              "name": "wordpress__POSTYoast_json_ldWordpress__graphPrimaryImageOfPage",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "datePublished",
             "description": "",
             "args": [
@@ -13462,6 +13484,18 @@
             "type": {
               "kind": "SCALAR",
               "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "primaryImageOfPage",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "wordpress__POSTYoast_json_ldWordpress__graphPrimaryImageOfPage",
               "ofType": null
             },
             "isDeprecated": false,
@@ -13758,29 +13792,6 @@
       },
       {
         "kind": "OBJECT",
-        "name": "wordpress__POSTYoast_json_ldWordpress__graphPrimaryImageOfPage",
-        "description": "",
-        "fields": [
-          {
-            "name": "wordpress__id",
-            "description": "",
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
         "name": "wordpress__POSTYoast_json_ldWordpress__graphAuthor",
         "description": "",
         "fields": [
@@ -13805,6 +13816,29 @@
       {
         "kind": "OBJECT",
         "name": "wordpress__POSTYoast_json_ldWordpress__graphMainEntityOfPage",
+        "description": "",
+        "fields": [
+          {
+            "name": "wordpress__id",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "wordpress__POSTYoast_json_ldWordpress__graphPrimaryImageOfPage",
         "description": "",
         "fields": [
           {
@@ -15475,6 +15509,16 @@
             "defaultValue": null
           },
           {
+            "name": "tags",
+            "description": "",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "wordpress__TAGFilterListInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "path",
             "description": "",
             "type": {
@@ -15500,16 +15544,6 @@
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "BooleanQueryOperatorInput",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "tags",
-            "description": "",
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "wordpress__TAGFilterListInput",
               "ofType": null
             },
             "defaultValue": null
@@ -16377,12 +16411,6 @@
             "deprecationReason": null
           },
           {
-            "name": "yoast_json_ld___wordpress__graph___primaryImageOfPage___wordpress__id",
-            "description": "",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "yoast_json_ld___wordpress__graph___datePublished",
             "description": "",
             "isDeprecated": false,
@@ -16420,6 +16448,12 @@
           },
           {
             "name": "yoast_json_ld___wordpress__graph___keywords",
+            "description": "",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "yoast_json_ld___wordpress__graph___primaryImageOfPage___wordpress__id",
             "description": "",
             "isDeprecated": false,
             "deprecationReason": null
@@ -16624,24 +16658,6 @@
           },
           {
             "name": "_links___wp_featuredmedia___href",
-            "description": "",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "path",
-            "description": "",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "source",
-            "description": "",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "isVideo",
             "description": "",
             "isDeprecated": false,
             "deprecationReason": null
@@ -17164,6 +17180,24 @@
           },
           {
             "name": "tags___yoast_meta___property",
+            "description": "",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "path",
+            "description": "",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "source",
+            "description": "",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "isVideo",
             "description": "",
             "isDeprecated": false,
             "deprecationReason": null
