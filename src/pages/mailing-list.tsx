@@ -33,7 +33,7 @@ const MailingListPage = ({ data, path }: Props) => {
       const response = await addToMailchimp(email);
       setMailchimpResponse(response);
     } catch (e) {
-      setMailchimpResponse({ result: 'error', msg: 'error mssg' });
+      setMailchimpResponse({ result: 'error', msg: 'Something bad happened!' });
     }
   };
 
@@ -56,6 +56,7 @@ const MailingListPage = ({ data, path }: Props) => {
             value={email}
             onChange={handleChange}
             placeholder="Your email"
+            required
           />
           <Button type="submit">Subscribe to mailing list</Button>
         </form>

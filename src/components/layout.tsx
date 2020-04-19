@@ -43,6 +43,7 @@ const Layout = ({ children }: Props) => {
           social {
             twitter
             github
+            rss
           }
         }
       }

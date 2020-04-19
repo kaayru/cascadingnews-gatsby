@@ -13,6 +13,7 @@ module.exports = {
     social: {
       twitter: 'https://twitter.com/cascadingnews',
       github: 'https://github.com/kaayru/cascadingnews-gatsby',
+      rss: 'https://admin.cascading-news.com/feed',
     },
     menuLinks: [
       {
