@@ -114,17 +114,17 @@ module.exports = {
         display: 'standalone',
         icons: [
           {
-            src: 'static/favicon-app-192.png',
+            src: '/favicon-app-192.png',
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: 'static/favicon-app-256.png',
+            src: '/favicon-app-256.png',
             sizes: '256x256',
             type: 'image/png',
           },
           {
-            src: 'static/favicon-app-512.png',
+            src: '/favicon-app-512.png',
             sizes: '512x512',
             type: 'image/png',
           },
