@@ -2,7 +2,7 @@
   "name": "cascading-news-gatsby",
   "private": false,
   "description": "Codebase for the frontend of cascading-news.com",
-  "version": "1.3.3",
+  "version": "1.4.0",
   "author": "Vincent Ballut <contact@vincentballut.fr>",
   "husky": {
     "hooks": {
