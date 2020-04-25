@@ -223,10 +223,10 @@ export type QueryWordpressPostArgs = {
   yoast_meta?: Maybe<Wordpress__PostYoast_MetaFilterListInput>;
   yoast_json_ld?: Maybe<Wordpress__PostYoast_Json_LdFilterListInput>;
   _links?: Maybe<Wordpress__Post_LinksFilterInput>;
+  tags?: Maybe<Wordpress__TagFilterListInput>;
   path?: Maybe<StringQueryOperatorInput>;
   source?: Maybe<StringQueryOperatorInput>;
   isVideo?: Maybe<BooleanQueryOperatorInput>;
-  tags?: Maybe<Wordpress__TagFilterListInput>;
 };
 
 export type QueryAllWordpressPostArgs = {
@@ -474,6 +474,7 @@ export enum SiteFieldsEnum {
   SiteMetadataSiteUrl = 'siteMetadata___siteUrl',
   SiteMetadataSocialTwitter = 'siteMetadata___social___twitter',
   SiteMetadataSocialGithub = 'siteMetadata___social___github',
+  SiteMetadataSocialRss = 'siteMetadata___social___rss',
   SiteMetadataMenuLinks = 'siteMetadata___menuLinks',
   SiteMetadataMenuLinksName = 'siteMetadata___menuLinks___name',
   SiteMetadataMenuLinksLink = 'siteMetadata___menuLinks___link',
@@ -721,6 +722,7 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsIconsSizes = 'pluginCreator___pluginOptions___icons___sizes',
   PluginCreatorPluginOptionsIconsType = 'pluginCreator___pluginOptions___icons___type',
   PluginCreatorPluginOptionsCrossOrigin = 'pluginCreator___pluginOptions___crossOrigin',
+  PluginCreatorPluginOptionsEndpoint = 'pluginCreator___pluginOptions___endpoint',
   PluginCreatorPluginOptionsPath = 'pluginCreator___pluginOptions___path',
   PluginCreatorPluginOptionsPathCheck = 'pluginCreator___pluginOptions___pathCheck',
   PluginCreatorNodeApIs = 'pluginCreator___nodeAPIs',
@@ -938,6 +940,7 @@ export enum SitePluginFieldsEnum {
   PluginOptionsIconsSizes = 'pluginOptions___icons___sizes',
   PluginOptionsIconsType = 'pluginOptions___icons___type',
   PluginOptionsCrossOrigin = 'pluginOptions___crossOrigin',
+  PluginOptionsEndpoint = 'pluginOptions___endpoint',
   PluginOptionsPath = 'pluginOptions___path',
   PluginOptionsPathCheck = 'pluginOptions___pathCheck',
   NodeApIs = 'nodeAPIs',
@@ -1086,6 +1089,7 @@ export type SitePluginPluginOptions = {
   display?: Maybe<Scalars['String']>;
   icons?: Maybe<Array<Maybe<SitePluginPluginOptionsIcons>>>;
   crossOrigin?: Maybe<Scalars['String']>;
+  endpoint?: Maybe<Scalars['String']>;
   path?: Maybe<Scalars['String']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
 };
@@ -1115,6 +1119,7 @@ export type SitePluginPluginOptionsFilterInput = {
   display?: Maybe<StringQueryOperatorInput>;
   icons?: Maybe<SitePluginPluginOptionsIconsFilterListInput>;
   crossOrigin?: Maybe<StringQueryOperatorInput>;
+  endpoint?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
 };
@@ -1177,11 +1182,13 @@ export type SiteSiteMetadataSocial = {
   __typename?: 'SiteSiteMetadataSocial';
   twitter?: Maybe<Scalars['String']>;
   github?: Maybe<Scalars['String']>;
+  rss?: Maybe<Scalars['String']>;
 };
 
 export type SiteSiteMetadataSocialFilterInput = {
   twitter?: Maybe<StringQueryOperatorInput>;
   github?: Maybe<StringQueryOperatorInput>;
+  rss?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SiteSortInput = {
@@ -1962,10 +1969,10 @@ export type Wordpress__Post = Node & {
   yoast_meta?: Maybe<Array<Maybe<Wordpress__PostYoast_Meta>>>;
   yoast_json_ld?: Maybe<Array<Maybe<Wordpress__PostYoast_Json_Ld>>>;
   _links?: Maybe<Wordpress__Post_Links>;
+  tags?: Maybe<Array<Maybe<Wordpress__Tag>>>;
   path?: Maybe<Scalars['String']>;
   source?: Maybe<Scalars['String']>;
   isVideo?: Maybe<Scalars['Boolean']>;
-  tags?: Maybe<Array<Maybe<Wordpress__Tag>>>;
 };
 
 export type Wordpress__PostDateArgs = {
@@ -2335,7 +2342,6 @@ export enum Wordpress__PostFieldsEnum {
   YoastJsonLdWordpressGraphPotentialActionWordpressType = 'yoast_json_ld___wordpress__graph___potentialAction___wordpress__type',
   YoastJsonLdWordpressGraphPotentialActionQueryInput = 'yoast_json_ld___wordpress__graph___potentialAction___query_input',
   YoastJsonLdWordpressGraphIsPartOfWordpressId = 'yoast_json_ld___wordpress__graph___isPartOf___wordpress__id',
-  YoastJsonLdWordpressGraphPrimaryImageOfPageWordpressId = 'yoast_json_ld___wordpress__graph___primaryImageOfPage___wordpress__id',
   YoastJsonLdWordpressGraphDatePublished = 'yoast_json_ld___wordpress__graph___datePublished',
   YoastJsonLdWordpressGraphDateModified = 'yoast_json_ld___wordpress__graph___dateModified',
   YoastJsonLdWordpressGraphAuthorWordpressId = 'yoast_json_ld___wordpress__graph___author___wordpress__id',
@@ -2343,6 +2349,7 @@ export enum Wordpress__PostFieldsEnum {
   YoastJsonLdWordpressGraphCommentCount = 'yoast_json_ld___wordpress__graph___commentCount',
   YoastJsonLdWordpressGraphMainEntityOfPageWordpressId = 'yoast_json_ld___wordpress__graph___mainEntityOfPage___wordpress__id',
   YoastJsonLdWordpressGraphKeywords = 'yoast_json_ld___wordpress__graph___keywords',
+  YoastJsonLdWordpressGraphPrimaryImageOfPageWordpressId = 'yoast_json_ld___wordpress__graph___primaryImageOfPage___wordpress__id',
   YoastJsonLdWordpressGraphArticleSection = 'yoast_json_ld___wordpress__graph___articleSection',
   YoastJsonLdWordpressGraphWidth = 'yoast_json_ld___wordpress__graph___width',
   YoastJsonLdWordpressGraphHeight = 'yoast_json_ld___wordpress__graph___height',
@@ -2377,9 +2384,6 @@ export enum Wordpress__PostFieldsEnum {
   LinksWpFeaturedmedia = '_links___wp_featuredmedia',
   LinksWpFeaturedmediaEmbeddable = '_links___wp_featuredmedia___embeddable',
   LinksWpFeaturedmediaHref = '_links___wp_featuredmedia___href',
-  Path = 'path',
-  Source = 'source',
-  IsVideo = 'isVideo',
   Tags = 'tags',
   TagsId = 'tags___id',
   TagsParentId = 'tags___parent___id',
@@ -2467,6 +2471,9 @@ export enum Wordpress__PostFieldsEnum {
   TagsYoastMetaName = 'tags___yoast_meta___name',
   TagsYoastMetaContent = 'tags___yoast_meta___content',
   TagsYoastMetaProperty = 'tags___yoast_meta___property',
+  Path = 'path',
+  Source = 'source',
+  IsVideo = 'isVideo',
 }
 
 export type Wordpress__PostFilterInput = {
@@ -2496,10 +2503,10 @@ export type Wordpress__PostFilterInput = {
   yoast_meta?: Maybe<Wordpress__PostYoast_MetaFilterListInput>;
   yoast_json_ld?: Maybe<Wordpress__PostYoast_Json_LdFilterListInput>;
   _links?: Maybe<Wordpress__Post_LinksFilterInput>;
+  tags?: Maybe<Wordpress__TagFilterListInput>;
   path?: Maybe<StringQueryOperatorInput>;
   source?: Maybe<StringQueryOperatorInput>;
   isVideo?: Maybe<BooleanQueryOperatorInput>;
-  tags?: Maybe<Wordpress__TagFilterListInput>;
 };
 
 export type Wordpress__PostGroupConnection = {
@@ -2547,7 +2554,6 @@ export type Wordpress__PostYoast_Json_LdWordpress__Graph = {
     Array<Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphPotentialAction>>
   >;
   isPartOf?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphIsPartOf>;
-  primaryImageOfPage?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphPrimaryImageOfPage>;
   datePublished?: Maybe<Scalars['Date']>;
   dateModified?: Maybe<Scalars['Date']>;
   author?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphAuthor>;
@@ -2555,6 +2561,7 @@ export type Wordpress__PostYoast_Json_LdWordpress__Graph = {
   commentCount?: Maybe<Scalars['Int']>;
   mainEntityOfPage?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphMainEntityOfPage>;
   keywords?: Maybe<Scalars['String']>;
+  primaryImageOfPage?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphPrimaryImageOfPage>;
   articleSection?: Maybe<Scalars['String']>;
   width?: Maybe<Scalars['Int']>;
   height?: Maybe<Scalars['Int']>;
@@ -2597,9 +2604,6 @@ export type Wordpress__PostYoast_Json_LdWordpress__GraphFilterInput = {
     Wordpress__PostYoast_Json_LdWordpress__GraphPotentialActionFilterListInput
   >;
   isPartOf?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphIsPartOfFilterInput>;
-  primaryImageOfPage?: Maybe<
-    Wordpress__PostYoast_Json_LdWordpress__GraphPrimaryImageOfPageFilterInput
-  >;
   datePublished?: Maybe<DateQueryOperatorInput>;
   dateModified?: Maybe<DateQueryOperatorInput>;
   author?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphAuthorFilterInput>;
@@ -2607,6 +2611,9 @@ export type Wordpress__PostYoast_Json_LdWordpress__GraphFilterInput = {
   commentCount?: Maybe<IntQueryOperatorInput>;
   mainEntityOfPage?: Maybe<Wordpress__PostYoast_Json_LdWordpress__GraphMainEntityOfPageFilterInput>;
   keywords?: Maybe<StringQueryOperatorInput>;
+  primaryImageOfPage?: Maybe<
+    Wordpress__PostYoast_Json_LdWordpress__GraphPrimaryImageOfPageFilterInput
+  >;
   articleSection?: Maybe<StringQueryOperatorInput>;
   width?: Maybe<IntQueryOperatorInput>;
   height?: Maybe<IntQueryOperatorInput>;
@@ -3493,7 +3500,7 @@ export type SiteLayoutQuery = { __typename?: 'Query' } & {
           social?: Maybe<
             { __typename?: 'SiteSiteMetadataSocial' } & Pick<
               SiteSiteMetadataSocial,
-              'twitter' | 'github'
+              'twitter' | 'github' | 'rss'
             >
           >;
         }
@@ -3533,6 +3540,31 @@ export type IndexPageQuery = { __typename?: 'Query' } & {
   };
   wordpressPage?: Maybe<
     { __typename?: 'wordpress__PAGE' } & Pick<Wordpress__Page, 'yoast_title'> & {
+        yoast_meta?: Maybe<
+          Array<
+            Maybe<
+              { __typename?: 'wordpress__PAGEYoast_meta' } & Pick<
+                Wordpress__PageYoast_Meta,
+                'content' | 'name' | 'property'
+              >
+            >
+          >
+        >;
+      }
+  >;
+  wordpressSiteMetadata?: Maybe<
+    { __typename?: 'wordpress__site_metadata' } & Pick<Wordpress__Site_Metadata, 'description'>
+  >;
+};
+
+export type MailingListPageQueryVariables = {};
+
+export type MailingListPageQuery = { __typename?: 'Query' } & {
+  wordpressPage?: Maybe<
+    { __typename?: 'wordpress__PAGE' } & Pick<
+      Wordpress__Page,
+      'title' | 'content' | 'yoast_title'
+    > & {
         yoast_meta?: Maybe<
           Array<
             Maybe<
