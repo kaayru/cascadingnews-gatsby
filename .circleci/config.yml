@@ -3,6 +3,10 @@ orbs:
   node: circleci/node@1.1.6
 jobs:
   build-and-test:
+    environment:
+      GATSBY_WP_URL: admin.cascading-news.com
+      GATSBY_WP_PROTOCOL: https
+      GATSBY_REPLACEMENT_URL: http://localhost:8000
     executor:
       name: node/default
     steps:
